@@ -1,190 +1,187 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Paul Hopewell LLC — AI, Growth & Exit Strategy</title>
-<meta name="description" content="Paul Hopewell LLC — AI, Growth & Exit Strategy. Helping established SME owners grow with AI and exit on their terms.">
-<style>
-:root {
-  --rich-black: #040406;
-  --white: #ffffff;
-  --slate-blue: #59738e;
-  --espresso: #462617;
-  --flint: #9e9d98;
-  --charcoal: #354054;
-  --bastille: #2e2e30;
-  --brass: #806339;
-  --bg: #f4f4f2;
-  --border: #e7e5e1;
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  font-family: Verdana, Arial, sans-serif;
-  background: var(--white);
-  color: var(--rich-black);
-  line-height: 1.5;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-a { color: var(--slate-blue); text-decoration: none; }
-a:hover { color: var(--brass); }
-
-/* ── Accent bar ── */
-.accent-bar {
-  height: 3px;
-  background: linear-gradient(90deg, var(--slate-blue) 0%, var(--brass) 100%);
-  width: 100%;
-}
-
-/* ── Logo header ── */
-.logo-header {
-  display: flex;
-  justify-content: center;
-  padding: 32px 24px 20px;
-  background: var(--white);
-}
-.logo-header img {
-  height: 80px;
-}
-
-/* ── Hero section ── */
-.hero {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 48px 24px 64px;
-  background: var(--bg);
-  text-align: center;
-}
-.hero-card {
-  max-width: 640px;
-  width: 100%;
-}
-
-/* ── Typography ── */
-h1 {
-  font-size: 28px;
-  font-weight: bold;
-  color: var(--rich-black);
-  letter-spacing: 0.5px;
-  margin-bottom: 12px;
-  line-height: 1.3;
-}
-.tagline {
-  font-size: 16px;
-  color: var(--brass);
-  font-weight: bold;
-  letter-spacing: 0.5px;
-  margin-bottom: 32px;
-  text-transform: uppercase;
-}
-.divider {
-  width: 48px;
-  height: 2px;
-  background: var(--brass);
-  margin: 0 auto 24px;
-}
-.message {
-  font-size: 15px;
-  color: var(--charcoal);
-  line-height: 1.7;
-  margin-bottom: 16px;
-}
-.message strong {
-  color: var(--rich-black);
-}
-
-/* ── Contact block ── */
-.contact-block {
-  margin-top: 32px;
-  padding: 24px;
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-}
-.contact-block p {
-  font-size: 14px;
-  color: var(--charcoal);
-  margin-bottom: 8px;
-}
-.contact-block a {
-  font-size: 15px;
-  font-weight: bold;
-  color: var(--slate-blue);
-}
-
-/* ── Locations ── */
-.locations {
-  margin-top: 24px;
-  font-size: 12px;
-  color: var(--flint);
-  letter-spacing: 1px;
-}
-
-/* ── Footer ── */
-footer {
-  background: var(--bastille);
-  padding: 16px 32px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-footer img {
-  height: 20px;
-}
-footer .legal {
-  font-size: 10px;
-  color: var(--flint);
-  text-align: right;
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Paul Hopewell LLC — AI, Growth & Exit Strategy. Helping established UK SME owners grow and exit on their own terms, using AI as the accelerant.">
+  <title>Paul Hopewell LLC — AI, Growth &amp; Exit Strategy</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="assets/images/ph-badge.png" type="image/png">
 </head>
 <body>
 
-<header class="logo-header">
-  <img src="assets/ph-badge-80.png" alt="Paul Hopewell LLC">
+<!-- HEADER -->
+<header class="site-header">
+  <a href="index.html" class="site-logo">
+    <img src="assets/images/ph-badge.png" class="site-logo__badge" alt="">
+    <span style="color: var(--cream);">Paul Hopewell</span>&nbsp;<span>LLC</span>
+  </a>
+  <nav class="nav-desktop" aria-label="Primary navigation">
+    <ul>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="ai-growth-audit.html">AI Growth Audit</a></li>
+      <li><a href="m2m-framework.html">M2M Framework</a></li>
+      <li><a href="articles.html">Articles</a></li>
+      <li><a href="clients.html">Clients</a></li>
+    </ul>
+  </nav>
+  <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" onclick="document.getElementById('mobile-menu').classList.toggle('is-open'); this.setAttribute('aria-expanded', document.getElementById('mobile-menu').classList.contains('is-open'));">
+    <span></span><span></span><span></span>
+  </button>
 </header>
+<nav class="nav-mobile" id="mobile-menu" aria-label="Mobile navigation">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="ai-growth-audit.html">AI Growth Audit</a></li>
+    <li><a href="m2m-framework.html">M2M Framework</a></li>
+    <li><a href="articles.html">Articles</a></li>
+    <li><a href="clients.html">Clients</a></li>
+  </ul>
+</nav>
 
-<div class="accent-bar"></div>
+<!-- HERO -->
+<section class="hero hero--home">
+  <div class="container">
+    <div class="hero-eyebrow">Paul Hopewell LLC</div>
+    <h1>Grow Faster. Exit <em>on Your Terms.</em></h1>
+    <p class="hero-subtitle">Three decades of building, scaling and selling real businesses — now combined with agentic AI to help established UK owners reach the exit they actually want.</p>
+    <div class="hero-cta">
+      <a href="ai-growth-audit.html" class="btn cta-btn-filled">Book an AI Growth Audit</a>
+      <a href="m2m-framework.html" class="btn cta-btn-dark">Learn the Framework</a>
+    </div>
+  </div>
+</section>
 
-<main class="hero">
-  <div class="hero-card">
-    <h1>We're building something different.</h1>
+<!-- INTRO -->
+<section class="section" id="intro">
+  <div class="container">
+    <p class="body-text">Most business advice is generic. Grow faster. Work smarter. Delegate more. You've heard it all.</p>
+    <p class="body-text">Paul Hopewell LLC is different. We combine three things almost nobody combines: <strong>real business coaching</strong> from someone who has built and sold multiple businesses, <strong>practical agentic AI</strong> applied to your operations rather than pitched as a product, and <strong>exit strategy</strong> earned through doing it — not advised from the side-lines.</p>
 
-    <p class="tagline">AI, Growth &amp; Exit Strategy</p>
-
-    <div class="divider"></div>
-
-    <p class="message">
-      <strong>Paul Hopewell LLC</strong> helps established SME owners use AI to grow their business and exit on their own terms.
-    </p>
-
-    <p class="message">
-      Our founder, Paul, has done it twice. From coal mines to millionaire. He built, scaled, and sold his own business. Now he's doing it again, this time using AI to compress a 30-year journey into something far faster.
-    </p>
-
-    <p class="message">
-      The full website is in development and will launch with our AI Growth Audit. That is the diagnostic that starts the conversation.
-    </p>
-
-    <div class="contact-block">
-      <p>In the meantime, reach us at:</p>
-      <a href="mailto:ph@paulhopewell.com">ph@paulhopewell.com</a>
+    <div class="pullquote">
+      <p>A business can only grow as far as the owner is capable of leading it.</p>
     </div>
 
-    <div class="locations">ITALY &nbsp;·&nbsp; UK &nbsp;·&nbsp; QATAR</div>
+    <p class="body-text">If you are an established UK owner thinking about exit in the next 2–7 years, the question is not whether AI will reshape your industry. It is whether you will be the one using it — or the one being overtaken by it.</p>
   </div>
-</main>
+</section>
 
-<footer>
-  <img src="assets/ph-monogram-24.png" alt="PH">
-  <div class="legal">
-    Paul Hopewell LLC<br>
-    AI, Growth &amp; Exit Strategy
+<!-- THREE THINGS -->
+<section class="section section-bordered">
+  <div class="container">
+    <div class="section-label">Built On</div>
+    <h2 class="section-title">Three Things Nobody Else Combines</h2>
+    <p class="body-text">Brought together by one operator with the scars to prove it — not three consultants in a coalition.</p>
+
+    <div class="foundations-grid">
+      <div class="foundation-card">
+        <div class="foundation-number">1</div>
+        <h3>Business Coaching</h3>
+        <p>Not theory. Not frameworks borrowed from a textbook. Three decades of building, growing and selling real businesses — from a Nottinghamshire apprenticeship to multimillion-pound exits.</p>
+      </div>
+      <div class="foundation-card">
+        <div class="foundation-number">2</div>
+        <h3>Agentic AI</h3>
+        <p>AI is not a tech project. It is a business lever. We show you where AI fits <em>your</em> business — not generic advice, but a practical roadmap built around your operations, team and exit timeline.</p>
+      </div>
+      <div class="foundation-card">
+        <div class="foundation-number">3</div>
+        <h3>Exit Strategy</h3>
+        <p>Most owners only sell once. We have done it more than once. We help you build a business someone wants to buy — and prepare you for what comes after the sale.</p>
+      </div>
+    </div>
   </div>
+</section>
+
+<!-- THE PROOF (dark feature) -->
+<section class="section-dark">
+  <div class="container">
+    <div class="section-label">The Proof</div>
+    <h2 class="section-title">We Have Walked This Path</h2>
+
+    <p class="body-text">Our founder, Paul Hopewell, started as an apprentice electrician in a Nottinghamshire mining village. He bought his father's intruder-alarm business, grew it to 2.5&times; its value, sold it, and paid his father in full.</p>
+    <p class="body-text">He then built <strong>Synergy (PH) Ltd</strong> — a health-insurance business — knowing nothing about the industry. He learned on the job, systemised every process, delegated the day-to-day, and scaled it to a multimillion-pound exit.</p>
+    <p class="body-text">He is now building again — this time from Qatar, using AI as the accelerant. <strong>That is the playbook Paul Hopewell LLC exists to deliver to other owners.</strong></p>
+  </div>
+</section>
+
+<!-- METHODOLOGY (the approach) -->
+<section class="section section-bordered">
+  <div class="container">
+    <div class="section-label">The Methodology</div>
+    <h2 class="section-title">Know Where You Are. Know Where You're Going. Work Out How to Get There.</h2>
+
+    <div class="methodology-steps">
+      <div class="method-step">
+        <div class="method-step-num">Step 01</div>
+        <h3>Know Where You Are</h3>
+        <p>The AI Growth Audit honestly assesses your current M2M level, your real role split, and the gap between what you're doing and what your business now needs from you.</p>
+      </div>
+      <div class="method-step">
+        <div class="method-step-num">Step 02</div>
+        <h3>Know Where You're Going</h3>
+        <p>Define the destination. Not just the business outcome — why it matters to you, by when, and what kind of exit you actually want.</p>
+      </div>
+      <div class="method-step">
+        <div class="method-step-num">Step 03</div>
+        <h3>Work Out How to Get There</h3>
+        <p>Identify what to systemise, delegate, learn and stop. Design a plan focused on progress, not perfection — with AI doing the heavy lifting.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHERE ARE YOU - CTA grid -->
+<section class="section section-bordered" id="where-are-you">
+  <div class="container">
+    <div class="section-label">Next Steps</div>
+    <h2 class="section-title">Where Are You? And What Happens Next?</h2>
+    <p class="body-text">The M2M Framework gives you a clear view of the journey. The question now is: where are you on it?</p>
+
+    <div class="cta-grid">
+      <div class="cta-card">
+        <div class="cta-tier">Just Looking</div>
+        <h3>Start with the Framework</h3>
+        <p>Read the full M2M Framework. It will give you a clear view of where you are on the journey from Level 1 to Level 5, and what AI changes at each stage.</p>
+        <a href="m2m-framework.html" class="cta-btn cta-btn-primary">Read the Framework &rarr;</a>
+      </div>
+
+      <div class="cta-card highlight">
+        <div class="cta-tier">Ready to Act</div>
+        <h3>Book an AI Growth Audit</h3>
+        <p>A paid diagnostic session — <strong style="color:var(--coral);">£799</strong> — that maps how AI can accelerate your path through your current level and prepare your business for the exit you want.</p>
+        <p style="color: var(--coral); font-weight: 500;">This is the moment to act. Your competitors are not waiting.</p>
+        <a href="ai-growth-audit.html" class="cta-btn cta-btn-dark">Book Your AI Growth Audit &rarr;</a>
+      </div>
+
+      <div class="cta-card">
+        <div class="cta-tier">Want the Story</div>
+        <h3>Meet Paul</h3>
+        <p>Three decades. Multiple businesses. One mining village. The journey from apprentice to multimillion-pound exits — and why that experience now drives the work we do for established UK owners.</p>
+        <a href="about.html" class="cta-btn cta-btn-primary">Read Paul's Story &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="container">
+    <div class="section-label">About</div>
+    <h2 class="section-title">About Paul Hopewell LLC</h2>
+    <div class="section-divider"></div>
+    <p class="body-text">We help established business owners grow their businesses with the intention of exiting on the best possible terms — however they define that. Whether selling for maximum value, handing to the next generation, stepping back as chairman, or creating a business that runs without them — the exit goal drives the strategy. AI is the critical tool we use to accelerate growth and achieve those exit goals faster, with less hassle, and more predictability.</p>
+    <p class="body-text">Our founder, Paul Hopewell, has built, systemised, and sold businesses over three decades. He's learned what works through experience, not theory. He's now using AI to do it again — by helping other owners achieve the same result. The M2M Framework is the intellectual foundation of everything we do.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <p>Paul Hopewell LLC &copy; All rights reserved.</p>
+  <p><a href="mailto:ph@paulhopewell.com">ph@paulhopewell.com</a> &middot; paulhopewell.com</p>
 </footer>
 
 </body>

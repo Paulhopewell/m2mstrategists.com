@@ -1,0 +1,1675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Growth Audit — Chen Kitchen Solutions Ltd</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #f9f7f4;
+  --coral: #c25d45;
+  --brass: #806339;
+  --near-black: #1a1a1a;
+  --warm-grey: #e8e4df;
+  --light-brass: #a8884e;
+  --faint-coral: #f5ebe8;
+  --mid-grey: #6b6560;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--near-black);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── COVER ── */
+.cover {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(165deg, var(--near-black) 0%, #2a2219 55%, var(--brass) 100%);
+}
+
+.cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23806339' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.5;
+}
+
+.cover-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.cover-badge {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--coral);
+  border: 1px solid rgba(194, 93, 69, 0.4);
+  padding: 0.4rem 1rem;
+  border-radius: 2px;
+  margin-bottom: 2.5rem;
+}
+
+.cover h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-weight: 700;
+  color: var(--cream);
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+
+.cover h1 span {
+  display: block;
+  color: var(--coral);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.65em;
+  margin-top: 0.2em;
+}
+
+.cover-meta {
+  font-size: 1rem;
+  color: rgba(249, 247, 244, 0.6);
+  margin-bottom: 0.4rem;
+}
+
+.cover-meta strong { color: var(--cream); font-weight: 500; }
+
+.cover-line {
+  width: 60px;
+  height: 2px;
+  background: var(--coral);
+  margin: 2rem 0;
+}
+
+.cover-tagline {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: rgba(249, 247, 244, 0.7);
+  max-width: 560px;
+  line-height: 1.7;
+}
+
+.cover-footer {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  right: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+}
+
+.cover-footer-brand {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(249, 247, 244, 0.35);
+}
+
+/* ── TABLE OF CONTENTS ── */
+.toc {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+
+.toc h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--near-black);
+  margin-bottom: 2rem;
+}
+
+.toc-list {
+  list-style: none;
+  counter-reset: toc;
+}
+
+.toc-list li {
+  counter-increment: toc;
+  border-bottom: 1px solid var(--warm-grey);
+}
+
+.toc-list a {
+  display: flex;
+  align-items: baseline;
+  padding: 0.9rem 0;
+  text-decoration: none;
+  color: var(--near-black);
+  transition: color 0.2s;
+}
+
+.toc-list a:hover { color: var(--coral); }
+
+.toc-list a::before {
+  content: counter(toc, decimal-leading-zero);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--brass);
+  min-width: 2.5rem;
+  letter-spacing: 0.05em;
+}
+
+.toc-list a .toc-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* ── LAYOUT ── */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem 6rem;
+}
+
+/* ── SECTIONS ── */
+section {
+  padding-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+.section-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 0.8rem;
+}
+
+h2.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  font-weight: 700;
+  color: var(--near-black);
+  line-height: 1.25;
+  margin-bottom: 1.8rem;
+}
+
+h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--near-black);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.35;
+}
+
+h4 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--brass);
+  margin-top: 2rem;
+  margin-bottom: 0.6rem;
+}
+
+p {
+  margin-bottom: 1.1rem;
+  font-size: 0.95rem;
+}
+
+.lead {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--mid-grey);
+}
+
+/* ── DIVIDERS ── */
+.section-divider {
+  border: none;
+  height: 1px;
+  background: var(--warm-grey);
+  margin: 3rem 0;
+}
+
+.accent-divider {
+  border: none;
+  height: 2px;
+  width: 40px;
+  background: var(--coral);
+  margin: 2rem 0;
+}
+
+/* ── CALLOUT CARDS ── */
+.callout {
+  background: var(--faint-coral);
+  border-left: 3px solid var(--coral);
+  padding: 1.5rem 1.8rem;
+  margin: 1.5rem 0;
+  border-radius: 0 6px 6px 0;
+}
+
+.callout p { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.callout p:last-child { margin-bottom: 0; }
+
+.callout-brass {
+  background: rgba(128, 99, 57, 0.06);
+  border-left-color: var(--brass);
+}
+
+/* ── KEY FIGURE CARDS ── */
+.key-figures {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.key-fig {
+  background: white;
+  border: 1px solid var(--warm-grey);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.key-fig .num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--coral);
+  line-height: 1.1;
+}
+
+.key-fig .label {
+  font-size: 0.78rem;
+  color: var(--mid-grey);
+  margin-top: 0.4rem;
+  font-weight: 500;
+}
+
+/* ── QUOTE BLOCKS ── */
+blockquote {
+  border-left: 3px solid var(--brass);
+  padding: 0.8rem 0 0.8rem 1.5rem;
+  margin: 1.5rem 0;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--mid-grey);
+  line-height: 1.7;
+}
+
+/* ── TABLES ── */
+.table-wrap {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  border: 1px solid var(--warm-grey);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+thead { background: var(--near-black); }
+thead th {
+  color: var(--cream);
+  font-weight: 600;
+  text-align: left;
+  padding: 0.8rem 1rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+tbody td {
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid var(--warm-grey);
+  vertical-align: top;
+}
+
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:nth-child(even) { background: rgba(128, 99, 57, 0.03); }
+
+.table-total td {
+  font-weight: 700;
+  background: var(--faint-coral) !important;
+  color: var(--coral);
+}
+
+/* ── DRAIN CARDS ── */
+.drain-card {
+  background: white;
+  border: 1px solid var(--warm-grey);
+  border-radius: 8px;
+  padding: 1.8rem;
+  margin: 1.5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.drain-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: var(--coral);
+}
+
+.drain-card .drain-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.drain-card .drain-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--near-black);
+}
+
+.drain-card .drain-cost {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--coral);
+}
+
+.drain-card p { font-size: 0.9rem; }
+
+/* ── OPPORTUNITY CARDS ── */
+.opp-card {
+  background: white;
+  border: 1px solid var(--warm-grey);
+  border-radius: 8px;
+  padding: 1.8rem;
+  margin: 1.5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.opp-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: var(--brass);
+}
+
+.opp-card .opp-tier {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin-bottom: 0.6rem;
+}
+
+.opp-card .opp-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--near-black);
+  margin-bottom: 0.4rem;
+}
+
+.opp-card .opp-function {
+  font-size: 0.8rem;
+  color: var(--mid-grey);
+  margin-bottom: 1rem;
+}
+
+.opp-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.8rem;
+  margin: 1rem 0;
+  padding: 1rem;
+  background: rgba(128, 99, 57, 0.04);
+  border-radius: 6px;
+}
+
+.opp-meta-item .opp-meta-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mid-grey);
+}
+
+.opp-meta-item .opp-meta-val {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--near-black);
+  margin-top: 0.15rem;
+}
+
+.opp-card .opp-desc {
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+/* ── TIER BANNERS ── */
+.tier-banner {
+  padding: 1.2rem 1.5rem;
+  border-radius: 8px;
+  margin: 2.5rem 0 1.5rem;
+}
+
+.tier-banner h3 {
+  margin: 0 0 0.3rem;
+  font-size: 1.2rem;
+}
+
+.tier-banner p {
+  font-size: 0.85rem;
+  margin: 0;
+  opacity: 0.8;
+}
+
+.tier-qw { background: rgba(194, 93, 69, 0.08); border: 1px solid rgba(194, 93, 69, 0.15); }
+.tier-fdn { background: rgba(128, 99, 57, 0.08); border: 1px solid rgba(128, 99, 57, 0.15); }
+.tier-str { background: rgba(26, 26, 26, 0.05); border: 1px solid rgba(26, 26, 26, 0.1); }
+
+/* ── PHASE TIMELINE ── */
+.phase-block {
+  background: white;
+  border: 1px solid var(--warm-grey);
+  border-radius: 10px;
+  padding: 2rem;
+  margin: 2rem 0;
+  position: relative;
+}
+
+.phase-block .phase-num {
+  display: inline-block;
+  background: var(--coral);
+  color: white;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 0.3rem 0.8rem;
+  border-radius: 3px;
+  margin-bottom: 0.8rem;
+}
+
+.phase-block h3 { margin-top: 0; }
+
+.phase-block .phase-focus {
+  font-size: 0.88rem;
+  font-style: italic;
+  color: var(--mid-grey);
+  margin-bottom: 1.2rem;
+}
+
+.phase-cost {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--warm-grey);
+}
+
+.phase-cost-item .pc-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--mid-grey);
+}
+
+.phase-cost-item .pc-val {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--coral);
+}
+
+/* ── EXIT READINESS ── */
+.exit-row {
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--warm-grey);
+  font-size: 0.9rem;
+}
+
+.exit-icon {
+  flex-shrink: 0;
+  width: 22px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.exit-req { font-weight: 500; min-width: 200px; }
+.exit-state { color: var(--mid-grey); flex: 1; }
+
+/* ── PRIORITY MATRIX ── */
+.matrix {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr;
+  grid-template-rows: auto 1fr 1fr;
+  gap: 0;
+  margin: 1.5rem 0;
+  border: 1px solid var(--warm-grey);
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 0.82rem;
+}
+
+.matrix-corner { background: var(--near-black); padding: 0.6rem; }
+.matrix-col-header {
+  background: var(--near-black);
+  color: var(--cream);
+  padding: 0.6rem 1rem;
+  font-weight: 600;
+  text-align: center;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.matrix-row-header {
+  background: rgba(128, 99, 57, 0.08);
+  padding: 0.8rem 1rem;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+}
+
+.matrix-cell {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid var(--warm-grey);
+  border-left: 1px solid var(--warm-grey);
+}
+
+.matrix-highlight {
+  background: rgba(194, 93, 69, 0.06);
+}
+
+/* ── TOOLKIT CARDS ── */
+.tool-card {
+  background: white;
+  border: 1px solid var(--warm-grey);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1.2rem 0;
+}
+
+.tool-card .tool-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--near-black);
+  margin-bottom: 0.3rem;
+}
+
+.tool-card .tool-price {
+  font-size: 0.82rem;
+  color: var(--coral);
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.tool-card p { font-size: 0.88rem; }
+
+.tool-card .tool-tip {
+  background: rgba(128, 99, 57, 0.05);
+  padding: 0.8rem 1rem;
+  border-radius: 5px;
+  font-size: 0.84rem;
+  margin-top: 0.8rem;
+}
+
+.tool-card .tool-tip strong { color: var(--brass); }
+
+/* ── CHECKLIST ── */
+.checklist {
+  counter-reset: check;
+  list-style: none;
+  margin: 1.5rem 0;
+}
+
+.checklist li {
+  counter-increment: check;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--warm-grey);
+  font-size: 0.9rem;
+}
+
+.checklist li::before {
+  content: counter(check);
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--coral);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── GLOSSARY ── */
+.glossary-term {
+  margin-bottom: 1.2rem;
+}
+
+.glossary-term dt {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--brass);
+}
+
+.glossary-term dd {
+  font-size: 0.88rem;
+  color: var(--mid-grey);
+  margin-top: 0.2rem;
+}
+
+/* ── NEXT STEPS CTA ── */
+.cta-block {
+  background: linear-gradient(165deg, var(--near-black), #2a2219);
+  border-radius: 12px;
+  padding: 2.5rem;
+  margin: 2rem 0;
+  color: var(--cream);
+}
+
+.cta-block h3 {
+  font-family: 'Playfair Display', serif;
+  color: var(--cream);
+  margin-top: 0;
+  font-size: 1.4rem;
+}
+
+.cta-block p { color: rgba(249, 247, 244, 0.75); font-size: 0.92rem; }
+
+.cta-link {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.7rem 1.8rem;
+  background: var(--coral);
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  border-radius: 5px;
+  letter-spacing: 0.03em;
+  transition: background 0.2s;
+}
+
+.cta-link:hover { background: #a84d3a; }
+
+/* ── FOOTER ── */
+.report-footer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  border-top: 1px solid var(--warm-grey);
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--mid-grey);
+}
+
+.report-footer strong { color: var(--brass); font-weight: 600; }
+
+/* ── TEAM IMPACT ── */
+.team-card {
+  background: white;
+  border: 1px solid var(--warm-grey);
+  border-radius: 8px;
+  padding: 1.3rem 1.5rem;
+  margin: 0.8rem 0;
+}
+
+.team-card .team-name {
+  font-weight: 700;
+  color: var(--brass);
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+
+.team-card p { font-size: 0.88rem; margin-bottom: 0; }
+
+/* ── PATH CARDS ── */
+.path-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  margin: 1.5rem 0;
+}
+
+@media (max-width: 640px) {
+  .path-cards { grid-template-columns: 1fr; }
+}
+
+.path-card {
+  background: white;
+  border: 1px solid var(--warm-grey);
+  border-radius: 10px;
+  padding: 1.8rem;
+}
+
+.path-card.featured {
+  border-color: var(--coral);
+  box-shadow: 0 0 0 1px var(--coral);
+}
+
+.path-card .path-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 0.6rem;
+}
+
+.path-card h4 {
+  font-family: 'Playfair Display', serif;
+  color: var(--near-black);
+  font-size: 1.1rem;
+  margin: 0 0 0.8rem;
+}
+
+.path-card p { font-size: 0.85rem; }
+
+.path-card .path-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--coral);
+  margin-bottom: 0.6rem;
+}
+
+.path-card ul {
+  list-style: none;
+  font-size: 0.84rem;
+  margin-top: 0.8rem;
+}
+
+.path-card ul li {
+  padding: 0.3rem 0;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+.path-card ul li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--brass);
+}
+
+/* ── CRITICAL PATH ── */
+.critical-path {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0 1.5rem;
+  font-size: 0.85rem;
+}
+
+.cp-node {
+  background: var(--near-black);
+  color: var(--cream);
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.78rem;
+}
+
+.cp-arrow { color: var(--coral); font-weight: 700; }
+
+/* ── PRINT ── */
+@media print {
+  .cover { min-height: auto; padding: 3rem 2rem; break-after: page; }
+  section { break-inside: avoid; }
+  .cta-link { border: 1px solid var(--coral); }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ COVER ═══════════════ -->
+<div class="cover">
+  <div class="cover-inner">
+    <div class="cover-badge">Confidential</div>
+    <h1>AI Growth Audit<span>Chen Kitchen Solutions Ltd</span></h1>
+    <div class="cover-meta">Prepared for <strong>David Chen</strong></div>
+    <div class="cover-meta">22 May 2026</div>
+    <div class="cover-line"></div>
+    <p class="cover-tagline">A confidential analysis of where your business stands, where AI can create leverage, and your path to exit on your terms.</p>
+  </div>
+  <div class="cover-footer">
+    <span class="cover-footer-brand">Paul Hopewell LLC</span>
+    <span class="cover-footer-brand">paulhopewell.com</span>
+  </div>
+</div>
+
+<!-- ═══════════════ TABLE OF CONTENTS ═══════════════ -->
+<nav class="toc">
+  <h2>Contents</h2>
+  <ol class="toc-list">
+    <li><a href="#exec"><span class="toc-title">Executive Summary</span></a></li>
+    <li><a href="#level"><span class="toc-title">Where Your Business Is — M2M Level Assessment</span></a></li>
+    <li><a href="#drains"><span class="toc-title">Where Your Time and Money Is Leaking</span></a></li>
+    <li><a href="#opportunities"><span class="toc-title">AI Opportunities — Your Roadmap to Leverage</span></a></li>
+    <li><a href="#exit"><span class="toc-title">Your Exit — What This All Means for Your Endgame</span></a></li>
+    <li><a href="#plan"><span class="toc-title">Your 90-Day Action Plan</span></a></li>
+    <li><a href="#financials"><span class="toc-title">Financial Impact Summary</span></a></li>
+    <li><a href="#next"><span class="toc-title">What's Next</span></a></li>
+    <li><a href="#toolkit"><span class="toc-title">Appendix — Your Self-Serve AI Toolkit</span></a></li>
+    <li><a href="#glossary"><span class="toc-title">Glossary</span></a></li>
+  </ol>
+</nav>
+
+<div class="container">
+
+<!-- ═══════════════ SECTION 2: EXECUTIVE SUMMARY ═══════════════ -->
+<section id="exec">
+  <div class="section-label">Section 01</div>
+  <h2 class="section-title">Executive Summary</h2>
+
+  <p><strong>Chen Kitchen Solutions Ltd</strong> is a solid, nine-year-old business generating <strong>£1.8M</strong> in revenue with 22 staff, 60 maintenance clients, and <strong>£450,000 in recurring contract income</strong>. When David told Paul that every quote over £5,000 needs his sign-off, every complaint lands on his desk, and the way the business does almost everything is "in my head, or in my inbox — which is the same thing, really," the picture became clear immediately. This is not a business in trouble. It is a business that has outgrown its owner's operating model.</p>
+
+  <div class="key-figures">
+    <div class="key-fig">
+      <div class="num">£724,400</div>
+      <div class="label">Annual value drain identified</div>
+    </div>
+    <div class="key-fig">
+      <div class="num">£6,300</div>
+      <div class="label">Annual AI investment required</div>
+    </div>
+    <div class="key-fig">
+      <div class="num">£300–500K</div>
+      <div class="label">Net annual impact, Year 1</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p><strong>Where you are:</strong> Chen Kitchen Solutions Ltd is operating at <strong>M2M Level 2: Stability</strong>. The primary constraint is not market demand, capability, or capital — it is David's unresolved identity as a technician operating a £1.8M business. Every significant process runs through him. The business cannot function without him for 72 hours.</p>
+  </div>
+
+  <h3>What's Costing You</h3>
+  <p>Two drains dominate. First, <strong>£450,000 per year</strong> in deals lost because competitors quote faster — not because Chen Kitchen Solutions Ltd is more expensive. Second, <strong>£200,000 per year</strong> in proactive maintenance and upgrade revenue sitting unrecognised in the engineers' service data, waiting for a system that currently does not exist.</p>
+
+  <h3>What AI Can Do for Chen Kitchen Solutions Ltd</h3>
+  <p>An AI-assisted quoting tool can cut David's 15 hours per week of manual quoting to under 4 hours — recovering the largest single drain in the business within 30 days. A maintenance data intelligence layer can surface £80,000–£120,000 in upgrade revenue from the existing client base within 90 days — without David personally reviewing 60 client histories. A CRM with AI-assisted pipeline management can take the sales team from 70% to full capacity and make the revenue engine visible to a future buyer.</p>
+
+  <h3>Your Exit Path</h3>
+  <p>David wants a trade sale within 5–7 years. A trade buyer acquires systems, not effort. Right now, Chen Kitchen Solutions Ltd would achieve a distressed price at best — because the business is David, and a buyer who discovers that in due diligence will walk or reprice accordingly. The AI roadmap is not a productivity upgrade. It is the preparation for a premium exit.</p>
+
+  <div class="callout callout-brass">
+    <p><strong>Bottom line:</strong> The identified time and cost drains total £724,400 per year. The AI investment to address them is £6,300 per year. The net annual impact — before exit valuation uplift — is in the range of £300,000–£500,000 by Year 1.</p>
+  </div>
+
+  <p><strong>What to do next:</strong> Two paths. Path A — a full coaching engagement with Paul Hopewell LLC to implement this roadmap together, with accountability, monthly coaching, and access to AI technical partners. Path B — everything in this report is actionable without us, and Section 9 contains the tools, costs, and a step-by-step self-implementation checklist. Either way, David has a plan today that he did not have yesterday.</p>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════ SECTION 3: M2M LEVEL ═══════════════ -->
+<section id="level">
+  <div class="section-label">Section 02</div>
+  <h2 class="section-title">Where Your Business Is:<br>M2M Level Assessment</h2>
+
+  <div class="callout">
+    <p><strong>Chen Kitchen Solutions Ltd operates at M2M Level 2: Stability.</strong></p>
+  </div>
+
+  <h3>What This Level Means</h3>
+  <p>Level 2 is the hardest level to escape, because it looks like success from the outside. Chen Kitchen Solutions Ltd has been trading for nine years. Revenue is £1.8M and growing. There are 22 people on the payroll, a recurring contract book worth £450,000, and a project manager who is, by all accounts, capable. The business is not struggling. The business is stable.</p>
+  <p>The problem with stable is what it hides. At Level 2, the owner is simultaneously the reason the business works and the reason it cannot grow beyond a certain point. Every system that should be documented is instead memorised. Every decision that should be delegated is instead reviewed. The business is predictable because David has made himself indispensable — and indispensability, in a business you intend to sell, is the single most destructive characteristic a founder can have.</p>
+
+  <h3>Evidence from the Call</h3>
+  <p>The following is not analysis. It is what David told Paul — and it places Chen Kitchen Solutions Ltd at Level 2 with unusual precision.</p>
+
+  <blockquote>"Every quote over five thousand pounds needs my sign-off. Every complaint lands on my desk. I'm still doing the purchasing for major projects because I don't trust anyone else to get the margins right."</blockquote>
+  <p>This is the Level 2 pattern in plain language: the owner as the operational hub, with no documented system standing between him and every significant decision.</p>
+
+  <blockquote>"The way we quote, the way we purchase, the way we handle complaints — that's all in my head. Or in my inbox. Which is the same thing, really."</blockquote>
+  <p>This is explicit confirmation that the core processes are person-dependent and undocumented. The inbox is not a system. It is a risk.</p>
+
+  <p>When Paul asked what happens if David is off sick for a week: <em>"Quotes stop. Big decisions pile up... After about three days, things start to fray."</em> — The business cannot function independently for 72 hours. Level 3 cannot begin until it can.</p>
+
+  <p>David also observed: <em>"She creates leads, and then they land on my desk. I'm the bottleneck again."</em> — Emma's marketing is generating Level 3 demand into a Level 2 infrastructure. The business cannot convert what it generates because the conversion process is David.</p>
+
+  <p>And perhaps most revealingly: <em>"I spent the day on site sorting out a kitchen extraction issue that one of the engineers couldn't figure out. It was actually the most satisfying day of my week."</em> — The Managing Director of a £1.8M business spent Wednesday with a screwdriver, and found it more satisfying than running the business. That gap — between what David does and what David should do — is the Level 2 ceiling made visible.</p>
+
+  <h3>What's Working</h3>
+  <p>Three things are genuinely strong and represent the foundations Level 3 is built on.</p>
+  <p>The maintenance contract book is the standout asset. Sixty clients, £450,000 recurring, 40% margin — this is a real, scalable revenue line that most Level 2 businesses do not have in this form. It also happens to be the part of the business most underserved by AI, meaning the upside is disproportionate.</p>
+  <p>David's self-awareness is unusual at this stage. Most Level 2 owners cannot name their constraint this clearly. David can. <em>"I'm punishing the business for something that happened once."</em> That sentence alone suggests the identity shift is accessible, not buried.</p>
+  <p>Emma's marketing function and the engineers' job management system are early infrastructure — small but real indicators that the transition to Level 3 has begun, even if it has not yet committed to it.</p>
+
+  <h3>The Gap to Level 3 — Systemising</h3>
+  <p>To reach Level 3, Chen Kitchen Solutions Ltd must move its quoting, purchasing, and complaint-handling processes out of David's head and into documented, delegatable systems. Darren must receive genuine operational authority over installations — not nominal authority with David as a silent backstop. The 15 hours per week David spends on quoting is not just wasted capacity; it is structural proof that Level 3 has not started.</p>
+  <p>The identity shift is equally critical. David's own admission — that screwdriver day was his most satisfying — confirms the gap is psychological as much as operational. AI can absorb the quoting burden and surface the maintenance data David instinctively values; it cannot make that identity shift for him. That is the work only David can do.</p>
+
+  <h3>M2M Level Comparison</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Dimension</th><th>Typical at Level 2</th><th>CKS Today</th><th>Gap</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Owner's Role</strong></td>
+          <td>Operator-Builder: beginning to move from Technician toward systems thinking; still close to the work</td>
+          <td>Technician-Founder: quoting, purchasing, site visits, complaint resolution — all David; 60+ hour weeks</td>
+          <td>Operating closer to Level 1 role split despite Level 2 revenue; not yet functioning as Operator-Builder</td>
+        </tr>
+        <tr>
+          <td><strong>Systems</strong></td>
+          <td>Early systems in place; process documentation beginning</td>
+          <td>Installation checklists and engineer maintenance schedules only; quoting, purchasing, complaints undocumented</td>
+          <td>Core revenue-generating processes have no system — only David</td>
+        </tr>
+        <tr>
+          <td><strong>Team</strong></td>
+          <td>Team in place; early delegation occurring but inconsistent</td>
+          <td>22 staff, capable but trained to check with David; Darren capable but constrained; sales team at 70%</td>
+          <td>Authority and information withheld; team structurally unable to act without David's approval</td>
+        </tr>
+        <tr>
+          <td><strong>Revenue</strong></td>
+          <td>£0.5M–£2M; predictable income replacing survival cashflow</td>
+          <td>£1.8M actual; maintenance contracts £450K recurring at 40% margin</td>
+          <td>At the Level 2 ceiling; blocked by David's operational capacity, not market demand</td>
+        </tr>
+        <tr>
+          <td><strong>AI Readiness</strong></td>
+          <td>Basic tools appearing; isolated use without integration</td>
+          <td>Sage, job management app, Mailchimp, ChatGPT experimented with; no integration</td>
+          <td>Tools present but unconnected; no automation active</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════ SECTION 4: DRAINS ═══════════════ -->
+<section id="drains">
+  <div class="section-label">Section 03</div>
+  <h2 class="section-title">Where Your Time and Money Is Leaking</h2>
+  <p class="lead">Based on David's conversation with Paul, we've identified four areas where Chen Kitchen Solutions Ltd is losing time and money — often without David realising the full cost.</p>
+
+  <div class="drain-card">
+    <div class="drain-header">
+      <span class="drain-title">Drain 1: Deals Lost to Slow Manual Quoting</span>
+      <span class="drain-cost">£450,000/yr</span>
+    </div>
+    <p>David personally produces 8–10 quotes per week in Excel, each taking 30 minutes to 3 hours. End-to-end, from enquiry to delivery, the process can take a full week. Competitors quoting faster win the work before Chen Kitchen Solutions Ltd even submits.</p>
+    <blockquote>"We lose work because we're slow, not because we're expensive."</blockquote>
+    <p>David estimates two to three deals lost per month at an average job value of £15,000. That is £30,000–£45,000 in lost revenue every month — not on price, on speed. Secondary impact: the 15 hours per week David spends on quoting represents £51,750/year in MD time that could be redirected to growth.</p>
+    <p><strong>Why it persists:</strong> A £30,000 extraction specification mistake three years ago convinced David that only he can be trusted with margin calculations. That single event has been setting the price for the business every month since.</p>
+  </div>
+
+  <div class="drain-card">
+    <div class="drain-header">
+      <span class="drain-title">Drain 2: MD Time Consumed by Technician-Level Work</span>
+      <span class="drain-cost">£41,400/yr</span>
+    </div>
+    <p>David — the Managing Director of a £1.8M business — regularly performs work his engineers or project manager should handle: on-site fixes, client visits for issues that could be diagnosed remotely, complaint management, and purchasing decisions.</p>
+    <blockquote>"I'm doing thirty-pound-an-hour work when I should be doing three-hundred-pound-an-hour work."</blockquote>
+    <p><strong>Why it persists:</strong> David started as an engineer. Hands-on work feels like competence. The satisfaction he described on screwdriver day is real — and it is pulling him away from the strategic role the business needs from its MD.</p>
+  </div>
+
+  <div class="drain-card">
+    <div class="drain-header">
+      <span class="drain-title">Drain 3: Untapped Proactive Maintenance Revenue</span>
+      <span class="drain-cost">£200,000/yr</span>
+    </div>
+    <p>The engineers log equipment age, failure history, and condition data on every visit. Nobody analyses it. The maintenance model is entirely reactive. David knows the proactive revenue opportunity exists but has neither the time nor the system to surface it.</p>
+    <blockquote>"If I could look at a client's kitchen and say — your walk-in freezer is eight years old, it's drawing more power than it should, it's going to fail within twelve months, here's what a replacement would cost and here's what you'd save on energy — that's a different conversation. That's proactive. That's valuable."</blockquote>
+    <p><strong>Why it persists:</strong> The data exists but is siloed in a job management app with no analytical layer above it. David is the only person who understands its commercial value — and his time is consumed entirely by Drains 1 and 2.</p>
+  </div>
+
+  <div class="drain-card">
+    <div class="drain-header">
+      <span class="drain-title">Drain 4: Team Capacity Suppressed by Owner-Dependency</span>
+      <span class="drain-cost">£33,000/yr</span>
+    </div>
+    <p>David's position as the single decision-making node creates a productivity tax across the entire team. The sales team operates at 70% capacity, waiting on approvals. Darren checks in on decisions he is capable of making alone. Emma generates demand that cannot be converted.</p>
+    <blockquote>"I've trained them to be dependent on me."</blockquote>
+    <p><strong>Why it persists:</strong> The £5,000 quoting threshold, the retained purchasing authority, and the direct complaint-handling are all rational responses to that single extraction mistake three years ago. David named it himself: <em>"I'm punishing the business for something that happened once."</em></p>
+  </div>
+
+  <h3>The Pattern</h3>
+  <p>Every drain traces back to the same root cause: David has built a Level 2 business that cannot function without him. This is not a competence deficit — David is self-aware, his team is capable, and the commercial foundations are solid. The constraint is structural. The quoting process, the purchasing authority, the maintenance data analysis, and the team's decision rights — all of them flow through David because no system exists to replace him. Until they do, every growth initiative hits the same wall.</p>
+
+  <h3>Aggregate Impact</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Drain</th><th>Annual Cost</th><th>Type</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Deals Lost to Slow Quoting</td><td><strong>£450,000</strong></td><td>Lost Revenue</td></tr>
+        <tr><td>MD Time on Technician-Level Work</td><td><strong>£41,400</strong></td><td>Time / Opportunity Cost</td></tr>
+        <tr><td>Untapped Maintenance Revenue</td><td><strong>£200,000</strong></td><td>Lost Revenue</td></tr>
+        <tr><td>Team Capacity Suppressed</td><td><strong>£33,000</strong></td><td>Direct Cost</td></tr>
+        <tr class="table-total"><td><strong>Total Annual Impact</strong></td><td><strong>£724,400</strong></td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════ SECTION 5: AI OPPORTUNITIES ═══════════════ -->
+<section id="opportunities">
+  <div class="section-label">Section 04</div>
+  <h2 class="section-title">AI Opportunities:<br>Your Roadmap to Leverage</h2>
+  <p class="lead">AI changes what is possible at M2M Level 2. Here are the specific opportunities identified for Chen Kitchen Solutions Ltd — each one tied directly to what David told Paul.</p>
+
+  <!-- TIER 1 -->
+  <div class="tier-banner tier-qw">
+    <h3>Tier 1: Quick Wins</h3>
+    <p>0–30 Days · Low cost · Immediate time savings · No disruption to existing operations</p>
+  </div>
+
+  <div class="opp-card">
+    <div class="opp-tier">Quick Win 1</div>
+    <div class="opp-title">AI-Assisted First-Draft Quoting</div>
+    <div class="opp-function">Sales &amp; Estimating</div>
+    <div class="opp-meta">
+      <div class="opp-meta-item"><div class="opp-meta-label">AI Tool</div><div class="opp-meta-val">Custom GPT + PandaDoc</div></div>
+      <div class="opp-meta-item"><div class="opp-meta-label">Time Saved</div><div class="opp-meta-val">8 hrs/week</div></div>
+      <div class="opp-meta-item"><div class="opp-meta-label">Monthly Cost</div><div class="opp-meta-val">£50/month</div></div>
+      <div class="opp-meta-item"><div class="opp-meta-label">Time to Value</div><div class="opp-meta-val">2–3 weeks</div></div>
+    </div>
+    <p class="opp-desc">This addresses the single most expensive drain. The Custom GPT is trained on David's historical quotes, pricing rules, and margin calculations. The sales team describe the job; the GPT produces a first-draft quote. David reviews rather than builds. Quote turnaround drops from a week to 24–48 hours. The 2–3 deals per month lost to competitor speed become recoverable.</p>
+  </div>
+
+  <div class="opp-card">
+    <div class="opp-tier">Quick Win 2</div>
+    <div class="opp-title">AI Chatbot for Routine Client Queries</div>
+    <div class="opp-function">Client Communication</div>
+    <div class="opp-meta">
+      <div class="opp-meta-item"><div class="opp-meta-label">AI Tool</div><div class="opp-meta-val">Tidio + Lyro AI</div></div>
+      <div class="opp-meta-item"><div class="opp-meta-label">Time Saved</div><div class="opp-meta-val">5 hrs/week</div></div>
+      <div class="opp-meta-item"><div class="opp-meta-label">Monthly Cost</div><div class="opp-meta-val">£54/month</div></div>
+      <div class="opp-meta-item"><div class="opp-meta-label">Time to Value</div><div class="opp-meta-val">1–2 weeks</div></div>
+    </div>
+    <p class="opp-desc">The chatbot answers the 20 routine questions the business receives daily without a human touchpoint. Tier 1 queries are handled instantly; complex queries route to the relevant team member. The information currently living in David's head starts becoming accessible to clients and staff alike.</p>
+  </div>
+
+  <div class="opp-card">
+    <div class="opp-tier">Quick Win 3</div>
+    <div class="opp-title">Microsoft 365 Copilot for Email and Document Overload</div>
+    <div class="opp-function">Administration</div>
+    <div class="opp-meta">
+      <div class="opp-meta-item"><div class="opp-meta-label">AI Tool</div><div class="opp-meta-val">M365 Copilot</div></div>
+      <div class="opp-meta-item"><div class="opp-meta-label">Time Saved</div><div class="opp-meta-val">3 hrs/week</div></div>
+      <div class="opp-meta-item"><div class="opp-meta-label">Monthly Cost</div><div class="opp-meta-val">£14/month</div></div>
+      <div class="opp-meta-item"><div class="opp-meta-label">Time to Value</div><div class="opp-meta-val">1 week</div></div>
+    </div>
+    <p class="opp-desc">Copilot drafts email responses, summarises long threads, and extracts action items from meeting notes. David starts the day with a 30-minute triage, not 90 minutes. Evening catch-up sessions reduce or disappear.</p>
+  </div>
+
+  <!-- TIER 2 -->
+  <div class="tier-banner tier-fdn">
+    <h3>Tier 2: Foundation</h3>
+    <p>30–90 Days · Higher impact · Require setup and process change · Build on the Quick Wins</p>
+  </div>
+
+  <div class="opp-card">
+    <div class="opp-tier">Foundation 1</div>
+    <div class="opp-title">Workflow Automation Connecting Existing Tools</div>
+    <div class="opp-function">Operations</div>
+    <div class="opp-meta">
+      <div class="opp-meta-item"><div class="opp-meta-label">AI Tool</div><div class="opp-meta-val">Make (Pro plan)</div></div>
+      <div class="opp-meta-item"><div class="opp-meta-label">Time Saved</div><div class="opp-meta-val">5 hrs/week</div></div>
+      <div class="opp-meta-item"><div class="opp-meta-label">Monthly Cost</div><div class="opp-meta-val">£21/month</div></div>
+      <div class="opp-meta-item"><div class="opp-meta-label">Time to Value</div><div class="opp-meta-val">4–6 weeks</div></div>
+    </div>
+    <p class="opp-desc">New enquiries automatically create tasks and pre-populate quote templates. Completed engineer visits feed service data into a structured database. Invoice status notifications route to the person with the answer, not the person with the title. The business begins operating on systems rather than David's memory.</p>
+  </div>
+
+  <div class="opp-card">
+    <div class="opp-tier">Foundation 2</div>
+    <div class="opp-title">Maintenance Data Intelligence</div>
+    <div class="opp-function">Service Operations</div>
+    <div class="opp-meta">
+      <div class="opp-meta-item"><div class="opp-meta-label">AI Tool</div><div class="opp-meta-val">Airtable Business</div></div>
+      <div class="opp-meta-item"><div class="opp-meta-label">Time Saved</div><div class="opp-meta-val">3 hrs/week</div></div>
+      <div class="opp-meta-item"><div class="opp-meta-label">Revenue Potential</div><div class="opp-meta-val">£80K–£120K/yr</div></div>
+      <div class="opp-meta-item"><div class="opp-meta-label">Monthly Cost</div><div class="opp-meta-val">£72/month</div></div>
+    </div>
+    <p class="opp-desc">Airtable's AI Field Agents analyse service history patterns, flag equipment nearing end-of-life, and generate proactive upgrade summaries per client. Emma or the sales team can pull a health score view for any maintenance client before a renewal meeting — without David personally reviewing the data.</p>
+  </div>
+
+  <div class="opp-card">
+    <div class="opp-tier">Foundation 3</div>
+    <div class="opp-title">Knowledge Base and Team Enablement</div>
+    <div class="opp-function">Client Service</div>
+    <div class="opp-meta">
+      <div class="opp-meta-item"><div class="opp-meta-label">AI Tool</div><div class="opp-meta-val">Intercom Fin</div></div>
+      <div class="opp-meta-item"><div class="opp-meta-label">Time Saved</div><div class="opp-meta-val">4 hrs/week</div></div>
+      <div class="opp-meta-item"><div class="opp-meta-label">Monthly Cost</div><div class="opp-meta-val">£70/month</div></div>
+      <div class="opp-meta-item"><div class="opp-meta-label">Time to Value</div><div class="opp-meta-val">4–6 weeks</div></div>
+    </div>
+    <p class="opp-desc">Darren and the sales team have a single source of truth that is not "ask David." The knowledge base captures quoting rules, supplier preferences, complaint handling procedures, and installation specifications. Intercom Fin answers team questions from the documented content. The team's dependency begins to unwind.</p>
+  </div>
+
+  <!-- TIER 3 -->
+  <div class="tier-banner tier-str">
+    <h3>Tier 3: Strategic</h3>
+    <p>3–12 Months · Transformational · Directly linked to exit readiness</p>
+  </div>
+
+  <div class="opp-card">
+    <div class="opp-tier">Strategic 1</div>
+    <div class="opp-title">Integrated CRM with AI-Powered Sales Pipeline</div>
+    <div class="opp-function">Sales and Growth</div>
+    <div class="opp-meta">
+      <div class="opp-meta-item"><div class="opp-meta-label">AI Tool</div><div class="opp-meta-val">HubSpot Sales Hub Pro</div></div>
+      <div class="opp-meta-item"><div class="opp-meta-label">Revenue Potential</div><div class="opp-meta-val">£200K–£300K/yr</div></div>
+      <div class="opp-meta-item"><div class="opp-meta-label">Monthly Cost</div><div class="opp-meta-val">£144/month</div></div>
+      <div class="opp-meta-item"><div class="opp-meta-label">Time to Value</div><div class="opp-meta-val">12 weeks</div></div>
+    </div>
+    <p class="opp-desc">HubSpot transforms the sales process from David-centred to system-centred. Enquiries enter automatically. Salespeople produce quotes using AI-assisted templates. The system prompts follow-up when quotes go cold. David reviews the pipeline dashboard in 30 seconds. The revenue engine becomes visible and measurable — which is precisely what a buyer in due diligence needs to see.</p>
+  </div>
+
+  <div class="opp-card">
+    <div class="opp-tier">Strategic 2</div>
+    <div class="opp-title">Predictive Maintenance Intelligence</div>
+    <div class="opp-function">Service Innovation</div>
+    <div class="opp-meta">
+      <div class="opp-meta-item"><div class="opp-meta-label">AI Tool</div><div class="opp-meta-val">Airtable (expanded)</div></div>
+      <div class="opp-meta-item"><div class="opp-meta-label">Revenue Potential</div><div class="opp-meta-val">£100K–£150K/yr</div></div>
+      <div class="opp-meta-item"><div class="opp-meta-label">Monthly Cost</div><div class="opp-meta-val">£100/month</div></div>
+      <div class="opp-meta-item"><div class="opp-meta-label">Time to Value</div><div class="opp-meta-val">9–12 months</div></div>
+    </div>
+    <p class="opp-desc">Chen Kitchen Solutions Ltd moves from "we fix it when it breaks" to "we tell you it is going to break before it does, and here is the cost-optimal replacement plan." That shift — from reactive repair to proactive asset management — is a differentiated proposition in the commercial kitchen sector. It is also the kind of intellectual property that makes a business genuinely valuable to a buyer.</p>
+  </div>
+
+  <!-- PRIORITY MATRIX -->
+  <h3>Priority Matrix</h3>
+  <div class="matrix">
+    <div class="matrix-corner"></div>
+    <div class="matrix-col-header">Low Effort</div>
+    <div class="matrix-col-header">High Effort</div>
+    <div class="matrix-row-header">High Impact</div>
+    <div class="matrix-cell matrix-highlight">AI-Assisted Quoting (QW1), Client Chatbot (QW2)</div>
+    <div class="matrix-cell matrix-highlight">HubSpot CRM (S1), Maintenance Intelligence (F2), Predictive Maintenance (S2)</div>
+    <div class="matrix-row-header">Low Impact</div>
+    <div class="matrix-cell">Microsoft 365 Copilot (QW3)</div>
+    <div class="matrix-cell">Make Automation (F1), Knowledge Base (F3)</div>
+  </div>
+
+  <!-- TEAM IMPACT -->
+  <h3>What This Means for the Team</h3>
+  <p>This is not about replacing people — it is about unblocking them.</p>
+
+  <div class="team-card">
+    <div class="team-name">David</div>
+    <p>Shifts from technician-MD to strategic MD. The quoting that consumes 15 hours of his week becomes an AI-assisted review process taking 3–4 hours. His time becomes genuinely his own — which changes everything downstream: family, health, and the capacity to grow the business rather than simply running it.</p>
+  </div>
+  <div class="team-card">
+    <div class="team-name">Darren</div>
+    <p>Gains genuine operational authority, underpinned by systems rather than David's say-so. The knowledge base gives him the specifications and escalation criteria to make decisions independently. His role evolves from "David's checker" to operations lead.</p>
+  </div>
+  <div class="team-card">
+    <div class="team-name">Sales Team</div>
+    <p>Moves from 70% to full capacity. AI-assisted quoting means they produce complete first drafts without waiting for David. HubSpot provides pipeline visibility and automated follow-up. The £5,000 approval threshold becomes a system guardrail, not a personal bottleneck.</p>
+  </div>
+  <div class="team-card">
+    <div class="team-name">Emma</div>
+    <p>Finally sees her demand generation converted. Leads enter a system that can process them. She gains access to Airtable maintenance intelligence — real data about equipment lifespan, energy savings, and failure patterns — giving her compelling, credible content for client communications.</p>
+  </div>
+  <div class="team-card">
+    <div class="team-name">Service Engineers</div>
+    <p>Gain a commercial dimension to their visits. When Airtable surfaces an upgrade opportunity, the engineer walks in with a conversation starter, not just a maintenance checklist. No roles are eliminated. Several are transformed.</p>
+  </div>
+
+  <!-- TOTAL IMPACT TABLE -->
+  <h3>Total Potential Impact</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Tier</th><th>Opportunities</th><th>Hours Saved/yr</th><th>Time Value</th><th>Revenue Potential</th><th>Monthly AI Cost</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Quick Wins</td><td>3</td><td>736</td><td>£44,850</td><td>£150,000</td><td>£118</td></tr>
+        <tr><td>Foundation</td><td>3</td><td>552</td><td>£21,275</td><td>£80,000</td><td>£163</td></tr>
+        <tr><td>Strategic</td><td>2</td><td>414</td><td>£27,600</td><td>£350,000</td><td>£244</td></tr>
+        <tr class="table-total"><td><strong>Total</strong></td><td><strong>8</strong></td><td><strong>1,702</strong></td><td><strong>£93,725</strong></td><td><strong>£580,000</strong></td><td><strong>£525</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout callout-brass">
+    <p><strong>Net annual potential impact:</strong> £93,725 (time savings) + up to £580,000 (revenue potential) − £6,300 (annual AI cost) = <strong>up to £667,425</strong>.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════ SECTION 6: EXIT ═══════════════ -->
+<section id="exit">
+  <div class="section-label">Section 05</div>
+  <h2 class="section-title">Your Exit:<br>What This All Means for Your Endgame</h2>
+
+  <h3>The Stated Goal</h3>
+  <p>David told Paul at the outset: <em>"Sell to third party within 5–7 years."</em></p>
+  <p>Chen Kitchen Solutions Ltd is pursuing a trade sale — the exit type that demands the most from the business structurally. A trade buyer will acquire the client base, maintenance contracts, and market position. They will pay a multiple of EBITDA — typically 4–8× for an SME of this type — but only if they can take possession of something that runs without David in it. That is the problem. Right now, they cannot.</p>
+
+  <h3>What a Trade Sale Actually Requires</h3>
+
+  <div class="exit-row"><span class="exit-icon">❌</span><span class="exit-req">Systems documented and repeatable</span><span class="exit-state">Absent — processes live in David's head</span></div>
+  <div class="exit-row"><span class="exit-icon">❌</span><span class="exit-req">Management layer operating independently</span><span class="exit-state">David manages everyone directly</span></div>
+  <div class="exit-row"><span class="exit-icon">❌</span><span class="exit-req">Revenue not concentrated on owner</span><span class="exit-state">Owner-dependency risk throughout</span></div>
+  <div class="exit-row"><span class="exit-icon">⚠️</span><span class="exit-req">Recurring revenue demonstrable</span><span class="exit-state">Maintenance contracts exist but unoptimised</span></div>
+  <div class="exit-row"><span class="exit-icon">❌</span><span class="exit-req">Clean sales pipeline visible to buyer</span><span class="exit-state">No CRM; pipeline opaque</span></div>
+  <div class="exit-row"><span class="exit-icon">❌</span><span class="exit-req">Growth story credible and evidenced</span><span class="exit-state">No data infrastructure to support it</span></div>
+  <div class="exit-row" style="border-bottom: none;"><span class="exit-icon">❌</span><span class="exit-req">Owner can step away at completion</span><span class="exit-state">Currently impossible</span></div>
+
+  <blockquote>"If I tried to sell this business, what would I actually be selling? A job."</blockquote>
+
+  <p>The five-to-seven-year window is an asset. It is also a countdown. It only delivers a premium exit if preparation begins now.</p>
+
+  <h3>Opportunity–Exit Map</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Opportunity</th><th>Exit Impact</th><th>Type</th><th>Timeline</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>QW1</strong> AI-Assisted Quoting</td><td>Eliminates £450K drain; creates auditable, repeatable quoting process</td><td>Prerequisite</td><td>Immediate</td></tr>
+        <tr><td><strong>QW2</strong> Client Chatbot</td><td>Removes David as first responder; buyers see volume handled without MD</td><td>Accelerant</td><td>Quick win</td></tr>
+        <tr><td><strong>QW3</strong> M365 Copilot</td><td>Admin efficiency; supports documentation habits</td><td>Accelerant</td><td>Immediate</td></tr>
+        <tr><td><strong>F1</strong> Workflow Automation</td><td>Creates the process layer a buyer audits</td><td>Prerequisite</td><td>Months 1–3</td></tr>
+        <tr><td><strong>F2</strong> Maintenance Intelligence</td><td>Transforms maintenance from reactive to recurring; improves EBITDA</td><td>Prerequisite</td><td>Months 1–3</td></tr>
+        <tr><td><strong>F3</strong> Knowledge Base</td><td>Captures IP; turns "all in David's head" into a transferable asset</td><td>Prerequisite</td><td>Months 1–3</td></tr>
+        <tr><td><strong>S1</strong> Integrated CRM</td><td>Pipeline visibility is a due diligence requirement; £200–300K upside</td><td>Prerequisite</td><td>Months 3–12</td></tr>
+        <tr><td><strong>S2</strong> Predictive Maintenance</td><td>Extends recurring revenue story; improves EBITDA</td><td>Accelerant</td><td>Months 6–12</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>The Critical Path</h3>
+  <p>Five opportunities are prerequisites — the exit is conditional on them. Three are accelerants — they improve the exit but do not unblock it.</p>
+
+  <div class="critical-path">
+    <span class="cp-node">QW1 Quoting</span>
+    <span class="cp-arrow">→</span>
+    <span class="cp-node">F3 Knowledge Base</span>
+    <span class="cp-arrow">→</span>
+    <span class="cp-node">F1 Automation</span>
+    <span class="cp-arrow">→</span>
+    <span class="cp-node">F2 Maintenance Data</span>
+    <span class="cp-arrow">→</span>
+    <span class="cp-node">S1 CRM</span>
+  </div>
+
+  <p>QW1 goes first because it proves to David that the business can function without his personal sign-off. F3 goes second because systemising workflows before the knowledge is documented is building on sand. F2 unlocks the maintenance revenue that materially improves the EBITDA a buyer models. S1 makes the revenue engine visible, measurable, and independent.</p>
+
+  <h3>The Cost of Inaction</h3>
+  <div class="callout">
+    <p><strong>£724,400 per year in confirmed value drain continues</strong> — every year of inaction is £724,400 that could have been in the business.</p>
+    <p>At a 5× EBITDA multiple, that annual drain suppresses the exit value by approximately <strong>£3.6M</strong>.</p>
+    <p>Owner dependency deepens as David ages into the role, making delegation progressively harder. A buyer conducting due diligence on a Level 2 business with no systems, no CRM, and a founder who has not delegated in a decade will walk — or offer an asset-sale price.</p>
+    <p>The 5–7 year window is not a long time to build something a buyer will pay a premium for. It is enough time — but only if the preparation starts in year one.</p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════ SECTION 7: 90-DAY PLAN ═══════════════ -->
+<section id="plan">
+  <div class="section-label">Section 06</div>
+  <h2 class="section-title">Your 90-Day Action Plan</h2>
+  <p class="lead">This is the sequence. Start here. Build momentum. Don't skip phases.</p>
+
+  <!-- PHASE 1 -->
+  <div class="phase-block">
+    <div class="phase-num">Phase 1 — Days 1–30</div>
+    <h3>Foundation</h3>
+    <p class="phase-focus">Remove David's quoting bottleneck. Establish the baseline. Get the first AI result in hand within 14 days.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Action</th><th>Who</th><th>Cost</th><th>Success Criteria</th></tr></thead>
+        <tbody>
+          <tr><td>Deploy AI quoting assistant: upload last 50 quotes to Custom GPT; build prompt library; run 10 live quotes in parallel</td><td>David (setup), office team (day-to-day)</td><td>£50/mo</td><td>Quote turnaround under 4 hours; David's quoting ≤ 2 hrs/week by Day 30</td></tr>
+          <tr><td>Install Tidio chatbot; train on 20 most common enquiries; route complex queries to Emma</td><td>Emma</td><td>£54/mo</td><td>5+ enquiries/week handled without human input</td></tr>
+          <tr><td>Activate M365 Copilot for David and Darren; set up meeting summaries and action-item capture</td><td>David + Darren</td><td>£28/mo</td><td>Every project call logged with summary and actions within 30 mins</td></tr>
+          <tr><td>Document quoting logic while building GPT — first module of knowledge base</td><td>David</td><td>£0</td><td>Quoting process documented as step-by-step SOP; Darren can follow it</td></tr>
+          <tr><td>Record baseline metrics: quotes/week, David's hours, response time, pipeline value</td><td>Office team</td><td>£0</td><td>Baseline captured; comparison point ready for Day 90</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="phase-cost">
+      <div class="phase-cost-item"><div class="pc-label">Monthly Tools Cost</div><div class="pc-val">£132/month</div></div>
+      <div class="phase-cost-item"><div class="pc-label">Time Freed by Day 30</div><div class="pc-val">~11 hours/week</div></div>
+    </div>
+  </div>
+
+  <!-- PHASE 2 -->
+  <div class="phase-block">
+    <div class="phase-num">Phase 2 — Days 31–60</div>
+    <h3>Acceleration</h3>
+    <p class="phase-focus">Extract David's operational knowledge. Automate the workflows. Begin the maintenance intelligence layer.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Action</th><th>Who</th><th>Cost</th><th>Success Criteria</th></tr></thead>
+        <tbody>
+          <tr><td>Build Intercom Fin knowledge base: document project handover, client templates, dispatch protocol, supplier contacts</td><td>Darren (leads), office team</td><td>£70/mo</td><td>80% of repeat questions answerable without David</td></tr>
+          <tr><td>Deploy Make workflow automation: enquiry → task → quote template; job complete → invoice; timesheet → payroll</td><td>Office team lead</td><td>£21/mo</td><td>3 automations live; zero manual data re-entry</td></tr>
+          <tr><td>Launch Airtable maintenance intelligence: import 60 client equipment records; configure automated service reminders</td><td>Office team lead</td><td>£72/mo</td><td>All records imported; first automated reminders sent</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="phase-cost">
+      <div class="phase-cost-item"><div class="pc-label">Cumulative Monthly Tools</div><div class="pc-val">£295/month</div></div>
+      <div class="phase-cost-item"><div class="pc-label">Revenue Pipeline Activated</div><div class="pc-val">£80K–£120K/yr</div></div>
+    </div>
+  </div>
+
+  <!-- PHASE 3 -->
+  <div class="phase-block">
+    <div class="phase-num">Phase 3 — Days 61–90</div>
+    <h3>Leverage</h3>
+    <p class="phase-focus">Build the CRM. Activate the predictive maintenance outreach. Prove the business runs without David.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Action</th><th>Who</th><th>Cost</th><th>Success Criteria</th></tr></thead>
+        <tbody>
+          <tr><td>Launch HubSpot CRM: import client records; train salespeople; define pipeline stages; configure Breeze AI</td><td>David (configure), sales team</td><td>£144/mo + £1,200 onboarding</td><td>Every active opportunity in HubSpot; sales team update independently</td></tr>
+          <tr><td>Activate predictive maintenance in Airtable: flag equipment &gt;8 years or &gt;18 months since service; Emma runs targeted outreach</td><td>Emma + office team</td><td>£100/mo</td><td>Outreach to 50+ flagged clients; 5+ bookings within 30 days</td></tr>
+          <tr><td>Delegation test: David genuinely absent for 3 consecutive working days; Darren runs operations using the systems</td><td>Darren</td><td>£0</td><td>Zero escalations to David; all quotes, queries, and dispatch handled</td></tr>
+          <tr><td>Day 90 review: measure against baseline; calculate actual hours freed, revenue added, AI ROI</td><td>David + Paul</td><td>—</td><td>Documented ROI; clear forward plan for Months 4–12</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="phase-cost">
+      <div class="phase-cost-item"><div class="pc-label">Cumulative Monthly Tools</div><div class="pc-val">£539/month</div></div>
+    </div>
+  </div>
+
+  <!-- AFTER 90 DAYS -->
+  <div class="callout callout-brass">
+    <p><strong>After 90 Days:</strong> On Day 91, David arrives and opens his laptop. The pipeline is in HubSpot — Darren updated it yesterday. Three overnight enquiries were handled by Tidio; one complex one came through to Emma's queue. The quoting assistant produced first drafts for two new jobs. The Airtable dashboard shows 14 clients due for service this month; Emma's outreach is running. David has four hours of client-facing time he chose to use for business development, not time he scraped together after firefighting.</p>
+    <p>Chen Kitchen Solutions Ltd made progress while David slept. That is the shift.</p>
+  </div>
+
+  <!-- 90-DAY INVESTMENT TABLE -->
+  <h3>Total 90-Day Investment</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>One-Time Cost</th><th>Monthly (End of 90 Days)</th></tr></thead>
+      <tbody>
+        <tr><td>AI tools (all 8 opportunities)</td><td>£0</td><td><strong>£539/month</strong></td></tr>
+        <tr><td>David's time (setup and oversight)</td><td><strong>£2,250</strong> (~30 hrs × £75)</td><td>≤ 4 hrs/week ongoing</td></tr>
+        <tr><td>Darren's time (knowledge base + CRM)</td><td><strong>£800</strong> (~20 hrs × £40)</td><td>2 hrs/week</td></tr>
+        <tr><td>Office team (setup tasks)</td><td><strong>£500</strong> (~25 hrs × £20)</td><td>Absorbed into role</td></tr>
+        <tr><td>Emma (chatbot and campaigns)</td><td><strong>£160</strong> (~8 hrs × £20)</td><td>1 hr/week</td></tr>
+        <tr class="table-total"><td><strong>Total 90-day cost</strong></td><td><strong>£3,710 one-time</strong></td><td><strong>£539/month ongoing</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════ SECTION 8: FINANCIALS ═══════════════ -->
+<section id="financials">
+  <div class="section-label">Section 07</div>
+  <h2 class="section-title">Financial Impact Summary</h2>
+
+  <h3>AI Investment Required (Year 1)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Tool Set</th><th>Monthly Cost</th><th>Annual Cost</th></tr></thead>
+      <tbody>
+        <tr><td>Quick Wins (QW1 + QW2 + QW3)</td><td>£118/month</td><td>£1,416</td></tr>
+        <tr><td>Foundation (F1 + F2 + F3)</td><td>£163/month</td><td>£1,956</td></tr>
+        <tr><td>Strategic (S1 + S2)</td><td>£244/month</td><td>£2,928</td></tr>
+        <tr class="table-total"><td><strong>Total AI Investment</strong></td><td><strong>£525/month</strong></td><td><strong>£6,300</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><em>Note: One-off implementation costs (HubSpot onboarding £1,200; Make initial setup £500–1,000) are excluded from the recurring figure above. Total one-time costs: £1,700–£2,200.</em></p>
+
+  <h3>Net Annual Impact</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Annual Value</th></tr></thead>
+      <tbody>
+        <tr><td>Time savings (1,702 hours recovered)</td><td><strong>£93,725</strong></td></tr>
+        <tr><td>Revenue potential (conservative Year 1)</td><td><strong>£200,000–£400,000</strong></td></tr>
+        <tr><td>Less: AI tool investment</td><td><em>(£6,300)</em></td></tr>
+        <tr class="table-total"><td><strong>Net Annual Impact (Year 1)</strong></td><td><strong>£287,000–£487,000</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><em>Revenue potential is directional. It is based on David's own estimates of losses and untapped opportunities, discounted to reflect realistic first-year conversion. Not all revenue potential will materialise in Year 1.</em></p>
+
+  <h3>Exit Value Impact</h3>
+  <p>Chen Kitchen Solutions Ltd's exit value is driven by three factors: EBITDA, the quality and depth of recurring revenue, and the demonstrable independence of the business from its owner. The AI roadmap addresses all three directly.</p>
+  <p>Every pound recovered from Drain 1 (quoting) and Drain 3 (maintenance revenue) flows directly to EBITDA. The CRM and knowledge base create the documented, auditable systems a trade buyer requires. The maintenance data intelligence layer transforms a reactive service book into a proactive recurring revenue asset — the type of asset that justifies a premium multiple.</p>
+  <p>A business with documented systems, a visible sales pipeline, and a recurring maintenance revenue base growing from £450,000 toward £650,000+ is a categorically different acquisition proposition to the business a buyer would find today.</p>
+
+  <h3>ROI Summary</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Metric</th><th>Current Year</th><th>Year 1 (Post-AI)</th><th>Year 2</th></tr></thead>
+      <tbody>
+        <tr><td>Time lost to drains</td><td>1,702 hrs/year</td><td>600–800 hrs/year</td><td>200–400 hrs/year</td></tr>
+        <tr><td>Cost of drains</td><td>£724,400</td><td>£350,000–£450,000</td><td>£150,000–£250,000</td></tr>
+        <tr><td>AI investment</td><td>£0</td><td>£6,300</td><td>£6,300</td></tr>
+        <tr class="table-total"><td><strong>Net position</strong></td><td>£0 (baseline)</td><td><strong>+£274,000–£368,000</strong></td><td><strong>+£468,000–£568,000</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════ SECTION 9: WHAT'S NEXT ═══════════════ -->
+<section id="next">
+  <div class="section-label">Section 08</div>
+  <h2 class="section-title">What's Next</h2>
+
+  <h3>Two Clear Paths</h3>
+
+  <div class="path-cards">
+    <div class="path-card featured">
+      <div class="path-label">Path A — Full Partnership</div>
+      <div class="path-price">£2,000/month</div>
+      <h4>Coaching Engagement with Paul Hopewell LLC</h4>
+      <ul>
+        <li>Monthly strategy and accountability sessions with Paul personally</li>
+        <li>Hands-on guidance through each phase of the 90-day roadmap</li>
+        <li>Access to AI technical partners for implementation</li>
+        <li>Exit readiness review at Month 6</li>
+        <li>Priority invitation to Bandole retreats (June and September)</li>
+      </ul>
+      <p style="margin-top: 1rem; font-size: 0.84rem;">This is the fastest path to a business that is both significantly more profitable and genuinely saleable.</p>
+    </div>
+    <div class="path-card">
+      <div class="path-label">Path B — Self-Serve Route</div>
+      <div class="path-price">£0</div>
+      <h4>Everything In This Report Is Actionable Without Us</h4>
+      <p>Section 9 contains every AI tool referenced in the roadmap with current pricing, setup guidance specific to Chen Kitchen Solutions Ltd, and a 10-step self-implementation checklist. Many clients begin on this path and join us when they are ready to accelerate.</p>
+      <p style="margin-top: 0.8rem;">The Custom GPT quoting tool alone — built with OpenAI's free GPT builder — addresses the single largest drain at zero cost beyond a £20/month subscription. Start there.</p>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <h3>Recommended Next Step</h3>
+    <p>Book a 30-minute review call with Paul to discuss this report. He will walk through the findings, answer questions, and you will decide together which path makes sense. No pressure. No pitch. Just clarity on what Chen Kitchen Solutions Ltd looks like in 90 days if the work begins now.</p>
+    <a href="https://paulhopewell.com" class="cta-link">Book at paulhopewell.com →</a>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════ SECTION 10: TOOLKIT ═══════════════ -->
+<section id="toolkit">
+  <div class="section-label">Section 09</div>
+  <h2 class="section-title">Appendix:<br>Your Self-Serve AI Toolkit</h2>
+
+  <div class="tool-card">
+    <div class="tool-name">1. Custom GPT (ChatGPT Plus)</div>
+    <div class="tool-price">£20/month</div>
+    <p>Build a personalised AI assistant trained on your own data — historical quotes, pricing rules, and margin calculations.</p>
+    <div class="tool-tip"><strong>Setup tip:</strong> Export your last 50–100 quotes from Excel as CSV files. In the Custom GPT builder, upload these as knowledge files along with a plain-English document that explains your pricing logic. Start by running historical jobs through it and comparing output to what you actually submitted.</div>
+  </div>
+
+  <div class="tool-card">
+    <div class="tool-name">2. Tidio (with Lyro AI)</div>
+    <div class="tool-price">From £23/month + Lyro AI from £31/month</div>
+    <p>AI-powered chatbot for your website that answers routine client queries automatically, routes complex queries to your team, and captures lead information.</p>
+    <div class="tool-tip"><strong>Setup tip:</strong> List the 20 questions your office team answers most often. Write conversational answers to each. Install the Tidio widget using their one-click integration — no developer required.</div>
+  </div>
+
+  <div class="tool-card">
+    <div class="tool-name">3. Microsoft 365 Copilot</div>
+    <div class="tool-price">£13.80/user/month</div>
+    <p>AI assistance built into Outlook, Word, Excel, and Teams. Drafts emails, summarises threads, extracts action items from meetings.</p>
+    <div class="tool-tip"><strong>Setup tip:</strong> Start with Copilot in Outlook. Select 5 emails you'd normally spend 10 minutes composing and use Copilot to draft them from bullet points instead. The time saving becomes immediately visible.</div>
+  </div>
+
+  <div class="tool-card">
+    <div class="tool-name">4. Make (formerly Integromat)</div>
+    <div class="tool-price">Pro plan ~£16–21/month</div>
+    <p>Workflow automation connecting Sage, your job management app, Outlook, and Excel — information flows between them without manual re-entry or David as the routing layer.</p>
+    <div class="tool-tip"><strong>Setup tip:</strong> Start with one automation: when a new enquiry email arrives and is flagged, Make creates a task and notifies the salesperson. This alone removes David from the first stage of the quoting pipeline. Test for two weeks before adding more.</div>
+  </div>
+
+  <div class="tool-card">
+    <div class="tool-name">5. Airtable (Business Plan)</div>
+    <div class="tool-price">~£36/seat/month</div>
+    <p>Flexible database with AI Field Agents that analyse data, identify patterns, and generate summaries. Becomes your maintenance intelligence layer.</p>
+    <div class="tool-tip"><strong>Setup tip:</strong> Before building anything, document your top 20 maintenance clients in a spreadsheet: equipment type, age, last service date, breakdowns in last 12 months, contract value. This becomes your Airtable base structure.</div>
+  </div>
+
+  <div class="tool-card">
+    <div class="tool-name">6. Intercom Fin</div>
+    <div class="tool-price">$0.99/resolution; ~£60–80/month steady state</div>
+    <p>AI agent that answers questions from your team and clients using a knowledge base you build. Fin only responds from documented content — it will not make things up.</p>
+    <div class="tool-tip"><strong>Setup tip:</strong> Start with Notion or a shared Google Doc before buying Intercom. Write answers to the 30 questions Darren or the sales team ask David most often. Once the content exists, migrating to Intercom Fin takes an afternoon.</div>
+  </div>
+
+  <div class="tool-card">
+    <div class="tool-name">7. HubSpot Sales Hub (Professional)</div>
+    <div class="tool-price">~£72/seat/month + £1,200 onboarding</div>
+    <p>Full CRM replacing the Excel-and-Outlook patchwork with lead tracking, AI-assisted quoting (Breeze AI), pipeline visibility, and automated follow-up.</p>
+    <div class="tool-tip"><strong>Setup tip:</strong> Do not migrate everything at once. Open a free account and enter your 10 most active opportunities. Ask one salesperson to update daily for two weeks without David involved. If Darren can describe the pipeline from HubSpot without asking David, the handover is working.</div>
+  </div>
+
+  <div class="tool-card">
+    <div class="tool-name">8. PandaDoc</div>
+    <div class="tool-price">From £19/user/month</div>
+    <p>Proposal and quoting tool with AI-assisted content generation and pricing table management. A more polished alternative to Custom GPT once the quoting process is proven.</p>
+    <div class="tool-tip"><strong>Setup tip:</strong> Only adopt PandaDoc once the Custom GPT quoting tool is running smoothly (approximately 4–6 weeks in). Use the GPT to generate specs and pricing; use PandaDoc to present the finished quote professionally and track when the client opens it.</div>
+  </div>
+
+  <hr class="accent-divider">
+
+  <h3>Self-Implementation Checklist</h3>
+  <p>If Chen Kitchen Solutions Ltd is taking the self-serve path, do these 10 things in order.</p>
+
+  <ol class="checklist">
+    <li><div><strong>Export your last 50 quotes from Excel</strong> — include job description, equipment specified, price, margin, and win/loss status. This is the training data for your quoting assistant. Without it, nothing else works. <em>(Time: 2 hours)</em></div></li>
+    <li><div><strong>Build a Custom GPT using your quote data</strong> — sign up for ChatGPT Plus, open the GPT Builder, upload your quote exports, and write a simple instruction. Run 5 historical jobs through it to calibrate. <em>(Time: 3–4 hours)</em></div></li>
+    <li><div><strong>Document your quoting logic while building the GPT</strong> — equipment categories, margin bands, installation complexity factors, and common exceptions. This document trains the GPT and becomes the first knowledge base article. <em>(Time: 2–3 hours)</em></div></li>
+    <li><div><strong>Install Tidio on your website</strong> — create a free account, install the widget, write answers to your 10 most common enquiries. Add Lyro AI when you have enough chat history. <em>(Time: 2–3 hours)</em></div></li>
+    <li><div><strong>Activate Microsoft 365 Copilot for David and Darren</strong> — toggle it on in your M365 admin panel. On day one, summarise your longest email thread and draft your next client update. <em>(Time: 30 minutes)</em></div></li>
+    <li><div><strong>Record your baseline metrics</strong> — hours on quoting, open enquiries, pipeline value, response time to new leads. Store in a shared spreadsheet. <em>(Time: 1–2 hours)</em></div></li>
+    <li><div><strong>Open a free HubSpot account and enter your 10 active deals</strong> — name, contact, value, stage, and next action. Ask one salesperson to update without David for two weeks. <em>(Time: 1–2 hours setup; 15 mins/day)</em></div></li>
+    <li><div><strong>Create an equipment register for your top 20 maintenance clients</strong> — client name, equipment type, installation date, last service date, known issues. This is the foundation of your maintenance intelligence. <em>(Time: 4–6 hours)</em></div></li>
+    <li><div><strong>Write your first 10 knowledge base articles</strong> — quoting margin rules, complaint handling, engineer dispatch protocol, top 5 suppliers, Darren's project handover checklist. These are the things the team currently ask David about most. <em>(Time: 4–6 hours across the team)</em></div></li>
+    <li><div><strong>Run the 3-day delegation test</strong> — David is genuinely absent. Darren and the office team run operations using the tools built in steps 2–9. Log every escalation. Review on return. The gap is the precise scope of the next phase. <em>(Time: 3 days)</em></div></li>
+  </ol>
+</section>
+
+<hr class="section-divider">
+
+<!-- ═══════════════ GLOSSARY ═══════════════ -->
+<section id="glossary">
+  <div class="section-label">Section 10</div>
+  <h2 class="section-title">Glossary</h2>
+
+  <dl>
+    <div class="glossary-term"><dt>AI (Artificial Intelligence)</dt><dd>Software that performs tasks requiring human intelligence — understanding language, recognising patterns, making decisions. In this context, AI handles the routine and predictable parts of your workflow so your team can focus on the complex and relational.</dd></div>
+    <div class="glossary-term"><dt>Agent / AI Agent</dt><dd>An AI system that can take a sequence of actions to complete a task — not just answer a question, but look something up, compare options, and produce a recommendation.</dd></div>
+    <div class="glossary-term"><dt>Automation</dt><dd>A process that runs without human intervention once configured. When a new enquiry email arrives and Make automatically creates a task, that is automation.</dd></div>
+    <div class="glossary-term"><dt>API (Application Programming Interface)</dt><dd>The technical connection that allows two pieces of software to share data. Make uses APIs to connect Sage, your job management app, and Outlook without manual data re-entry.</dd></div>
+    <div class="glossary-term"><dt>Chatbot</dt><dd>An automated conversation interface. Tidio's Lyro AI handles routine client queries on your website; complex queries route to a human.</dd></div>
+    <div class="glossary-term"><dt>CRM (Customer Relationship Management)</dt><dd>Software that tracks every client and prospect interaction in one place. HubSpot is a CRM. A CRM is what makes a sales pipeline visible to a buyer in due diligence.</dd></div>
+    <div class="glossary-term"><dt>Custom GPT</dt><dd>A version of ChatGPT trained on documents and instructions you provide — configured to understand your specific pricing, equipment categories, and quoting logic.</dd></div>
+    <div class="glossary-term"><dt>EBITDA</dt><dd>Earnings Before Interest, Tax, Depreciation, and Amortisation. The profit measure most commonly used to value SMEs in a trade sale.</dd></div>
+    <div class="glossary-term"><dt>Knowledge Base</dt><dd>A structured collection of documented information — processes, procedures, FAQs — that the team can search without asking a person. This is what turns "all in David's head" into a transferable business asset.</dd></div>
+    <div class="glossary-term"><dt>M2M Framework</dt><dd>The five-level business and leader development model developed by Paul Hopewell (Paul Hopewell LLC). It maps the evolution of a business from survival to exit-ready.</dd></div>
+    <div class="glossary-term"><dt>Predictive Maintenance</dt><dd>Using data — equipment age, service history, energy patterns — to predict when equipment will fail, rather than waiting for failure. Transforms reactive repair into proactive asset management.</dd></div>
+    <div class="glossary-term"><dt>Workflow Automation</dt><dd>The automatic movement of work from one step to the next — enquiry to task, task to quote, completed job to invoice — without a human manually transferring information between systems.</dd></div>
+  </dl>
+</section>
+
+</div><!-- /.container -->
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="report-footer">
+  <p><strong>Paul Hopewell LLC</strong> · paulhopewell.com</p>
+  <p style="margin-top: 0.5rem;">This report contains commercially sensitive analysis. It is prepared for the named recipient only and should not be shared without permission.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Netlify Dev",
+      "runtimeExecutable": "netlify",
+      "runtimeArgs": ["dev"],
+      "port": 8888,
+      "autoPort": true
+    },
+    {
+      "name": "Static Preview",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "."],
+      "port": 3000,
+      "autoPort": true
+    },
+    {
+      "name": "Python HTTP Server",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8000"],
+      "port": 8000
+    }
+  ]
+}

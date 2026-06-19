@@ -50,7 +50,7 @@
 
   .logo {
     font-family: 'DM Mono', monospace;
-    font-size: 13px;
+    font-size: 16px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--cream);
@@ -717,16 +717,17 @@
 <!-- HEADER -->
 <header>
   <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
-    <img src="assets/images/ph-badge.png" alt="" style="width: 36px; height: 36px; object-fit: cover; object-position: center; border-radius: 50%; display: block; flex-shrink: 0;">
-    Paul Hopewell <span>LLC</span>
+    <img src="assets/images/ph-badge.svg" alt="" style="width: 47px; height: 47px; object-fit: cover; object-position: center; border-radius: 50%; display: block; flex-shrink: 0;">
+    Paul Hopewell
   </a>
   <nav id="m2m-nav-desktop">
     <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="ai-growth-audit.html">AI Growth Audit</a>
+    <a href="about.html">What We Do</a>
     <a href="m2m-framework.html" style="color: var(--coral); opacity: 1;">M2M Framework</a>
+    <a href="ai-growth-audit.html">AI Growth Audit</a>
     <a href="articles.html">Articles</a>
     <a href="clients.html">Clients</a>
+    <a href="#contact">Contact Us</a>
   </nav>
   <button id="m2m-nav-toggle" aria-label="Toggle navigation" aria-expanded="false" onclick="var m = document.getElementById('m2m-nav-mobile'); m.style.display = m.style.display === 'block' ? 'none' : 'block'; this.setAttribute('aria-expanded', m.style.display === 'block');" style="display: none; background: none; border: none; cursor: pointer; padding: 8px;">
     <span style="display: block; width: 24px; height: 2px; background: var(--cream); margin: 5px 0;"></span>
@@ -737,11 +738,12 @@
 <nav id="m2m-nav-mobile" style="display: none; background: var(--dark); padding: 16px 48px 32px; border-bottom: 1px solid rgba(249,247,244,0.1);">
   <ul style="list-style: none; display: flex; flex-direction: column; gap: 16px; padding: 0;">
     <li><a href="index.html" style="font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream); text-decoration: none;">Home</a></li>
-    <li><a href="about.html" style="font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream); text-decoration: none;">About</a></li>
-    <li><a href="ai-growth-audit.html" style="font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream); text-decoration: none;">AI Growth Audit</a></li>
+    <li><a href="about.html" style="font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream); text-decoration: none;">What We Do</a></li>
     <li><a href="m2m-framework.html" style="font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--coral); text-decoration: none;">M2M Framework</a></li>
+    <li><a href="ai-growth-audit.html" style="font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream); text-decoration: none;">AI Growth Audit</a></li>
     <li><a href="articles.html" style="font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream); text-decoration: none;">Articles</a></li>
     <li><a href="clients.html" style="font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream); text-decoration: none;">Clients</a></li>
+    <li><a href="#contact" style="font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream); text-decoration: none;">Contact Us</a></li>
   </ul>
 </nav>
 <style>

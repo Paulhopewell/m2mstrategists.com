@@ -4,7 +4,7 @@
    Cream / Coral / Brass / Dark — DM Sans 300 / Playfair Display / DM Mono.
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&family=Inter:wght@400;500;600&display=swap');
 
 :root {
   --cream: #f9f7f4;
@@ -24,7 +24,7 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--cream);
   color: var(--dark);
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 300;
   line-height: 1.75;
   font-size: 17px;
@@ -52,7 +52,7 @@ a:hover { color: var(--brass); }
   left: 0;
   right: 0;
   z-index: 100;
-  border-bottom: 2px solid var(--coral);
+  border-bottom: 2px solid #c4a35a;
 }
 
 .site-logo {
@@ -83,6 +83,7 @@ a:hover { color: var(--brass); }
 }
 
 .site-logo span { color: var(--coral); }
+.site-logo .site-logo__name { color: var(--cream); font-family: 'Inter', sans-serif; font-size: 0.85em; }
 
 .nav-desktop ul {
   display: flex;
@@ -93,19 +94,19 @@ a:hover { color: var(--brass); }
 }
 
 .nav-desktop a {
-  font-family: 'DM Mono', monospace;
+  font-family: 'Inter', sans-serif;
   font-size: 13px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--cream);
+  color: #ffffff;
   text-decoration: none;
-  opacity: 0.7;
-  transition: opacity 0.2s, color 0.2s;
+  opacity: 1;
+  transition: color 0.2s;
   white-space: nowrap;
 }
 
 .nav-desktop a:hover,
-.nav-desktop a.active { opacity: 1; color: var(--coral); }
+.nav-desktop a.active { color: var(--coral); }
 
 .nav-cta {
   border: 1px solid var(--coral);
@@ -132,7 +133,7 @@ a:hover { color: var(--brass); }
 .nav-mobile.is-open { display: block; }
 .nav-mobile ul { list-style: none; display: flex; flex-direction: column; gap: 16px; }
 .nav-mobile a {
-  font-family: 'DM Mono', monospace;
+  font-family: 'Inter', sans-serif;
   font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -145,7 +146,7 @@ a:hover { color: var(--brass); }
 .hero {
   background: var(--dark);
   color: var(--cream);
-  padding: 140px 48px 20px;
+  padding: 140px 48px 0;
   position: relative;
   overflow: hidden;
 }
@@ -192,8 +193,8 @@ a:hover { color: var(--brass); }
 }
 
 .hero-tagline {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+  font-size: 19px;
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -203,7 +204,7 @@ a:hover { color: var(--brass); }
 }
 
 .hero h1 {
-  font-family: 'Playfair Display', serif;
+  font-family: Georgia, serif;
   font-size: clamp(38px, 5vw, 64px);
   font-weight: 700;
   line-height: 1.1;
@@ -215,6 +216,7 @@ a:hover { color: var(--brass); }
 .hero h1 em { font-style: italic; color: var(--coral); }
 
 .hero-subtitle {
+  font-family: 'Inter', sans-serif;
   font-size: 18px;
   font-weight: 400;
   max-width: 600px;
@@ -229,6 +231,18 @@ a:hover { color: var(--brass); }
   flex-wrap: wrap;
 }
 
+.cta-group {
+  margin-top: 20px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.cta-group .cta-btn {
+  flex: 1;
+  text-align: center;
+}
+
 /* ─── CONTAINER ─── */
 .container {
   max-width: 900px;
@@ -240,7 +254,7 @@ a:hover { color: var(--brass); }
 .container--wide { max-width: 1080px; }
 
 /* ─── SECTIONS ─── */
-.section { padding: 40px 0 40px; }
+.section { padding: 40px 0; }
 .section-bordered { border-top: 1px solid var(--light-line); }
 
 .section-label {
@@ -253,7 +267,7 @@ a:hover { color: var(--brass); }
 }
 
 .section-title {
-  font-family: 'Playfair Display', serif;
+  font-family: Georgia, serif;
   font-size: clamp(28px, 3vw, 38px);
   font-weight: 700;
   line-height: 1.2;
@@ -289,7 +303,7 @@ a:hover { color: var(--brass); }
 }
 
 .pullquote p {
-  font-family: 'Playfair Display', serif;
+  font-family: Georgia, serif;
   font-size: 22px;
   font-weight: 600;
   line-height: 1.4;
@@ -318,7 +332,7 @@ a:hover { color: var(--brass); }
 }
 
 .foundation-number {
-  font-family: 'Playfair Display', serif;
+  font-family: Georgia, serif;
   font-size: 48px;
   font-weight: 700;
   color: var(--coral);
@@ -328,7 +342,7 @@ a:hover { color: var(--brass); }
 }
 
 .foundation-card h3 {
-  font-family: 'Playfair Display', serif;
+  font-family: Georgia, serif;
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 12px;
@@ -380,6 +394,7 @@ a:hover { color: var(--brass); }
   border-top: 2px solid var(--brass);
 }
 
+
 .method-step-num {
   font-family: 'DM Mono', monospace;
   font-size: 11px;
@@ -389,7 +404,7 @@ a:hover { color: var(--brass); }
 }
 
 .method-step h3 {
-  font-family: 'Playfair Display', serif;
+  font-family: Georgia, serif;
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 12px;
@@ -436,7 +451,7 @@ a:hover { color: var(--brass); }
 }
 
 .cta-card h3 {
-  font-family: 'Playfair Display', serif;
+  font-family: Georgia, serif;
   font-size: 22px;
   font-weight: 700;
   line-height: 1.25;
@@ -534,7 +549,7 @@ a:hover { color: var(--brass); }
 .about {
   background: var(--brass-light);
   border-top: 1px solid var(--light-line);
-  padding: 32px 0 32px;
+  padding: 32px 0 12px;
 }
 
 /* ─── FOOTER ─── */
@@ -545,13 +560,9 @@ a:hover { color: var(--brass); }
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 6px solid #c4a35a;
-}
-
-.site-footer p {
-  font-family: 'DM Mono', monospace;
-  font-size: 14px;
-  letter-spacing: 0.08em;
+  border-top: 6px solid var(--coral);
+  flex-wrap: wrap;
+  gap: 16px;
 }
 
 .site-footer a {
@@ -562,9 +573,41 @@ a:hover { color: var(--brass); }
 
 .site-footer a:hover { color: var(--coral); }
 
+.footer-contact {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  color: rgba(249,247,244,0.5);
+}
+
+.footer-contact-item svg {
+  flex-shrink: 0;
+  color: var(--coral);
+  opacity: 1;
+}
+
+.footer-brand {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--cream);
+  text-transform: uppercase;
+}
+
 /* ─── ARTICLE / EDITORIAL CONTENT ─── */
 .article-content h2 {
-  font-family: 'Playfair Display', serif;
+  font-family: Georgia, serif;
   font-size: 28px;
   font-weight: 700;
   color: var(--dark);
@@ -573,7 +616,7 @@ a:hover { color: var(--brass); }
 }
 
 .article-content h3 {
-  font-family: 'Playfair Display', serif;
+  font-family: Georgia, serif;
   font-size: 22px;
   font-weight: 600;
   color: var(--dark);
@@ -607,7 +650,7 @@ a:hover { color: var(--brass); }
   margin: 32px 0;
   background: var(--coral-light);
   border-radius: 0 4px 4px 0;
-  font-family: 'Playfair Display', serif;
+  font-family: Georgia, serif;
   font-size: 20px;
   font-weight: 600;
   font-style: italic;
@@ -638,7 +681,7 @@ a:hover { color: var(--brass); }
 }
 
 .article-card__title {
-  font-family: 'Playfair Display', serif;
+  font-family: Georgia, serif;
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 10px;
@@ -675,7 +718,7 @@ a:hover { color: var(--brass); }
 }
 
 .testimonial blockquote {
-  font-family: 'Playfair Display', serif;
+  font-family: Georgia, serif;
   font-size: 18px;
   font-style: italic;
   font-weight: 600;
@@ -738,7 +781,7 @@ a:hover { color: var(--brass); }
 }
 
 .pricing-highlight__amount {
-  font-family: 'Playfair Display', serif;
+  font-family: Georgia, serif;
   font-size: 56px;
   font-weight: 700;
   color: var(--coral);
@@ -952,7 +995,7 @@ textarea.form-input {
 
 .level-card {
   margin: 0;
-  padding: 80px 0;
+  padding: 40px 0;
   border-top: 1px solid var(--light-line);
   position: relative;
 }
@@ -974,7 +1017,7 @@ textarea.form-input {
 }
 
 .level-number {
-  font-family: 'Playfair Display', serif;
+  font-family: Georgia, serif;
   font-size: 56px;
   font-weight: 700;
   line-height: 1;
@@ -991,7 +1034,7 @@ textarea.form-input {
 }
 
 .level-title-block h2 {
-  font-family: 'Playfair Display', serif;
+  font-family: Georgia, serif;
   font-size: clamp(26px, 3vw, 36px);
   font-weight: 700;
   color: var(--dark);
@@ -1000,7 +1043,7 @@ textarea.form-input {
 }
 
 .level-tagline {
-  font-family: 'Playfair Display', serif;
+  font-family: Georgia, serif;
   font-style: italic;
   font-size: 17px;
   color: var(--brass);
@@ -1072,22 +1115,24 @@ textarea.form-input {
   .site-header { padding: 23px 24px 23px 48px; }
   .nav-desktop { display: none; }
   .nav-toggle { display: block; }
-  .nav-mobile { padding: 16px 24px 32px; }
+  .nav-mobile { padding: 32px 24px 32px; }
 
-  .hero { padding: 140px 32px 48px; }
+  .hero { padding: 140px 32px 0; }
   .hero h1 { font-size: 36px; margin-bottom: 20px; }
   .hero-subtitle { font-size: 16px; margin-bottom: 32px; }
   .hero-tagline { margin-bottom: 12px; }
 
   .container { padding: 0 24px; }
 
-  .section { padding: 56px 0; }
+  .section { padding: 40px 0; }
 
   .foundations-grid,
   .methodology-steps,
   .cta-grid,
   .cta-grid--2,
   .testimonial-grid { grid-template-columns: 1fr; }
+
+  .method-step:first-child { border-top: none; padding-top: 0; }
 
   .about-layout { grid-template-columns: 1fr; gap: 24px; }
   .layout-with-sidebar { grid-template-columns: 1fr; gap: 32px; }

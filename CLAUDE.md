@@ -1,6 +1,6 @@
-# CLAUDE.md — paulhopewell.com
+# CLAUDE.md — M2M Growth, AI & Exit Strategists
 
-**IMPORTANT — This site was manually built and does not currently follow Option B brand guidelines.** Treat the existing CSS and HTML as the working design unless explicitly told to apply Option B.
+**IMPORTANT — This site was manually built and does not follow Option B brand guidelines.** Treat the existing CSS and HTML as the working design unless explicitly told to apply Option B.
 
 ## Option B Brand Guidelines (apply ONLY when instructed)
 
@@ -12,36 +12,68 @@ When told "follow Option B" or "apply the brand guidelines", switch to:
 
 ## Design System (current — manual build)
 
-- **Fonts:** Playfair Display (headings), DM Sans 400-700 (body), DM Mono (labels)
-- **Palette:** Coral #C25D45, Brass #806339, Near-Black #1A1A1A, Cream #F9F7F4
-- **Hero gradient:** black-to-brass, 165deg
-- **Single CSS file:** `css/style.css` — source of truth. Do not create additional stylesheets.
-- **Naming:** BEM where appropriate, semantic elsewhere. All CSS custom properties use `--color-*`, `--font-*`, `--space-*` naming.
+- **Fonts:** Playfair Display / Georgia (headings), DM Sans + Inter (body), DM Mono (labels)
+- **Palette:** Coral #C25D45, Coral-text #AA513C (accessible text variant), Brass #806339, Near-Black #1A1A1A, Cream #F9F7F4
+- **Single CSS file:** `css/style.css` (~1,050 lines) — source of truth. Do not create additional stylesheets.
+- **Cache busting:** every page links `css/style.css?v=N`. **Bump `N` on all pages together** after any CSS change.
+- **CSS custom properties** are short semantic names (`--coral`, `--brass`, `--cream`, `--dark`, `--mid`, `--light-line`), not `--color-*`.
+
+### Responsive rules (important — these were deliberate fixes)
+
+- **Fluid gutters:** `.container` and `.hero` use `min(48px, Nvw)` padding. Do **not** replace with a fixed padding override inside a media query — that makes the text column jump *wider* as the window narrows.
+- **Fluid type:** hero `h1`/subtitle scale via `clamp()`. Do **not** add fixed `font-size` overrides in media queries — it causes the heading to snap to a different size mid-resize.
+- **Breakpoints:** 1500px (tighten nav) → 1340px (drop logo wordmark) → 1200px (hero badge slides off-screen, arrow hint remains) → 1060px (hamburger nav) → 820px (grids 3→2 col) → 600px (grids →1 col).
 
 ## Voice
 
-- **"We"** — company/website copy, client-facing
+- **"We" / "Our"** — company/website copy, client-facing
 - **"Our founder, Paul"** or **"Paul"** — when referencing the founder
 - **Never "I"** in company-facing copy
 - **Tone:** Clear, direct, commercially grounded, no hype
+- **Punctuation:** copy favours commas/semicolons over em-dashes in body text
+
+## Naming (kept deliberately distinct)
+
+- **Company:** M2M Growth, AI & Exit Strategists
+- **Framework:** the Miner to Millionaire (M2M) Framework
+- **Paid diagnostic:** the M2M Growth, AI & Exit Audit
+- **Ongoing retainer programme:** M2M Business Concierge
 
 ## Project Structure
 
 ```
 ├── index.html              — homepage
-├── about.html              — about Paul
-├── ai-growth-audit.html    — AI Growth Audit sales page
-├── m2m-framework.html      — M2M Coaching Framework
-├── services.html, clients.html, articles.html
-├── css/style.css           — single source of truth (1,906 lines, v3.1)
-├── reference-chen-kitchen-audit.html — design quality benchmark
+├── ai-growth-audit.html    — Growth, AI & Exit Audit sales page (booking form)
+├── methodology.html        — three-step methodology
+├── m2m-framework.html      — the five-level M2M Framework
+├── where-are-you.html      — self-diagnosis by level
+├── articles.html           — article index (articles not yet written)
+├── clients.html            — testimonials (representative examples, not real clients)
+├── contact.html            — contact form
+├── articles/article-template.html — template for future articles (not linked)
+├── css/style.css           — single source of truth
+├── css/reset.css
+├── assets/images/          — book-now.png, hero-montage.jpg, m2m-badge.png, pyramid.png
 ├── creative-brief.md       — full project context
 ├── OPTION-B-REVERSION-GUIDE.md — CSS override + instructions for Option B
-└── CLAUDE-CODE-HANDOFF.md  — status and next steps from previous phase
+└── CLAUDE-CODE-HANDOFF.md  — status and next steps from an earlier phase
 ```
+
+## Known unfinished (intentional at this stage)
+
+- `articles.html` links to 8 articles that do not exist yet
+- `href="#"` placeholders: "Book a Call with Paul", "Access Free Resources", "Start the Conversation", article topic tags
+- No `robots.txt` or `sitemap.xml` yet
+- Footer has no postal address (placeholder was removed; phone + email only)
+
+## Domain
+
+- Current URLs in canonical / OG / Twitter / JSON-LD tags use `https://minertomillionaire.com` (57 occurrences)
+- Contact email `team@minertomillionaire.com` (30 occurrences)
+- **Planned move to `www.m2mstrategists.com`** — when switching, update both sets (URLs and, if desired, the email) in one pass
 
 ## Workflow
 
-- Branch: `dev` (do not commit directly to `main`)
+- Current working branch: `rosita-m2m-site` — **do not commit directly to `main`**
 - `main` hosts the live coming-soon page via Netlify — do not push unfinished work there
-- Commit and push to `dev`. Merge to `main` only when the site is approved for launch.
+- Merge to `main` only when the site is approved for launch

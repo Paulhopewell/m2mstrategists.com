@@ -68,9 +68,10 @@ When told "follow Option B" or "apply the brand guidelines", switch to:
 
 ## Domain
 
-- Current URLs in canonical / OG / Twitter / JSON-LD tags use `https://minertomillionaire.com` (57 occurrences)
-- Contact email `team@minertomillionaire.com` (30 occurrences)
-- **Planned move to `www.m2mstrategists.com`** — when switching, update both sets (URLs and, if desired, the email) in one pass
+- URLs in canonical / OG / Twitter / JSON-LD tags use `https://www.m2mstrategists.com` (57 occurrences)
+- Contact email `team@m2mstrategists.com` (30 occurrences)
+- **Note:** the framework brand name "Miner to Millionaire" is deliberately unrelated to the domain and must never be swapped in a domain find-and-replace (10 occurrences in visible copy)
+- The repo directory is still named `minertomillionaire.com` locally; only the remote/URLs matter
 
 ## Workflow
 

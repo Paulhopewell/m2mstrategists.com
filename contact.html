@@ -95,34 +95,12 @@
         </address>
       </div>
 
-      <!-- RIGHT: contact form -->
+      <!-- RIGHT: explicit email route until a real form handler is approved -->
       <div>
-        <form class="form" id="contact-form" action="#" method="POST" onsubmit="event.preventDefault(); document.getElementById('contact-form').style.display='none'; document.getElementById('contact-success').style.display='block';">
-          <div class="form-group">
-            <label for="contact-name" class="form-label">Full name</label>
-            <input type="text" id="contact-name" name="name" class="form-input" placeholder="Your name" required>
-          </div>
-          <div class="form-group">
-            <label for="contact-company" class="form-label">Company</label>
-            <input type="text" id="contact-company" name="company" class="form-input" placeholder="Your company name" required>
-          </div>
-          <div class="form-group">
-            <label for="contact-email" class="form-label">Email address</label>
-            <input type="email" id="contact-email" name="email" class="form-input" placeholder="you@company.com" required>
-          </div>
-          <div class="form-group">
-            <label for="contact-phone" class="form-label">Phone number <span style="font-weight: 400; opacity: 0.6;">(optional)</span></label>
-            <input type="tel" id="contact-phone" name="phone" class="form-input" placeholder="+44 7000 000000">
-          </div>
-          <div class="form-group">
-            <label for="contact-message" class="form-label">What's on your mind?</label>
-            <textarea id="contact-message" name="message" class="form-input" rows="4" placeholder="Tell us about your business, where you are, and what you're looking to achieve..."></textarea>
-          </div>
-          <button type="submit" class="cta-btn cta-btn-filled">Send Message &rarr;</button>
-        </form>
-        <div id="contact-success" style="display:none; margin-top: 32px; padding: 32px; border-left: 4px solid var(--coral); background: var(--cream);">
-          <p style="font-family: Georgia, serif; font-size: 22px; margin-bottom: 12px; color: var(--dark);">Thank you for getting in touch.</p>
-          <p style="color: var(--dark); opacity: 0.8;">We will be in touch within one working day.</p>
+        <div class="form" style="padding: 32px;">
+          <h2 class="section-title" style="font-size: clamp(22px, 2.5vw, 30px); margin-bottom: 16px;">Start the conversation</h2>
+          <p class="body-text">The contact form is not connected yet. Email us directly and your message will reach the team.</p>
+          <a href="mailto:team@m2mstrategists.com?subject=M2M%20enquiry" class="cta-btn cta-btn-filled">Email the M2M team &rarr;</a>
         </div>
       </div>
 

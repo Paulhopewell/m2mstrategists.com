@@ -135,27 +135,15 @@
 <section class="section section-bordered">
   <div class="container">
     <h2 class="section-title">Book Your Audit</h2>
-    <p class="body-text">Begin your M2M Growth, AI & Exit Strategists journey by filling out the form below. We will ask you to verify your email address and send you a link to begin the on-boarding process. Welcome aboard!</p>
+    <p class="body-text">Begin your M2M Growth, AI &amp; Exit Strategists journey through our secure checkout. After payment you will receive a private link to create your portal password, book your session and complete the pre-audit questionnaire. Welcome aboard!</p>
 
-    <form class="form" id="audit-form" action="#" method="POST" onsubmit="event.preventDefault(); document.getElementById('audit-form').style.display='none'; document.getElementById('audit-success').style.display='block';">
-      <div class="form-group">
-        <label for="audit-name" class="form-label">Full name</label>
-        <input type="text" id="audit-name" name="name" class="form-input" placeholder="Your name" required>
-      </div>
-      <div class="form-group">
-        <label for="audit-company" class="form-label">Company</label>
-        <input type="text" id="audit-company" name="company" class="form-input" placeholder="Your company name" required>
-      </div>
-      <div class="form-group">
-        <label for="audit-email" class="form-label">Email address</label>
-        <input type="email" id="audit-email" name="email" class="form-input" placeholder="you@company.com" required>
-      </div>
-      <button type="submit" class="cta-btn cta-btn-filled">Book Now</button>
-    </form>
-    <div id="audit-success" style="display:none; margin-top: 32px; padding: 32px; border-left: 4px solid var(--coral); background: var(--cream);">
-      <p style="font-family: Georgia, serif; font-size: 22px; margin-bottom: 12px; color: var(--dark);">Thank you for requesting the M2M Growth, AI &amp; Exit Audit.</p>
-      <p style="font-family: 'DM Sans', sans-serif; color: var(--dark); opacity: 0.8;">A confirmation email has been sent to your email address.</p>
-    </div>
+    <!--
+      STAGING TARGET — NOT FOR MAIN.
+      This points at the disposable V2 staging portal so the journey can be
+      tested end to end. Replace with the approved production portal hostname
+      before this branch is merged to main; the path stays the same.
+    -->
+    <a class="cta-btn cta-btn-filled" href="https://v2-staging-m2m.paulhopewell.com/growth-ai-exit/checkout">Book Your Audit &rarr;</a>
   </div>
 </section>
 

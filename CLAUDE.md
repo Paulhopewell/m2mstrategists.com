@@ -44,9 +44,7 @@ When told "follow Option B" or "apply the brand guidelines", switch to:
 ```
 ├── index.html              — homepage
 ├── ai-growth-audit.html    — Growth, AI & Exit Audit sales page (booking form)
-├── methodology.html        — three-step methodology
 ├── m2m-framework.html      — the five-level M2M Framework
-├── where-are-you.html      — self-diagnosis by level
 ├── articles.html           — article index (articles not yet written)
 ├── clients.html            — testimonials (representative examples, not real clients)
 ├── contact.html            — contact form

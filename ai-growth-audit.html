@@ -143,7 +143,10 @@
       tested end to end. Replace with the approved production portal hostname
       before this branch is merged to main; the path stays the same.
     -->
-    <a class="cta-btn cta-btn-filled" href="https://v2-staging-m2m.paulhopewell.com/growth-ai-exit/checkout">Book Your Audit &rarr;</a>
+    <!-- Opens in a new tab so the client keeps the site they were reading.
+         rel="noopener" goes with target="_blank": without it the opened page
+         can reach back through window.opener, and this one is a checkout. -->
+    <a class="cta-btn cta-btn-filled" href="https://v2-staging-m2m.paulhopewell.com/growth-ai-exit/checkout" target="_blank" rel="noopener">Book Your Audit &rarr;</a>
   </div>
 </section>
 

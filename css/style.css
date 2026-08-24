@@ -1130,3 +1130,58 @@ textarea.form-input {
   .level-number { font-size: 42px; }
 }
 
+
+/* ─── M2M PYRAMID (inline SVG on m2m-framework.html) ─── */
+/* Rebuilt from the old flat PNG as five separate bands so each level can be
+   animated independently. Geometry: isosceles triangles, slope 1.752, shared
+   baseline at y=1040; band N is triangle N minus triangle N-1. */
+.m2m-pyramid { width: 100%; display: block; margin: 0 auto; }
+
+.m2m-pyramid .pyr-num {
+  fill: var(--cream);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 38px;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+.m2m-pyramid .pyr-lab {
+  fill: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 30px;
+  font-weight: 600;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+.m2m-pyramid .pyr-note {
+  fill: #fff;
+  fill-opacity: 0.85;
+  font-family: 'Inter', sans-serif;
+  font-size: 27px;
+  font-weight: 400;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+/* The wave: one crest travelling left to right across the whole pyramid, rather
+   than five sections moving separately. Every band boundary shares the same
+   slope, so the crest is held parallel to them (that is what the rotate(60.28)
+   on the rect's parent sets up) and travel becomes a plain translateY down that
+   rotated frame. In that frame the pyramid spans y 224 (its right slope) to
+   1305 (the bottom-left corner), so the crest starts past 1305 at the
+   bottom-left corner and runs down through the levels, 1 to 5. Most of the
+   cycle is the crossing; the tail is spent parked off-screen, pacing repeats. */
+.m2m-pyramid .pyr-sweep {
+  animation: pyr-sweep 7s linear infinite;
+}
+
+@keyframes pyr-sweep {
+  0%   { transform: translateY(1310px); }
+  60%  { transform: translateY(-150px); }
+  100% { transform: translateY(-150px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .m2m-pyramid .pyr-sweep { display: none; }
+}

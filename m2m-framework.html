@@ -18,7 +18,7 @@
   <meta name="twitter:image" content="https://www.m2mstrategists.com/assets/images/hero-montage.jpg">
 
   <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/style.css?v=47">
+  <link rel="stylesheet" href="css/style.css?v=48">
   <link rel="icon" href="assets/images/m2m-badge.png" type="image/png">
 </head>
 <body>
@@ -83,7 +83,87 @@
 <section class="section" style="background: var(--cream); text-align: center; padding-top: 0; padding-bottom: 0;">
   <div class="container">
     <div style="max-width:640px; margin:0 auto;">
-      <img src="assets/images/pyramid.png?v=3" alt="M2M Framework — Five Levels: Survival, Stability, Systemising, Thriving, Fulfilment" style="width:100%;display:block;margin:0 auto;">
+      <svg class="m2m-pyramid" viewBox="0 0 1280 1040" role="img" aria-labelledby="pyrTitle">
+        <title id="pyrTitle">M2M Framework — Five Levels: Survival, Stability, Systemising, Thriving, Fulfilment</title>
+        <defs>
+          <linearGradient id="pyrG1" gradientUnits="userSpaceOnUse" x1="53" y1="936" x2="382" y2="937">
+            <stop offset="0" stop-color="#2e2e32"/><stop offset="1" stop-color="#3f3f54"/>
+          </linearGradient>
+          <linearGradient id="pyrG2" gradientUnits="userSpaceOnUse" x1="238" y1="819" x2="618" y2="861">
+            <stop offset="0" stop-color="#2b3a4e"/><stop offset="1" stop-color="#1c293c"/>
+          </linearGradient>
+          <linearGradient id="pyrG3" gradientUnits="userSpaceOnUse" x1="381" y1="758" x2="818" y2="737">
+            <stop offset="0" stop-color="#9b4835"/><stop offset="1" stop-color="#7b3829"/>
+          </linearGradient>
+          <linearGradient id="pyrG4" gradientUnits="userSpaceOnUse" x1="488" y1="655" x2="1053" y2="669">
+            <stop offset="0" stop-color="#6a5029"/><stop offset="1" stop-color="#4f3816"/>
+          </linearGradient>
+          <linearGradient id="pyrG5" gradientUnits="userSpaceOnUse" x1="940" y1="61" x2="875" y2="1017">
+            <stop offset="0" stop-color="#af8e4d"/><stop offset="1" stop-color="#463511"/>
+          </linearGradient>
+
+          <!-- The crest: a soft band of light, brightest at its centre. -->
+          <linearGradient id="pyrSweep" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+            <stop offset="0.3" stop-color="#fff" stop-opacity="0.04"/>
+            <stop offset="0.5" stop-color="#fff" stop-opacity="0.14"/>
+            <stop offset="0.7" stop-color="#fff" stop-opacity="0.04"/>
+            <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+          </linearGradient>
+
+          <!-- Keeps the crest inside the pyramid's silhouette. -->
+          <clipPath id="pyrClip">
+            <polygon points="693,16 588.2,199.6 1067.9,1040 1277.5,1040"/>
+            <polygon points="585,194 478.7,380.2 855.3,1040 1067.9,1040"/>
+            <polygon points="470,365 355.9,564.9 627.1,1040 855.3,1040"/>
+            <polygon points="344,544 231.9,740.4 402.9,1040 627.1,1040"/>
+            <polygon points="218,716 33.1,1040 402.9,1040"/>
+          </clipPath>
+        </defs>
+
+        <g class="pyr-lvl">
+          <polygon points="693,16 588.2,199.6 1067.9,1040 1277.5,1040" fill="url(#pyrG5)"/>
+          <text class="pyr-num" x="694" y="138">5</text>
+          <text class="pyr-lab" x="1162.3" y="930" textLength="177" lengthAdjust="spacing"
+                transform="rotate(60.28 1162.3 930)">FULFILMENT</text>
+        </g>
+        <g class="pyr-lvl">
+          <polygon points="585,194 478.7,380.2 855.3,1040 1067.9,1040" fill="url(#pyrG4)"/>
+          <text class="pyr-num" x="581" y="332">4</text>
+          <text class="pyr-lab" x="960.9" y="947.9" textLength="141" lengthAdjust="spacing"
+                transform="rotate(60.28 960.9 947.9)">THRIVING</text>
+        </g>
+        <g class="pyr-lvl">
+          <polygon points="470,365 355.9,564.9 627.1,1040 855.3,1040" fill="url(#pyrG3)"/>
+          <text class="pyr-num" x="466" y="473">3</text>
+          <text class="pyr-lab" x="724.9" y="924" textLength="195" lengthAdjust="spacing"
+                transform="rotate(60.28 724.9 924)">SYSTEMISING</text>
+          <text class="pyr-note" x="600.3" y="810.7" textLength="464" lengthAdjust="spacing"
+                transform="rotate(60.28 600.3 810.7)">MOST ENTREPRENEURS LIVE HERE</text>
+        </g>
+        <g class="pyr-lvl">
+          <polygon points="344,544 231.9,740.4 402.9,1040 627.1,1040" fill="url(#pyrG2)"/>
+          <text class="pyr-num" x="339" y="645">2</text>
+          <text class="pyr-lab" x="509" y="940.6" textLength="160" lengthAdjust="spacing"
+                transform="rotate(60.28 509 940.6)">STABILITY</text>
+        </g>
+        <g class="pyr-lvl">
+          <polygon points="218,716 33.1,1040 402.9,1040" fill="url(#pyrG1)"/>
+          <text class="pyr-num" x="217" y="820">1</text>
+          <text class="pyr-lab" x="299.4" y="941.6" textLength="142" lengthAdjust="spacing"
+                transform="rotate(60.28 299.4 941.6)">SURVIVAL</text>
+        </g>
+
+        <!-- One wave, starting at the bottom-left corner and running left to
+             right through the levels. The rotation puts the band boundaries
+             horizontal in the rect's own frame, so the crest stays parallel to
+             them; travel is then a plain translateY down that frame. -->
+        <g clip-path="url(#pyrClip)">
+          <g transform="rotate(60.28 640 520)">
+            <rect class="pyr-sweep" x="150" y="0" width="1350" height="340" fill="url(#pyrSweep)"/>
+          </g>
+        </g>
+      </svg>
     </div>
     <div class="section-label" style="margin-top: 24px; font-weight: 700;">The Five Levels</div>
   </div>

@@ -128,16 +128,11 @@
     <h2 class="section-title">Book Your Audit</h2>
     <p class="body-text">Begin your M2M Growth, AI &amp; Exit Strategists journey through our secure checkout. After payment you will receive a private link to create your portal password, book your session and complete the pre-Audit questionnaire. Welcome aboard!</p>
 
-    <!--
-      STAGING TARGET — NOT FOR MAIN.
-      This points at the disposable V2 staging portal so the journey can be
-      tested end to end. Replace with the approved production portal hostname
-      before this branch is merged to main; the path stays the same.
-    -->
-    <!-- Opens in a new tab so the client keeps the site they were reading.
-         rel="noopener" goes with target="_blank": without it the opened page
-         can reach back through window.opener, and this one is a checkout. -->
-    <a class="cta-btn cta-btn-filled" href="https://v2-staging-m2m.paulhopewell.com/growth-ai-exit/checkout" target="_blank" rel="noopener">Book Your Audit &rarr;</a>
+    <!-- Checkout lives in the portal application, not this site. Opens in a
+         new tab so the client keeps the page they were reading; rel="noopener"
+         goes with target="_blank", since without it the opened page can reach
+         back through window.opener and this one takes payment. -->
+    <a class="cta-btn cta-btn-filled" href="https://test.m2mstrategists.com/growth-ai-exit/checkout" target="_blank" rel="noopener">Book Your Audit &rarr;</a>
   </div>
 </section>
 

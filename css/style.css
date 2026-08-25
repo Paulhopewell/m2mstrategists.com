@@ -240,11 +240,17 @@ a:hover { color: var(--brass); }
   position: relative;
 }
 
-.hero-book-badge {
+.hero-book-wrap {
   position: absolute;
   bottom: 0;
   left: 20px;
   z-index: 5;
+  width: 110px;
+  height: 110px;
+  transition: transform 0.3s ease;
+}
+
+.hero-book-badge {
   display: block;
   width: 110px;
   height: 110px;
@@ -259,8 +265,12 @@ a:hover { color: var(--brass); }
   display: block;
 }
 
+.hero-book-arrow {
+  display: none;
+}
+
 .cta-group {
-  margin-top: 20px;
+  margin-top: 0;
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
@@ -289,7 +299,7 @@ a:hover { color: var(--brass); }
 
 .section-label {
   font-family: 'DM Mono', monospace;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--brass);
@@ -397,7 +407,7 @@ a:hover { color: var(--brass); }
 
 .method-step-num {
   font-family: 'DM Mono', monospace;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.15em;
   color: var(--brass);
   margin-bottom: 12px;
@@ -511,6 +521,15 @@ a:hover { color: var(--brass); }
   color: rgba(249,247,244,0.5);
 }
 
+/* QFC accreditation mark — white-out version on transparent background,
+   opacity matched to the surrounding footer text so it sits quietly */
+.footer-qfc-logo {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  opacity: 0.55;
+}
+
 .footer-contact-item svg {
   flex-shrink: 0;
   color: var(--coral);
@@ -519,10 +538,18 @@ a:hover { color: var(--brass); }
 
 .footer-brand {
   font-family: 'Inter', sans-serif;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 400;
   letter-spacing: 0.08em;
   color: var(--cream);
+  text-transform: uppercase;
+}
+
+.footer-legal {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
@@ -897,7 +924,7 @@ textarea.form-input {
 
 .level-label {
   font-family: 'DM Mono', monospace;
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--brass);
@@ -936,7 +963,7 @@ textarea.form-input {
 
 .level-section h3 {
   font-family: 'DM Mono', monospace;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--brass);
@@ -962,7 +989,7 @@ textarea.form-input {
 }
 
 .milestone {
-  margin-top: 14px;
+  margin-top: 0;
   font-family: 'DM Mono', monospace;
   font-size: 12px;
   letter-spacing: 0.05em;
@@ -986,24 +1013,63 @@ textarea.form-input {
 }
 
 /* Tier 3: once the centred text block reaches the badge, slide it off-screen
-   leaving only the arrow as a hint (prevents overlap on narrow laptops/tablets) */
+   leaving only the arrow as a hint (prevents overlap on narrow laptops/tablets).
+   Tapping the arrow slides the badge into view (readable, tappable to book);
+   tapping the arrow again slides it back off-screen. Arrow flips direction
+   to show which way it will move next. */
 @media (max-width: 1200px) {
   .hero { overflow-x: visible; }
-  .hero-book-badge {
-    left: -130px;
-    right: auto;
+  .hero-book-wrap {
+    transform: translateX(-150px);
   }
-  .hero-book-badge::before {
+  .hero-book-wrap.is-open {
+    transform: translateX(0);
+  }
+  .hero-book-arrow {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: -34px;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transform: translateY(-50%);
+  }
+  .hero-book-arrow::before {
     content: '';
     position: absolute;
     top: 50%;
-    right: -13px;
+    left: 50%;
     width: 9px;
     height: 9px;
     border-top: 2px solid var(--cream);
     border-right: 2px solid var(--cream);
-    transform: translateY(-50%) rotate(45deg);
+    transform: translate(-50%, -50%) rotate(45deg);
     opacity: 0.9;
+    transition: transform 0.3s ease;
+  }
+  .hero-book-wrap.is-open .hero-book-arrow::before {
+    transform: translate(-50%, -50%) rotate(225deg);
+  }
+}
+
+/* The footer sits on one line only above roughly 1590px. Below that it wraps,
+   and space-between leaves each wrapped line flush left, which reads as broken.
+   Centre the lines as soon as wrapping is possible; the full stack at 1060px
+   below then takes over. */
+@media (max-width: 1600px) {
+  .site-footer {
+    justify-content: center;
+    text-align: center;
+  }
+  /* The contact block wraps independently of the footer, so it needs centring
+     of its own — otherwise QFC drops to a second line flush left. */
+  .footer-contact {
+    justify-content: center;
   }
 }
 
@@ -1028,12 +1094,40 @@ textarea.form-input {
   .level-header { grid-template-columns: auto 1fr; gap: 20px; }
 
   .site-footer {
-    flex-direction: column;
-    gap: 12px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 16px;
     text-align: center;
     padding: 24px;
   }
 
+  /* Stacked footer resolves to five centred lines:
+     1) brand  2) address  3) tel  4) email  5) QFC · Legal
+     footer-contact is flattened (display: contents) so its items become
+     flex items of the footer itself, letting QFC wrap onto the same
+     trailing row as Legal instead of being trapped inside the address. */
+  .footer-contact {
+    display: contents;
+  }
+  .footer-brand,
+  .footer-contact-item:nth-child(1),
+  .footer-contact-item:nth-child(2),
+  .footer-contact-item:nth-child(3) {
+    flex-basis: 100%;
+    justify-content: center;
+  }
+  .footer-contact-item {
+    justify-content: center;
+  }
+
+}
+
+/* Keep the three-line footer intact a little further down before the
+   contact items are forced to stack */
+@media (max-width: 700px) {
+  .footer-contact { gap: 10px 12px; }
+  .footer-contact-item { font-size: 13px; letter-spacing: 0.04em; }
 }
 
 /* Content tier: collapse multi-column grids only when the columns genuinely get
@@ -1052,3 +1146,72 @@ textarea.form-input {
   .level-number { font-size: 42px; }
 }
 
+
+/* ─── M2M PYRAMID (m2m-framework.html) ─── */
+/* The artwork is a flat PNG, so the levels are not separate shapes and cannot
+   be animated individually. The wave is instead a band of light laid over the
+   image and masked to the PNG's own alpha channel, which confines it to the
+   pyramid's silhouette exactly. */
+.m2m-pyramid {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+}
+
+.m2m-pyramid img { width: 100%; display: block; }
+
+.pyr-wave { display: none; }
+
+/* Only run the wave where masking is supported; without it the band would
+   show as a rectangle over the whole image rather than inside the pyramid. */
+@supports (mask-image: url(a.png)) or (-webkit-mask-image: url(a.png)) {
+  .pyr-wave {
+    display: block;
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    -webkit-mask-image: url('../assets/images/pyramid.png');
+            mask-image: url('../assets/images/pyramid.png');
+    -webkit-mask-size: 100% 100%;
+            mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+  }
+}
+
+/* The crest: a soft band of light, brightest at its centre. Sized and placed so
+   that, once rotated about its own centre, it spans the pyramid comfortably. */
+.pyr-sweep {
+  position: absolute;
+  top: 37%;
+  left: -50%;
+  width: 200%;
+  height: 26%;
+  background: linear-gradient(to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.06) 26%,
+    rgba(255, 255, 255, 0.18) 42%,
+    rgba(255, 255, 255, 0.34) 50%,
+    rgba(255, 255, 255, 0.18) 58%,
+    rgba(255, 255, 255, 0.06) 74%,
+    rgba(255, 255, 255, 0) 100%);
+  animation: pyr-sweep 6s linear infinite;
+}
+
+/* 60.28deg is atan(1.752), the slope every boundary between levels sits at, so
+   the rotated band lies parallel to them. translateY then acts along the band's
+   own perpendicular, carrying it from the bottom-left corner through levels 1
+   to 5 and out along the right slope. The percentages are of the band's own
+   height: it starts clear of the bottom-left corner and finishes clear of the
+   right slope. Most of the cycle is the crossing; the tail is spent parked
+   off-shape, which paces the repeats. */
+@keyframes pyr-sweep {
+  0%   { transform: rotate(60.28deg) translateY(338%); }
+  60%  { transform: rotate(60.28deg) translateY(-159%); }
+  100% { transform: rotate(60.28deg) translateY(-159%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pyr-sweep { animation: none; display: none; }
+}

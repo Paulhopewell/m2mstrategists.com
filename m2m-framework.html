@@ -18,7 +18,7 @@
   <meta name="twitter:image" content="https://www.m2mstrategists.com/assets/images/hero-montage.jpg">
 
   <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/style.css?v=48">
+  <link rel="stylesheet" href="css/style.css?v=50">
   <link rel="icon" href="assets/images/m2m-badge.png" type="image/png">
 </head>
 <body>
@@ -83,89 +83,12 @@
 <section class="section" style="background: var(--cream); text-align: center; padding-top: 0; padding-bottom: 0;">
   <div class="container">
     <div style="max-width:640px; margin:0 auto;">
-      <svg class="m2m-pyramid" viewBox="0 0 1280 1040" role="img" aria-labelledby="pyrTitle">
-        <title id="pyrTitle">M2M Framework — Five Levels: Survival, Stability, Systemising, Thriving, Fulfilment</title>
-        <defs>
-          <linearGradient id="pyrG1" gradientUnits="userSpaceOnUse" x1="53" y1="936" x2="382" y2="937">
-            <stop offset="0" stop-color="#2e2e32"/><stop offset="1" stop-color="#3f3f54"/>
-          </linearGradient>
-          <linearGradient id="pyrG2" gradientUnits="userSpaceOnUse" x1="238" y1="819" x2="618" y2="861">
-            <stop offset="0" stop-color="#2b3a4e"/><stop offset="1" stop-color="#1c293c"/>
-          </linearGradient>
-          <linearGradient id="pyrG3" gradientUnits="userSpaceOnUse" x1="381" y1="758" x2="818" y2="737">
-            <stop offset="0" stop-color="#9b4835"/><stop offset="1" stop-color="#7b3829"/>
-          </linearGradient>
-          <linearGradient id="pyrG4" gradientUnits="userSpaceOnUse" x1="488" y1="655" x2="1053" y2="669">
-            <stop offset="0" stop-color="#6a5029"/><stop offset="1" stop-color="#4f3816"/>
-          </linearGradient>
-          <linearGradient id="pyrG5" gradientUnits="userSpaceOnUse" x1="940" y1="61" x2="875" y2="1017">
-            <stop offset="0" stop-color="#af8e4d"/><stop offset="1" stop-color="#463511"/>
-          </linearGradient>
-
-          <!-- The crest: a soft band of light, brightest at its centre. -->
-          <linearGradient id="pyrSweep" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#fff" stop-opacity="0"/>
-            <stop offset="0.3" stop-color="#fff" stop-opacity="0.04"/>
-            <stop offset="0.5" stop-color="#fff" stop-opacity="0.14"/>
-            <stop offset="0.7" stop-color="#fff" stop-opacity="0.04"/>
-            <stop offset="1" stop-color="#fff" stop-opacity="0"/>
-          </linearGradient>
-
-          <!-- Keeps the crest inside the pyramid's silhouette. -->
-          <clipPath id="pyrClip">
-            <polygon points="693,16 588.2,199.6 1067.9,1040 1277.5,1040"/>
-            <polygon points="585,194 478.7,380.2 855.3,1040 1067.9,1040"/>
-            <polygon points="470,365 355.9,564.9 627.1,1040 855.3,1040"/>
-            <polygon points="344,544 231.9,740.4 402.9,1040 627.1,1040"/>
-            <polygon points="218,716 33.1,1040 402.9,1040"/>
-          </clipPath>
-        </defs>
-
-        <g class="pyr-lvl">
-          <polygon points="693,16 588.2,199.6 1067.9,1040 1277.5,1040" fill="url(#pyrG5)"/>
-          <text class="pyr-num" x="694" y="138">5</text>
-          <text class="pyr-lab" x="1162.3" y="930" textLength="177" lengthAdjust="spacing"
-                transform="rotate(60.28 1162.3 930)">FULFILMENT</text>
-        </g>
-        <g class="pyr-lvl">
-          <polygon points="585,194 478.7,380.2 855.3,1040 1067.9,1040" fill="url(#pyrG4)"/>
-          <text class="pyr-num" x="581" y="332">4</text>
-          <text class="pyr-lab" x="960.9" y="947.9" textLength="141" lengthAdjust="spacing"
-                transform="rotate(60.28 960.9 947.9)">THRIVING</text>
-        </g>
-        <g class="pyr-lvl">
-          <polygon points="470,365 355.9,564.9 627.1,1040 855.3,1040" fill="url(#pyrG3)"/>
-          <text class="pyr-num" x="466" y="473">3</text>
-          <text class="pyr-lab" x="724.9" y="924" textLength="195" lengthAdjust="spacing"
-                transform="rotate(60.28 724.9 924)">SYSTEMISING</text>
-          <text class="pyr-note" x="600.3" y="810.7" textLength="464" lengthAdjust="spacing"
-                transform="rotate(60.28 600.3 810.7)">MOST ENTREPRENEURS LIVE HERE</text>
-        </g>
-        <g class="pyr-lvl">
-          <polygon points="344,544 231.9,740.4 402.9,1040 627.1,1040" fill="url(#pyrG2)"/>
-          <text class="pyr-num" x="339" y="645">2</text>
-          <text class="pyr-lab" x="509" y="940.6" textLength="160" lengthAdjust="spacing"
-                transform="rotate(60.28 509 940.6)">STABILITY</text>
-        </g>
-        <g class="pyr-lvl">
-          <polygon points="218,716 33.1,1040 402.9,1040" fill="url(#pyrG1)"/>
-          <text class="pyr-num" x="217" y="820">1</text>
-          <text class="pyr-lab" x="299.4" y="941.6" textLength="142" lengthAdjust="spacing"
-                transform="rotate(60.28 299.4 941.6)">SURVIVAL</text>
-        </g>
-
-        <!-- One wave, starting at the bottom-left corner and running left to
-             right through the levels. The rotation puts the band boundaries
-             horizontal in the rect's own frame, so the crest stays parallel to
-             them; travel is then a plain translateY down that frame. -->
-        <g clip-path="url(#pyrClip)">
-          <g transform="rotate(60.28 640 520)">
-            <rect class="pyr-sweep" x="150" y="0" width="1350" height="340" fill="url(#pyrSweep)"/>
-          </g>
-        </g>
-      </svg>
+      <div class="m2m-pyramid">
+        <img src="assets/images/pyramid.png?v=3" alt="M2M Framework — Five Levels: Survival, Stability, Systemising, Thriving, Fulfilment">
+        <span class="pyr-wave" aria-hidden="true"><span class="pyr-sweep"></span></span>
+      </div>
     </div>
-    <div class="section-label" style="margin-top: 24px; font-weight: 700;">The Five Levels</div>
+    <div class="section-label" style="margin-top: 24px; font-weight: 700;">The Five Levels of the M2M Framework</div>
   </div>
 </section>
 
@@ -190,7 +113,7 @@
         </div>
         <div class="level-section">
           <h3>The Leader: Technician-Founder</h3>
-          <p>At this stage, you <em>are</em> the business. You're selling, delivering, quoting, invoicing. Doing almost everything. You're learning through action and mistakes. This is where it all starts, and there's no shame in it. Every successful business owner has been here.</p>
+          <p>At this stage you <em>are</em> the business. You're selling, delivering, quoting, invoicing. Doing almost everything. You're learning through action and mistakes. This is where it all starts and there's no shame in it. Every successful business owner has been here.</p>
         </div>
       </div>
       <div class="level-col-right">
@@ -201,7 +124,7 @@
         </div>
         <div class="level-section">
           <h3>If You're At Level 1</h3>
-          <p>Our M2M Growth, AI &amp; Exit Audit is available to you and it will give you a clear roadmap for what AI can do at your stage, saving you months of trial and error. That said, most businesses at Level 1 aren't yet ready for an ongoing engagement, and that's fine. Fill in your details and we will periodically send material to help you reach the level where things really accelerate.</p>
+          <p>Our M2M Growth, AI &amp; Exit Audit is available to you and it will give you a clear roadmap for what AI can do at your stage, saving you months of trial and error. That said most businesses at Level 1 aren't yet ready for an ongoing engagement and that's fine. Fill in your details and we will periodically send material to help you reach the level where things really accelerate.</p>
         </div>
         <div class="level-section">
           <div class="cta-group">
@@ -224,18 +147,18 @@
       </div>
       <div class="level-title-block">
         <h2>Stability</h2>
-        <p class="level-tagline">"The springboard. Get this right, and everything that follows is faster and cheaper. Get it wrong, and you stay stuck."</p>
+        <p class="level-tagline">"The springboard. Get this right and everything that follows is faster and cheaper. Get it wrong and you stay stuck."</p>
       </div>
     </div>
     <div class="level-body">
       <div class="level-col-left">
         <div class="level-section">
           <h3>The Business</h3>
-          <p>The business moves beyond survival into predictability. Income becomes more reliable. Dependence on single clients reduces. Early financial controls and reserves appear. This is the stage that either prepares you for growth or holds you back in frustration. <em>A word of warning; the temptation is to hire the first person who can take work off your plate. But hiring without systems is how you multiply chaos, not reduce it.</em></p>
+          <p>The business moves beyond survival into predictability. Income becomes more reliable. Dependence on single clients reduces. Early financial controls and reserves appear. This is the stage that either prepares you for growth or holds you back in frustration. <em>A word of warning; the temptation is to hire the first person who can take work off your plate. But hiring without systems is how you multiply chaos not reduce it.</em></p>
         </div>
         <div class="level-section">
           <h3>The Leader: Operator-Builder</h3>
-          <p>You begin to notice patterns — what works, what breaks, where risk lives. Systems exist, but often only in your head. You're still too close to the work, but you're starting to see beyond it.</p>
+          <p>You begin to notice patterns — what works, what breaks, where risk lives. Systems exist but often only in your head. You're still too close to the work but you're starting to see beyond it.</p>
         </div>
       </div>
       <div class="level-col-right">
@@ -246,7 +169,7 @@
         </div>
         <div class="level-section">
           <h3>If You're At Level 2</h3>
-          <p>You need a credible guide who has built, systemised, and exited and who understands how AI compresses that journey. Our M2M Growth, AI &amp; Exit Audit is the entry point. We assess where you are, where you're going, and exactly what AI should be doing in your business to get you there faster, leaner, and with more predictability.</p>
+          <p>You need a credible guide who has built, systemised, and exited and who understands how AI compresses that journey. Our M2M Growth, AI &amp; Exit Audit is the entry point. We assess where you are, where you're going and exactly what AI should be doing in your business to get you there faster, leaner and with more predictability.</p>
         </div>
         <div class="level-section">
           <div class="cta-group">
@@ -275,13 +198,13 @@
       <div class="level-col-left">
         <div class="level-section">
           <h3>The Business</h3>
-          <p>At Level 3, businesses can grow leaner, faster, and with far greater potential than ever before. AI-driven systems lower costs, increase speed, and reduce the human instability that has always been the hidden drag on scaling. Your total addressable market expands because deflationary costs make your offering accessible to more customers.</p>
-          <p style="margin-top:14px;">Hiring still happens, but it's selective, strategic. Systems are documented and taught not only to humans but to AI agents. This is not about replacing people, it's about freeing them to do work that actually requires human judgment, creativity, and connection. And culture remains critical. People need to believe in the business; its purpose, values, and standards. AI handles the predictable, humans handle the meaningful. Both need to be led well.</p>
+          <p>At Level 3 businesses can grow leaner, faster and with far greater potential than ever before. AI-driven systems lower costs, increase speed and reduce the human instability that has always been the hidden drag on scaling. Your total addressable market expands because deflationary costs make your offering accessible to more customers.</p>
+          <p style="margin-top:14px;">Hiring still happens but it's selective, strategic. Systems are documented and taught not only to humans but also to AI agents. This is not about replacing people it's about freeing them to do work that actually requires human judgment, creativity and connection. And culture remains critical. People need to believe in the business; its purpose, values, and standards. AI handles the predictable, humans handle the meaningful. Both need to be led well.</p>
         </div>
         <div class="level-section">
           <h3>The Leader: Manager-Designer</h3>
-          <p>You stop being the engine and start designing the machine. You manage outcomes, not effort. You develop an understanding of personality types and team dynamics. Your role pivots from sole provider and enthusiastic salesperson to the cool, calm, methodical organiser who puts all the pieces together, ensuring the whole business ticks along.</p>
-          <p style="margin-top:14px;">This is where most entrepreneurs fail. The transition from 'doer' to 'designer' is psychologically demanding. For decades, the answer to this challenge was: become more organised, more detail-oriented, more process-driven: become someone you might not naturally be. The characteristics that make a great systemiser are exactly what AI excels at.</p>
+          <p>You stop being the engine and start designing the machine. You manage outcomes not effort. You develop an understanding of personality types and team dynamics. Your role pivots from sole provider and enthusiastic salesperson to the cool, calm, methodical organiser who puts all the pieces together, ensuring the whole business ticks along.</p>
+          <p style="margin-top:14px;">This is where most entrepreneurs fail. The transition from 'doer' to 'designer' is psychologically demanding. For decades the answer to this challenge was: become more organised, more detail-oriented, more process-driven: become someone you might not naturally be. The characteristics that make a great systemiser are exactly what AI excels at.</p>
         </div>
       </div>
       <div class="level-col-right">
@@ -292,7 +215,7 @@
         </div>
         <div class="level-section">
           <h3>If You're At Level 3</h3>
-          <p><strong>This Is You. This Is Where We Work.</strong> You're systemising your business, preparing for accelerated growth toward an eventual exit, however you define it. You don't need another generic business book or another tech vendor pitching software. You need our M2M Growth, AI &amp; Exit Audit. It's a paid diagnostic session that maps how we can accelerate your path through Level 3 and beyond. This is the moment to act. Your competitors are not waiting.</p>
+          <p><strong>This Is You. This Is Where We Work.</strong> You're systemising your business, preparing for accelerated growth toward an eventual exit however you define it. You don't need another generic business book or another tech vendor pitching software. You need our M2M Growth, AI &amp; Exit Audit. It's a paid diagnostic session that maps how we can accelerate your path through Level 3 and beyond. This is the moment to act. Your competitors are not waiting.</p>
         </div>
         <div class="level-section">
           <div class="cta-group">
@@ -321,22 +244,22 @@
       <div class="level-col-left">
         <div class="level-section">
           <h3>The Business</h3>
-          <p>The business performs without constant owner involvement. Teams, both human and AI, are capable and accountable. Systems are refined, not just followed. The owner finally has the strategic bandwidth to think about what's next rather than what's now.</p>
+          <p>The business performs without constant owner involvement. Teams, both human and AI, are capable and accountable. Systems are refined not just followed. The owner finally has the strategic bandwidth to think about what's next rather than what's now.</p>
         </div>
         <div class="level-section">
           <h3>The Leader: Leader-Multiplier</h3>
-          <p>You create value through people and AI. You coach and motivate, develop leaders, and make high-quality decisions rather than many decisions. A deeper understanding of personality types and team dynamics becomes critical, not just for managing teams, but for building the leadership layer that will eventually run the business without you.</p>
+          <p>You create value through people and AI. You coach and motivate, develop leaders and make high-quality decisions rather than many decisions. A deeper understanding of personality types and team dynamics becomes critical not just for managing teams but for building the leadership layer that will eventually run the business without you.</p>
         </div>
       </div>
       <div class="level-col-right">
         <div class="level-section">
           <div class="shift-block">
-            <p class="milestone">Milestone: high-performing teams, scalable growth, and owner time freed for higher-level thinking. The path to Level 5 is now visible.</p>
+            <p class="milestone">Milestone: high-performing teams, scalable growth and owner time freed for higher-level thinking. The path to Level 5 is now visible.</p>
           </div>
         </div>
         <div class="level-section">
           <h3>If You're At Level 4</h3>
-          <p><strong>Now You're Solid.</strong> Still a little way to go to reach Level 5 and we will get you there faster and more efficiently than you thought possible. With our M2M Business Concierge we will guide you through a monthly tailored programme to empower you to refine performance and sharpen strategic decisions.</p>
+          <p><strong>Now You're Solid.</strong> Still a little way to go to reach Level 5 and we will get you there faster and more efficiently than you thought possible. With our M2M Business Concierge we will guide you through a monthly tailored programme to empower you to refine performance and sharpen strategic decisions. Start with your M2M Growth, AI &amp; Exit Audit.</p>
         </div>
         <div class="level-section">
           <div class="cta-group">
@@ -366,22 +289,22 @@
       <div class="level-col-left">
         <div class="level-section">
           <h3>The Business</h3>
-          <p>The business operates autonomously. It is no longer dependent on the owner. It can be grown further, held as a cash-generating asset, sold, or repurposed. AI probably assists operationally; managing workflows, monitoring performance, flagging exceptions, and supporting decisions.</p>
+          <p>The business operates autonomously. It is no longer dependent on the owner. It can be grown further, held as a cash-generating asset, sold, or repurposed. AI probably assists operationally; managing workflows, monitoring performance, flagging exceptions and supporting decisions.</p>
         </div>
         <div class="level-section">
           <h3>The Leader: Owner-Visionary</h3>
-          <p>You choose how and if you engage. Options include stepping back as a pseudo-chairperson, installing professional management, selling or exiting tax-efficiently, or using freed time and capital for new ventures, lifestyle, or philanthropy.</p>
+          <p>You choose how and if you engage. Options include stepping back as a pseudo-chairperson, installing professional management, selling or exiting tax-efficiently or using freed time and capital for new ventures, lifestyle, or philanthropy.</p>
         </div>
       </div>
       <div class="level-col-right">
         <div class="level-section">
           <div class="shift-block">
-            <p class="milestone">Milestone: the business runs independently. You achieve personal and professional self-actualisation — the ability to choose how you live, work, and contribute.</p>
+            <p class="milestone">Milestone: the business runs independently. You achieve personal and professional self-actualisation — the ability to choose how you live, work and contribute.</p>
           </div>
         </div>
         <div class="level-section">
           <h3>If You're At Level 5</h3>
-          <p><strong>Refining Something Significant.</strong> At this level Paul Hopewell, the mastermind behind the Miner to Millionaire Framework, dedicates his time personally to a maximum of 10 clients per year. A monthly programme tailored to each individual including the option to join up to 2 retreats per year at his Italian countryside residence. You've built something significant. He will help you prepare yourself and the business for whatever comes next whether that's continued growth, a transition to professional management, or a sale.</p>
+          <p><strong>Refining Something Significant.</strong> At this level Paul Hopewell, the mastermind behind the Miner to Millionaire Framework, dedicates his time personally to a maximum of 10 clients per year. A monthly programme tailored to each individual including the option to join up to 2 retreats per year at his Italian countryside residence. You've built something significant. He will help you prepare yourself and the business for whatever comes next whether that's continued growth, a transition to professional management or a sale.</p>
         </div>
         <div class="level-section">
           <div class="cta-group">
@@ -400,8 +323,8 @@
     <h2 class="section-title" style="margin-bottom: 6px;">Miner to Millionaire <span style="font-family: 'DM Mono', monospace; font-size: 0.45em; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(249,247,244,1); vertical-align: middle;">— The Book</span></h2>
     <p style="font-family: 'DM Mono', monospace; font-size: 0.85em; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(249,247,244,1); margin-top: 0; margin-bottom: 16px;">by Paul Hopewell</p>
     <p class="body-text" style="color: rgba(249,247,244,1);">Thirty years of lessons — the golden nuggets that compound over time. From the coal face to the boardroom, captured in one book.</p>
-    <p class="body-text" style="color: rgba(249,247,244,1);"><em>Miner to Millionaire</em> is not a business textbook. It is the collected experience of someone who built, failed, learned, and built again, and again. Every chapter contains a lesson Paul learned the hard way — so you do not have to.</p>
-    <p class="body-text" style="color: rgba(249,247,244,1);">Currently in development. Sign up to be notified when it is available.</p>
+    <p class="body-text" style="color: rgba(249,247,244,1);"><em>Miner to Millionaire</em> is not a business textbook. It is the collected experience of someone who built, failed, learned and built again and again. Every chapter contains a lesson Paul learned the hard way — so you do not have to.</p>
+    <p class="body-text" style="color: rgba(249,247,244,1);">Currently in development. Sign up to be one of the first to receive a copy.</p>
     <form id="m2m-book-form" class="form" action="#" method="POST" onsubmit="event.preventDefault(); document.getElementById('m2m-book-form').style.display='none'; document.getElementById('m2m-book-success').style.display='block';" style="max-width: 480px; margin-top: 24px;">
       <div class="form-group">
         <label for="m2m-book-email" class="form-label" style="color: var(--cream); font-size: 13px; opacity: 1;">Email address</label>

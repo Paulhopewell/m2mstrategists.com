@@ -100,7 +100,9 @@
 
       <!-- RIGHT: contact form -->
       <div>
-        <form class="form" id="contact-form" action="#" method="POST" onsubmit="event.preventDefault(); document.getElementById('contact-form').style.display='none'; document.getElementById('contact-success').style.display='block';">
+        <form class="form" id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="contact">
+          <p hidden><label>Leave this empty: <input name="bot-field"></label></p>
           <div class="form-group">
             <label for="contact-name" class="form-label">Full name</label>
             <input type="text" id="contact-name" name="name" class="form-input" placeholder="Your name" required>
@@ -171,6 +173,51 @@
   "email": "team@m2mstrategists.com",
   "description": "Growth, AI & Exit Strategy for established UK SME owners."
 }
+</script>
+<script>
+/* The form previously showed a success message and threw the submission away.
+   Netlify captures it now; if that POST fails — a local preview, or form
+   detection not yet enabled — fall back to opening the visitor's mail client
+   so the enquiry still reaches Paul instead of being silently dropped. */
+(function () {
+  var form = document.getElementById('contact-form');
+  if (!form) return;
+  var TO = 'ph@m2mstrategists.com';
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    var data = new FormData(form);
+
+    function showSuccess() {
+      form.style.display = 'none';
+      document.getElementById('contact-success').style.display = 'block';
+    }
+
+    function mailtoFallback() {
+      var subject = 'Website enquiry from ' + (data.get('name') || 'the contact form');
+      var body = [
+        'Name: ' + (data.get('name') || ''),
+        'Company: ' + (data.get('company') || ''),
+        'Email: ' + (data.get('email') || ''),
+        'Phone: ' + (data.get('phone') || ''),
+        '',
+        data.get('message') || ''
+      ].join('\n');
+      window.location.href = 'mailto:' + TO +
+        '?subject=' + encodeURIComponent(subject) +
+        '&body=' + encodeURIComponent(body);
+    }
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(data).toString()
+    }).then(function (response) {
+      if (!response.ok) throw new Error(response.status);
+      showSuccess();
+    }).catch(mailtoFallback);
+  });
+})();
 </script>
 </body>
 </html>

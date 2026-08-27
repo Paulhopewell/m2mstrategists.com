@@ -954,7 +954,9 @@ textarea.form-input {
   padding: 40px 0;
   border-top: 1px solid var(--light-line);
   position: relative;
+  background: #ffffff;
 }
+.level-card--alt { background: var(--cream); }
 
 .level-header {
   display: grid;
@@ -964,17 +966,33 @@ textarea.form-input {
   margin-bottom: 56px;
 }
 
+/* The level number sits in a circular coral-to-brass ring, in keeping with
+   the M2M roundel and the pill buttons. Inner disc matches the card ground. */
 .level-badge {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  padding-top: 4px;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  width: 104px;
+  aspect-ratio: 1;
+  flex-shrink: 0;
+  border-radius: 50%;
+  padding: 3px;
+  background: conic-gradient(from 210deg, var(--coral), var(--brass), var(--coral));
+  position: relative;
 }
+.level-badge::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: #ffffff;
+}
+.level-card--alt .level-badge::before { background: var(--cream); }
+.level-badge > * { position: relative; }
 
 .level-number {
   font-family: Georgia, serif;
-  font-size: 56px;
+  font-size: 44px;
   font-weight: 700;
   line-height: 1;
   color: var(--coral);

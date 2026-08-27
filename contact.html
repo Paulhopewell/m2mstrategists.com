@@ -175,10 +175,11 @@
 }
 </script>
 <script>
-/* The form previously showed a success message and threw the submission away.
-   Netlify captures it now; if that POST fails — a local preview, or form
-   detection not yet enabled — fall back to opening the visitor's mail client
-   so the enquiry still reaches Paul instead of being silently dropped. */
+/* Netlify Forms captures the submission and triggers netlify/functions/submission-created.js,
+   which emails the team, auto-replies to the sender, and upserts the contact in HubSpot.
+   If the POST fails — a local preview, or form detection not yet enabled — fall back to
+   opening the visitor's mail client so the enquiry still reaches Paul instead of being
+   silently dropped. */
 (function () {
   var form = document.getElementById('contact-form');
   if (!form) return;

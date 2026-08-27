@@ -805,6 +805,15 @@ a:hover { color: var(--brass); }
 }
 
 /* ─── FORMS ─── */
+/* Pale panel that lifts the contact form off the page */
+.contact-form-panel {
+  background: #ffffff;
+  border: 1px solid var(--light-line);
+  border-radius: 22px;
+  padding: clamp(26px, 3.5vw, 44px);
+  box-shadow: 0 16px 44px rgba(26, 26, 26, 0.07);
+}
+
 .form {
   display: flex;
   flex-direction: column;

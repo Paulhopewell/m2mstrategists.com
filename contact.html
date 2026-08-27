@@ -18,7 +18,7 @@
   <meta name="twitter:image" content="https://www.m2mstrategists.com/assets/images/hero-montage.jpg">
 
   <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/style.css?v=60">
+  <link rel="stylesheet" href="css/style.css?v=61">
   <link rel="icon" href="assets/images/m2m-badge.png" type="image/png">
 </head>
 <body>
@@ -101,6 +101,7 @@
 
       <!-- RIGHT: contact form -->
       <div>
+        <div class="contact-form-panel">
         <form class="form" id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="contact">
           <p hidden><label>Leave this empty: <input name="bot-field"></label></p>
@@ -126,9 +127,10 @@
           </div>
           <button type="submit" class="cta-btn cta-btn-filled">Send Message &rarr;</button>
         </form>
-        <div id="contact-success" style="display:none; margin-top: 32px; padding: 32px; border-left: 4px solid var(--coral); background: var(--cream);">
+        <div id="contact-success" style="display:none; margin-top: 32px; padding: 32px; border-left: 4px solid var(--coral); background: var(--cream); border-radius: 0 14px 14px 0;">
           <p style="font-family: Georgia, serif; font-size: 22px; margin-bottom: 12px; color: var(--dark);">Thank you for getting in touch.</p>
           <p style="color: var(--dark); opacity: 0.8;">We will be in touch within one working day.</p>
+        </div>
         </div>
       </div>
 

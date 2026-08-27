@@ -821,6 +821,17 @@ a:hover { color: var(--brass); }
 }
 
 /* ─── FORMS ─── */
+/* Contact layout: details beside the form on desktop, stacked on mobile */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 64px;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+
 /* Pale panel that lifts the contact form off the page */
 .contact-form-panel {
   background: #ffffff;
@@ -1450,6 +1461,10 @@ textarea.form-input {
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-scroll-cue::after { animation: none; opacity: 0.6; }
+}
+/* phones scroll by instinct, and the stacked hero CTAs need the room */
+@media (max-width: 700px) {
+  .hero-scroll-cue { display: none; }
 }
 
 /* Button motion on rollover: every button keeps its original look at rest,

@@ -151,7 +151,8 @@ a:hover { color: var(--brass); }
 .hero {
   background: var(--dark);
   color: var(--cream);
-  padding: 140px min(48px, 4vw) 0;
+  /* the bottom band hosts the scroll cue */
+  padding: 140px min(48px, 4vw) 96px;
   position: relative;
   overflow: hidden;
 }
@@ -1267,6 +1268,42 @@ textarea.form-input {
 @media (prefers-reduced-motion: reduce) {
   .pyr-sweep { animation: none; display: none; }
   .cta-btn-book::after { animation: none; display: none; }
+}
+
+/* Scroll cue: quiet SCROLL wordmark at the foot of the hero with a thin
+   line of light that repeatedly draws down and fades, inviting the reader on */
+.hero-scroll-cue {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(249, 247, 244, 0.65);
+  text-decoration: none;
+}
+.hero-scroll-cue:hover { color: var(--cream); }
+.hero-scroll-cue::after {
+  content: '';
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--coral), transparent);
+  animation: cueDrop 2s ease-in-out infinite;
+}
+@keyframes cueDrop {
+  0%   { transform: scaleY(0); transform-origin: top; opacity: 1; }
+  60%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
+  100% { transform: scaleY(1); transform-origin: top; opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-scroll-cue::after { animation: none; opacity: 0.6; }
 }
 
 /* Button motion on rollover: every button keeps its original look at rest,

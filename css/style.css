@@ -111,14 +111,30 @@ a:hover { color: var(--brass); }
 .nav-desktop a:hover,
 .nav-desktop a.active { color: var(--coral); }
 
+/* The audit link is the one solid block in the nav: coral bar, white text
+   like its neighbours, flashing gold on hover like every other CTA. */
 .nav-cta {
-  border: 1px solid var(--brass);
+  border: 1px solid var(--coral);
   border-radius: 999px;
   padding: 6px 16px;
+  background: var(--coral);
 }
 
+.nav-desktop a.nav-cta,
+.nav-mobile a.nav-cta { color: #ffffff; }
+
 .nav-desktop a.nav-cta:hover,
-.nav-desktop a.nav-cta.active { border-color: var(--coral); }
+.nav-mobile a.nav-cta:hover {
+  background: #c4a35a;
+  border-color: #c4a35a;
+  color: var(--dark);
+}
+
+.nav-desktop a.nav-cta.active,
+.nav-mobile a.nav-cta.active {
+  color: #ffffff;
+  border-color: #c4a35a;
+}
 
 .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
 

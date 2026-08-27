@@ -716,11 +716,38 @@ a:hover { color: var(--brass); }
 .article-card__link:hover { color: var(--brass); }
 
 /* ─── TESTIMONIAL CARDS ─── */
+/* Testimonial cards pick up the house details: white ground, generous
+   radius, a ghost quote mark, gradient avatar coins, and a gentle lift
+   with a coral edge on hover. */
 .testimonial {
-  background: var(--cream);
+  position: relative;
+  background: #ffffff;
   border: 1px solid var(--light-line);
-  padding: 32px;
-  border-radius: 4px;
+  padding: 40px 32px 28px;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.testimonial::before {
+  content: '\201C';
+  position: absolute;
+  top: -14px;
+  left: 18px;
+  font-family: Georgia, serif;
+  font-size: 120px;
+  line-height: 1;
+  color: var(--coral);
+  opacity: 0.14;
+  pointer-events: none;
+}
+.testimonial:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 46px rgba(26, 26, 26, 0.13);
+  border-color: rgba(194, 93, 69, 0.35);
+}
+@media (prefers-reduced-motion: reduce) {
+  .testimonial:hover { transform: none; box-shadow: none; }
 }
 
 .testimonial blockquote {
@@ -742,16 +769,17 @@ a:hover { color: var(--brass); }
 }
 
 .testimonial__avatar {
-  width: 44px;
-  height: 44px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
-  background: var(--brass-light);
+  background: linear-gradient(135deg, var(--coral), var(--brass));
+  box-shadow: 0 4px 12px rgba(194, 93, 69, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  color: var(--brass);
+  font-size: 12px;
+  color: var(--cream);
   flex-shrink: 0;
 }
 

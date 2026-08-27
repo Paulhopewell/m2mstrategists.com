@@ -113,8 +113,8 @@ a:hover { color: var(--brass); }
 
 .nav-cta {
   border: 1px solid var(--brass);
-  border-radius: 4px;
-  padding: 6px 14px;
+  border-radius: 999px;
+  padding: 6px 16px;
 }
 
 .nav-desktop a.nav-cta:hover,
@@ -442,6 +442,8 @@ a:hover { color: var(--brass); }
   cursor: pointer;
   background: none;
   align-self: flex-start;
+  /* rounded off to echo the circular M2M badge */
+  border-radius: 999px;
 }
 
 .cta-btn-primary,

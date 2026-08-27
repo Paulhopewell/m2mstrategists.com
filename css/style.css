@@ -462,7 +462,12 @@ a:hover { color: var(--brass); }
   color: var(--cream);
 }
 .cta-btn-filled:hover,
-.btn-filled:hover { background: var(--brass); border-color: var(--brass); color: var(--cream); }
+.btn-filled:hover {
+  /* the bright gold of the header's top line, with dark text for contrast */
+  background: #c4a35a;
+  border-color: #c4a35a;
+  color: var(--dark);
+}
 
 /* ─── THE BOOKING BUTTON ───
    The one control on the site that actually takes a client to payment, so it
@@ -479,10 +484,10 @@ a:hover { color: var(--brass); }
   outline-offset: 5px;
 }
 .cta-btn-book:hover {
-  background: var(--brass);
-  border-color: var(--brass);
-  outline-color: var(--brass);
-  color: var(--cream);
+  background: #c4a35a;
+  border-color: #c4a35a;
+  outline-color: #c4a35a;
+  color: var(--dark);
 }
 
 /* The crest, borrowed from .pyr-sweep: a soft band, brightest at its centre,

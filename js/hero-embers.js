@@ -23,16 +23,16 @@
   resize();
   window.addEventListener('resize', resize);
 
-  var COUNT = Math.min(46, Math.floor(window.innerWidth / 30));
+  var COUNT = Math.min(72, Math.floor(window.innerWidth / 19));
   var embers = [];
   function newEmber(anyY) {
     return {
       x: Math.random() * (W || 1),
       y: anyY ? Math.random() * (H || 1) : (H || 1) + 10,
-      r: (0.6 + Math.random() * 1.8) * devicePixelRatio,
+      r: (1.0 + Math.random() * 2.6) * devicePixelRatio,
       vy: (0.15 + Math.random() * 0.45) * devicePixelRatio,
       vx: (Math.random() - 0.5) * 0.25 * devicePixelRatio,
-      a: 0.15 + Math.random() * 0.5,
+      a: 0.3 + Math.random() * 0.55,
       tw: Math.random() * Math.PI * 2,
       warm: Math.random() > 0.35
     };
@@ -47,10 +47,17 @@
       var alpha = p.a * (0.6 + 0.4 * Math.sin(ts * 0.002 + p.tw));
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = p.warm
-        ? 'rgba(224, 140, 90, ' + alpha + ')'
-        : 'rgba(249, 230, 200, ' + alpha * 0.7 + ')';
+      if (p.warm) {
+        ctx.fillStyle = 'rgba(224, 140, 90, ' + alpha + ')';
+        ctx.shadowColor = 'rgba(224, 140, 90, 0.85)';
+        ctx.shadowBlur = 8 * devicePixelRatio;
+      } else {
+        ctx.fillStyle = 'rgba(249, 230, 200, ' + alpha * 0.8 + ')';
+        ctx.shadowColor = 'rgba(249, 230, 200, 0.6)';
+        ctx.shadowBlur = 5 * devicePixelRatio;
+      }
       ctx.fill();
+      ctx.shadowBlur = 0;
       if (p.y < -12) embers[idx] = newEmber(false);
     });
     requestAnimationFrame(loop);

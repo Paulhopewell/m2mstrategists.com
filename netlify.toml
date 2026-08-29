@@ -4,3 +4,10 @@
 
 [functions]
   directory = "netlify/functions"
+
+# Articles is parked until it has real content (branch: articles-parked).
+# Temporary redirect so old links land on the homepage instead of a 404.
+[[redirects]]
+  from = "/articles.html"
+  to = "/"
+  status = 302

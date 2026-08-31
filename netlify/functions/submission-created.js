@@ -61,10 +61,58 @@ async function upsertHubspotContact(token, { email, name, company, phone }) {
   return res;
 }
 
+// Per-form email copy. Any form not listed falls back to the contact wording.
+function emailCopy(formName, firstName) {
+  const hi = `Hi ${firstName || 'there'},`;
+  if (formName === 'keep-in-touch') {
+    return {
+      adminSubject: (name) => `Keep-in-touch sign-up from ${name || 'the framework page'}`,
+      clientSubject: "You're on the list — M2M Strategists",
+      clientBody: [
+        hi,
+        '',
+        "Thank you for signing up to keep in touch with M2M Growth, AI & Exit Strategists. From time to time we will send you practical material to help you move your business up the levels of the Miner to Millionaire Framework.",
+        '',
+        "When you are ready to accelerate, our M2M Growth, AI & Exit Audit is the place to start.",
+        '',
+        'Best,',
+        'The M2M Team',
+      ].join('\n'),
+    };
+  }
+  if (formName === 'book-enquiry') {
+    return {
+      adminSubject: (name) => `Book enquiry from ${name || 'the framework page'}`,
+      clientSubject: "Miner to Millionaire — you're on the list",
+      clientBody: [
+        hi,
+        '',
+        "Thank you for your interest in Miner to Millionaire by our founder, Paul Hopewell. The book is currently in development; you are on the list and we will let you know as soon as it launches.",
+        '',
+        'Best,',
+        'The M2M Team',
+      ].join('\n'),
+    };
+  }
+  return {
+    adminSubject: (name) => `Website enquiry from ${name || 'the contact form'}`,
+    clientSubject: 'Thanks for reaching out to M2M Strategists',
+    clientBody: [
+      hi,
+      '',
+      "Thank you for getting in touch with M2M Growth, AI & Exit Strategists. We've received your message and someone from the team will be in touch within one working day.",
+      '',
+      'Best,',
+      'The M2M Team',
+    ].join('\n'),
+  };
+}
+
 exports.handler = async (event) => {
   try {
     const body = JSON.parse(event.body || '{}');
     const data = (body.payload && body.payload.data) || {};
+    const formName = (body.payload && body.payload.form_name) || data['form-name'] || 'contact';
 
     if (data['bot-field']) {
       return { statusCode: 200, body: 'ignored: honeypot' };
@@ -83,6 +131,7 @@ exports.handler = async (event) => {
     const resendKey = process.env.RESEND_API_KEY;
     const hubspotToken = process.env.HUBSPOT_TOKEN;
 
+    const copy = emailCopy(formName, name ? name.split(/\s+/)[0] : '');
     const tasks = [];
 
     if (resendKey) {
@@ -91,8 +140,9 @@ exports.handler = async (event) => {
           from: FROM_EMAIL,
           to: ADMIN_EMAIL,
           reply_to: email,
-          subject: `Website enquiry from ${name || 'the contact form'}`,
+          subject: copy.adminSubject(name),
           text: [
+            `Form: ${formName}`,
             `Name: ${name}`,
             `Company: ${company}`,
             `Email: ${email}`,
@@ -107,15 +157,8 @@ exports.handler = async (event) => {
         sendEmail(resendKey, {
           from: FROM_EMAIL,
           to: email,
-          subject: 'Thanks for reaching out to M2M Strategists',
-          text: [
-            `Hi ${name ? name.split(/\s+/)[0] : 'there'},`,
-            '',
-            "Thank you for getting in touch with M2M Growth, AI & Exit Strategists. We've received your message and our founder, Paul, will be in touch shortly.",
-            '',
-            'Best,',
-            'The M2M Team',
-          ].join('\n'),
+          subject: copy.clientSubject,
+          text: copy.clientBody,
         })
       );
     } else {

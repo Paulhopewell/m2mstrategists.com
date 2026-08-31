@@ -133,7 +133,24 @@
         <div class="level-section">
           <div class="cta-group">
             <a href="ai-growth-audit.html#book-form" class="cta-btn cta-btn-filled">Book Your M2M Growth, AI &amp; Exit Audit &rarr;</a>
-            <a href="#" class="cta-btn cta-btn-outline">Keep In Touch &rarr;</a>
+            <a href="#keep-in-touch-form" id="keep-in-touch-toggle" class="cta-btn cta-btn-outline" aria-expanded="false" aria-controls="keep-in-touch-form">Keep In Touch &rarr;</a>
+          </div>
+          <form id="keep-in-touch-form" class="form" name="keep-in-touch" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="display:none; max-width: 480px; margin-top: 24px;">
+            <input type="hidden" name="form-name" value="keep-in-touch">
+            <p hidden><label>Don't fill this out: <input name="bot-field"></label></p>
+            <div class="form-group">
+              <label for="kit-name" class="form-label">Full name</label>
+              <input type="text" id="kit-name" name="name" class="form-input" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label for="kit-email" class="form-label">Email address</label>
+              <input type="email" id="kit-email" name="email" class="form-input" placeholder="you@company.com" required>
+            </div>
+            <button type="submit" class="cta-btn cta-btn-filled">Keep Me Posted &rarr;</button>
+          </form>
+          <div id="keep-in-touch-success" style="display:none; margin-top: 24px; max-width: 480px; padding: 24px; border-left: 4px solid var(--coral); background: var(--cream);">
+            <p style="font-family: Georgia, serif; font-size: 18px; color: var(--dark); margin-bottom: 8px;">You're on the list.</p>
+            <p style="font-size: 15px; color: var(--dark); opacity: 0.8;">Thank you; we've sent a confirmation to your inbox and will be in touch with material to help you move up the levels.</p>
           </div>
         </div>
       </div>
@@ -268,7 +285,7 @@
         <div class="level-section">
           <div class="cta-group">
             <a href="ai-growth-audit.html#book-form" class="cta-btn cta-btn-filled">Book Your Audit &rarr;</a>
-            <a href="#" class="cta-btn cta-btn-outline">Book a Call with Paul &rarr;</a>
+            <a href="https://calendly.com/ph-paulhopewell/book-a-call-with-paul" target="_blank" rel="noopener" class="cta-btn cta-btn-outline">Book a Call with Paul &rarr;</a>
           </div>
         </div>
       </div>
@@ -313,7 +330,7 @@
         <div class="level-section">
           <div class="cta-group">
             <a href="ai-growth-audit.html#book-form" class="cta-btn cta-btn-filled">Book Your Audit &rarr;</a>
-            <a href="#" class="cta-btn cta-btn-outline">Book a Call with Paul &rarr;</a>
+            <a href="https://calendly.com/ph-paulhopewell/book-a-call-with-paul" target="_blank" rel="noopener" class="cta-btn cta-btn-outline">Book a Call with Paul &rarr;</a>
           </div>
         </div>
       </div>
@@ -329,7 +346,9 @@
     <p class="body-text" style="color: rgba(249,247,244,1);">Thirty years of lessons — the golden nuggets that compound over time. From the coal face to the boardroom, captured in one book.</p>
     <p class="body-text" style="color: rgba(249,247,244,1);"><em>Miner to Millionaire</em> is not a business textbook. It is the collected experience of someone who built, failed, learned and built again and again. Every chapter contains a lesson Paul learned the hard way — so you do not have to.</p>
     <p class="body-text" style="color: rgba(249,247,244,1);">Currently in development. Sign up to be one of the first to receive a copy.</p>
-    <form id="m2m-book-form" class="form" action="#" method="POST" onsubmit="event.preventDefault(); document.getElementById('m2m-book-form').style.display='none'; document.getElementById('m2m-book-success').style.display='block';" style="max-width: 480px; margin-top: 24px;">
+    <form id="m2m-book-form" class="form" name="book-enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="max-width: 480px; margin-top: 24px;">
+      <input type="hidden" name="form-name" value="book-enquiry">
+      <p hidden><label>Don't fill this out: <input name="bot-field"></label></p>
       <div class="form-group">
         <label for="m2m-book-email" class="form-label" style="color: var(--cream); font-size: 13px; opacity: 1;">Email address</label>
         <input type="email" id="m2m-book-email" name="email" class="form-input" placeholder="you@company.com" required>
@@ -338,7 +357,7 @@
     </form>
     <div id="m2m-book-success" style="display:none; margin-top: 24px; max-width: 480px; padding: 24px; border-left: 4px solid var(--cream); background: rgba(249,247,244,0.08);">
       <p style="font-family: Georgia, serif; font-size: 18px; color: var(--cream); margin-bottom: 8px;">You're on the list.</p>
-      <p style="font-size: 15px; color: rgba(249,247,244,1);">We'll be in touch when the book launches.</p>
+      <p style="font-size: 15px; color: rgba(249,247,244,1);">We've sent a confirmation to your inbox and will be in touch when the book launches.</p>
     </div>
   </div>
 </section>
@@ -381,6 +400,53 @@
   "email": "team@m2mstrategists.com",
   "description": "Growth, AI & Exit Strategy for established UK SME owners."
 }
+</script>
+<script>
+/* Both forms post to Netlify Forms; netlify/functions/submission-created.js then
+   emails the team, sends the client a confirmation, and upserts the contact in
+   HubSpot. On a local preview or before form detection is enabled, the POST
+   fails and we fall back to the visitor's mail client so nothing is lost. */
+(function () {
+  var TO = 'team@m2mstrategists.com';
+
+  function wire(formId, successId, mailtoSubject) {
+    var form = document.getElementById(formId);
+    if (!form) return;
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      var data = new FormData(form);
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data).toString()
+      }).then(function (response) {
+        if (!response.ok) throw new Error(response.status);
+        form.style.display = 'none';
+        document.getElementById(successId).style.display = 'block';
+      }).catch(function () {
+        var body = ['Name: ' + (data.get('name') || ''), 'Email: ' + (data.get('email') || '')].join('\n');
+        window.location.href = 'mailto:' + TO +
+          '?subject=' + encodeURIComponent(mailtoSubject) +
+          '&body=' + encodeURIComponent(body);
+      });
+    });
+  }
+
+  wire('keep-in-touch-form', 'keep-in-touch-success', 'Keep in touch sign-up');
+  wire('m2m-book-form', 'm2m-book-success', 'Miner to Millionaire book enquiry');
+
+  var toggle = document.getElementById('keep-in-touch-toggle');
+  var kitForm = document.getElementById('keep-in-touch-form');
+  if (toggle && kitForm) {
+    toggle.addEventListener('click', function (event) {
+      event.preventDefault();
+      var open = kitForm.style.display !== 'none';
+      kitForm.style.display = open ? 'none' : 'block';
+      toggle.setAttribute('aria-expanded', String(!open));
+      if (!open) document.getElementById('kit-name').focus();
+    });
+  }
+})();
 </script>
 <script src="js/hero-embers.js" defer></script>
 <script src="js/scroll-reveal.js" defer></script>

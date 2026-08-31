@@ -162,7 +162,7 @@ function emailCopy(formName, firstName) {
         '',
         "Thank you for your interest in 'Miner to Millionaire' - the book, by Paul Hopewell. It is currently under development and you are now on the list. We will be sure to let you know as soon as it launches!",
         '',
-        'All the Best,',
+        'All the best,',
         '',
         'The Team at M2M Strategists',
       ].join('\n'),

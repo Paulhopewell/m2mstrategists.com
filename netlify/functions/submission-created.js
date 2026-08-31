@@ -136,7 +136,6 @@ function brandedHtml(bodyText) {
 
 // Per-form email copy. Any form not listed falls back to the contact wording.
 function emailCopy(formName, firstName) {
-  const hi = `Hi ${firstName || 'there'},`;
   if (formName === 'keep-in-touch') {
     return {
       adminSubject: (name) => `Keep-in-touch sign-up from ${name || 'the framework page'}`,
@@ -173,12 +172,13 @@ function emailCopy(formName, firstName) {
     adminSubject: (name) => `Website enquiry from ${name || 'the contact form'}`,
     clientSubject: 'Thanks for reaching out to M2M Strategists',
     clientBody: [
-      hi,
+      `Hello ${firstName || 'there'},`,
       '',
-      "Thank you for getting in touch with M2M Growth, AI & Exit Strategists. We've received your message and someone from the team will be in touch within one working day.",
+      "Thank you for getting in touch with M2M Strategists. We've received your message and someone from the team will be in touch soon!",
       '',
-      'Best,',
-      'The M2M Team',
+      'All the best,',
+      '',
+      'The Team at M2M Strategists',
     ].join('\n'),
   };
 }

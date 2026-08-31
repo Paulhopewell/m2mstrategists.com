@@ -5,6 +5,8 @@
 
 const RESEND_URL = 'https://api.resend.com/emails';
 const HUBSPOT_URL = 'https://api.hubapi.com/crm/v3/objects/contacts/batch/upsert';
+const HUBSPOT_PROPS_URL = 'https://api.hubapi.com/crm/v3/properties/contacts';
+const LEAD_SOURCE_PROP = 'lead_source_form';
 const ADMIN_EMAIL = 'team@m2mstrategists.com';
 const FROM_EMAIL = 'M2M Strategists <team@m2mstrategists.com>';
 
@@ -31,33 +33,74 @@ async function sendEmail(apiKey, payload) {
   return res;
 }
 
-async function upsertHubspotContact(token, { email, name, company, phone }) {
-  const { firstname, lastname } = splitName(name);
-  const res = await fetch(HUBSPOT_URL, {
+function hubspotHeaders(token) {
+  return {
+    Authorization: `Bearer ${token}`,
+    'Content-Type': 'application/json',
+  };
+}
+
+async function hubspotUpsert(token, email, properties) {
+  return fetch(HUBSPOT_URL, {
     method: 'POST',
-    headers: {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json',
-    },
+    headers: hubspotHeaders(token),
     body: JSON.stringify({
-      inputs: [
-        {
-          id: email,
-          idProperty: 'email',
-          properties: {
-            email,
-            firstname: firstname || undefined,
-            lastname: lastname || undefined,
-            company: company || undefined,
-            phone: phone || undefined,
-          },
-        },
-      ],
+      inputs: [{ id: email, idProperty: 'email', properties }],
     }),
   });
-  if (!res.ok) {
-    console.error('HubSpot error', res.status, await res.text());
+}
+
+// Creates the custom contact property the first time it is needed, so no manual
+// HubSpot setup is required. 409 = already exists, which is fine.
+async function createLeadSourceProperty(token) {
+  const res = await fetch(HUBSPOT_PROPS_URL, {
+    method: 'POST',
+    headers: hubspotHeaders(token),
+    body: JSON.stringify({
+      name: LEAD_SOURCE_PROP,
+      label: 'Lead source (website form)',
+      type: 'string',
+      fieldType: 'text',
+      groupName: 'contactinformation',
+      description:
+        'Which m2mstrategists.com form the contact last submitted: contact, keep-in-touch or book-enquiry.',
+    }),
+  });
+  if (!res.ok && res.status !== 409) {
+    console.error('HubSpot property create error', res.status, await res.text());
+    return false;
   }
+  return true;
+}
+
+async function upsertHubspotContact(token, { email, name, company, phone, formName }) {
+  const { firstname, lastname } = splitName(name);
+  const base = {
+    email,
+    firstname: firstname || undefined,
+    lastname: lastname || undefined,
+    company: company || undefined,
+    phone: phone || undefined,
+  };
+
+  let res = await hubspotUpsert(token, email, { ...base, [LEAD_SOURCE_PROP]: formName });
+  if (res.ok) return res;
+
+  let errText = await res.text();
+  if (res.status === 400 && errText.includes(LEAD_SOURCE_PROP)) {
+    if (await createLeadSourceProperty(token)) {
+      res = await hubspotUpsert(token, email, { ...base, [LEAD_SOURCE_PROP]: formName });
+      if (res.ok) return res;
+      errText = await res.text();
+    }
+    // Never lose the lead over the source stamp — capture the core details anyway.
+    res = await hubspotUpsert(token, email, base);
+    if (res.ok) {
+      console.error('HubSpot: contact saved without lead source', errText);
+      return res;
+    }
+  }
+  console.error('HubSpot error', res.status, await res.text().catch(() => errText));
   return res;
 }
 
@@ -166,7 +209,7 @@ exports.handler = async (event) => {
     }
 
     if (hubspotToken) {
-      tasks.push(upsertHubspotContact(hubspotToken, { email, name, company, phone }));
+      tasks.push(upsertHubspotContact(hubspotToken, { email, name, company, phone, formName }));
     } else {
       console.error('HUBSPOT_TOKEN not set; skipping HubSpot upsert');
     }

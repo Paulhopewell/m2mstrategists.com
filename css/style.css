@@ -111,6 +111,22 @@ a:hover { color: var(--brass); }
 .nav-desktop a:hover,
 .nav-desktop a.active { color: var(--coral); }
 
+/* The portal link closes the nav on the right: a gold-ringed pill, quieter
+   than the coral audit bar, taking clients straight to their sign-in. */
+.nav-portal {
+  border: 1px solid #c4a35a;
+  border-radius: 999px;
+  padding: 6px 16px;
+}
+.nav-desktop a.nav-portal,
+.nav-mobile a.nav-portal { color: #ffffff; }
+.nav-desktop a.nav-portal:hover,
+.nav-mobile a.nav-portal:hover {
+  background: #c4a35a;
+  border-color: #c4a35a;
+  color: var(--dark);
+}
+
 /* The audit link is the one solid block in the nav: coral bar, white text
    like its neighbours, flashing gold on hover like every other CTA. */
 .nav-cta {

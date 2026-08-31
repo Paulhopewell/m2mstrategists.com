@@ -1539,3 +1539,20 @@ textarea.form-input {
   opacity: 1;
   transform: none;
 }
+
+/* ─── KEEP IN TOUCH INLINE FORM (framework page) ─── */
+/* The revealed form and its success note sit directly under the CTA pair;
+   each button there is flex: 1 (half the row minus half the 16px gap), so
+   this width keeps the input bars the same length as the button above. */
+#keep-in-touch-form,
+#keep-in-touch-success {
+  max-width: calc(50% - 8px);
+  margin-top: 32px;
+}
+
+@media (max-width: 600px) {
+  #keep-in-touch-form,
+  #keep-in-touch-success {
+    max-width: 100%;
+  }
+}

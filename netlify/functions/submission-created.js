@@ -159,12 +159,13 @@ function emailCopy(formName, firstName) {
       adminSubject: (name) => `Book enquiry from ${name || 'the framework page'}`,
       clientSubject: "Miner to Millionaire — you're on the list",
       clientBody: [
-        hi,
+        `Hello ${firstName || 'there'},`,
         '',
-        "Thank you for your interest in Miner to Millionaire by our founder, Paul Hopewell. The book is currently in development; you are on the list and we will let you know as soon as it launches.",
+        "Thank you for your interest in 'Miner to Millionaire' - the book, by Paul Hopewell. It is currently under development and you are now on the list. We will be sure to let you know as soon as it launches!",
         '',
-        'Best,',
-        'The M2M Team',
+        'All the Best,',
+        '',
+        'The Team at M2M Strategists',
       ].join('\n'),
     };
   }

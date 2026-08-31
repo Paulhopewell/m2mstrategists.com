@@ -104,6 +104,36 @@ async function upsertHubspotContact(token, { email, name, company, phone, formNa
   return res;
 }
 
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, (c) => (
+    { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
+  ));
+}
+
+// Wraps the plain-text body in the site's branding: cream ground, coral rule,
+// M2M badge, dark text, contact footer. The text version is still sent alongside.
+function brandedHtml(bodyText) {
+  const paragraphs = bodyText
+    .split('\n')
+    .filter((line) => line.trim() !== '')
+    .map((line) => `<p style="margin:0 0 16px; font-family:Helvetica,Arial,sans-serif; font-size:15px; line-height:1.6; color:#1A1A1A;">${escapeHtml(line)}</p>`)
+    .join('\n');
+
+  return [
+    '<div style="background:#F9F7F4; padding:32px 16px;">',
+    '  <div style="max-width:560px; margin:0 auto; background:#FFFFFF; border-top:4px solid #C25D45; padding:40px 40px 32px;">',
+    '    <img src="https://www.m2mstrategists.com/assets/images/m2m-badge.png" alt="M2M Growth, AI &amp; Exit Strategists" width="72" style="display:block; margin:0 0 28px;">',
+    paragraphs,
+    '  </div>',
+    '  <div style="max-width:560px; margin:0 auto; padding:20px 40px 0; font-family:Helvetica,Arial,sans-serif; font-size:12px; line-height:1.7; color:#806339;">',
+    '    <p style="margin:0;">M2M Business Growth, AI &amp; Exit Strategists LLC</p>',
+    '    <p style="margin:0;">Tornado Tower, Floor 22, West Bay, Doha, Qatar</p>',
+    '    <p style="margin:0;"><a href="mailto:team@m2mstrategists.com" style="color:#AA513C;">team@m2mstrategists.com</a> &middot; <a href="https://www.m2mstrategists.com" style="color:#AA513C;">www.m2mstrategists.com</a></p>',
+    '  </div>',
+    '</div>',
+  ].join('\n');
+}
+
 // Per-form email copy. Any form not listed falls back to the contact wording.
 function emailCopy(formName, firstName) {
   const hi = `Hi ${firstName || 'there'},`;
@@ -112,14 +142,15 @@ function emailCopy(formName, firstName) {
       adminSubject: (name) => `Keep-in-touch sign-up from ${name || 'the framework page'}`,
       clientSubject: "You're on the list — M2M Strategists",
       clientBody: [
-        hi,
+        `Hello ${firstName || 'there'},`,
         '',
-        "Thank you for signing up to keep in touch with M2M Growth, AI & Exit Strategists. From time to time we will send you practical material to help you move your business up the levels of the Miner to Millionaire Framework.",
+        'Thank you for signing up to keep in touch with M2M Growth, AI & Exit Strategists. From time to time we will send you practical material to help you move your business up the levels of the Miner to Millionaire (M2M) Framework.',
         '',
-        "When you are ready to accelerate, our M2M Growth, AI & Exit Audit is the place to start.",
+        'When you are ready to accelerate, our M2M Growth, AI & Exit Audit is the place to start.',
         '',
-        'Best,',
-        'The M2M Team',
+        'All the best,',
+        '',
+        'The Team at M2M Strategists',
       ].join('\n'),
     };
   }
@@ -202,6 +233,7 @@ exports.handler = async (event) => {
           to: email,
           subject: copy.clientSubject,
           text: copy.clientBody,
+          html: brandedHtml(copy.clientBody),
         })
       );
     } else {

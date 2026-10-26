@@ -122,13 +122,13 @@ function brandedHtml(bodyText) {
   return [
     '<div style="background:#F9F7F4; padding:32px 16px;">',
     '  <div style="max-width:560px; margin:0 auto; background:#FFFFFF; border-top:4px solid #C25D45; padding:40px 40px 32px;">',
-    '    <img src="https://www.m2mstrategists.com/assets/images/m2m-badge.png" alt="M2M Growth, AI &amp; Exit Strategists" width="72" style="display:block; margin:0 0 28px;">',
+    '    <img src="https://m2mstrategists.com/assets/images/m2m-badge.png" alt="M2M Growth, AI &amp; Exit Strategists" width="72" style="display:block; margin:0 0 28px;">',
     paragraphs,
     '  </div>',
     '  <div style="max-width:560px; margin:0 auto; padding:20px 40px 0; font-family:Helvetica,Arial,sans-serif; font-size:12px; line-height:1.7; color:#806339;">',
     '    <p style="margin:0;">M2M Business Growth, AI &amp; Exit Strategists LLC</p>',
     '    <p style="margin:0;">Tornado Tower, Floor 22, West Bay, Doha, Qatar</p>',
-    '    <p style="margin:0;"><a href="mailto:team@m2mstrategists.com" style="color:#AA513C;">team@m2mstrategists.com</a> &middot; <a href="https://www.m2mstrategists.com" style="color:#AA513C;">www.m2mstrategists.com</a></p>',
+    '    <p style="margin:0;"><a href="mailto:team@m2mstrategists.com" style="color:#AA513C;">team@m2mstrategists.com</a> &middot; <a href="https://m2mstrategists.com" style="color:#AA513C;">m2mstrategists.com</a></p>',
     '  </div>',
     '</div>',
   ].join('\n');

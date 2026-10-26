@@ -502,10 +502,10 @@ a:hover { color: var(--brass); }
 }
 
 /* ─── THE BOOKING BUTTON ───
-   The one control on the site that actually takes a client to payment, so it
-   is allowed to look like nothing else: the filled block sits inside its own
-   thin ring with clear space between, and the same band of light that crosses
-   the framework pyramid crosses it. */
+   The one control on the site that takes a client to the portal sign-up page,
+   so it is allowed to look like nothing else: the filled block sits inside its
+   own thin ring with clear space between, and the same band of light that
+   crosses the framework pyramid crosses it. */
 .cta-btn-book {
   position: relative;
   overflow: hidden;
@@ -1387,9 +1387,10 @@ textarea.form-input {
   .cta-btn-book::after { animation: none; display: none; }
 }
 
-/* Money-back seal: circular badge echoing the M2M roundel — ring of slowly
-   revolving DM Mono text around a glowing 100% core. Sits beside the
-   guarantee copy on desktop, below it on narrow screens. */
+/* Round seal: circular badge echoing the M2M roundel. A ring of slowly
+   revolving DM Mono text sits around a glowing core. Beside the copy on
+   desktop, below it on narrow screens. The words in the ring are set in
+   the HTML. */
 .guarantee-flex {
   display: flex;
   align-items: center;
@@ -1565,5 +1566,196 @@ textarea.form-input {
   #keep-in-touch-form,
   #keep-in-touch-success {
     max-width: 100%;
+  }
+}
+
+/* ============================================================
+   FREE OFFER — remove this entire block on 1 December 2026
+   October and November 2026: the Growth, AI & Exit Audit is free.
+   Usual fee £1,495. Signing up takes no payment.
+   Also delete every HTML block marked FREE-OFFER-START / FREE-OFFER-END
+   and restore every RESTORE-ON-1-DEC comment.
+   Steps for Rosita: README.md, "Switching off the free audit offer".
+   This block adds no animation. The seal spin already stops when the
+   visitor has prefers-reduced-motion set.
+   ============================================================ */
+
+body.has-free-offer {
+  --offer-banner-h: 44px;
+}
+
+/* Two lines of banner text. One line fits from about 500px up. */
+@media (max-width: 520px) {
+  body.has-free-offer { --offer-banner-h: 60px; }
+}
+
+body.has-free-offer .offer-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 110;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: var(--offer-banner-h);
+  margin: 0;
+  padding: 8px 18px;
+  background: var(--coral);
+  color: var(--cream);
+  font-family: 'DM Sans', 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+  text-align: center;
+  text-decoration: none;
+  text-wrap: balance;
+}
+
+body.has-free-offer .offer-banner:hover,
+body.has-free-offer .offer-banner:focus,
+body.has-free-offer .offer-banner:focus-visible {
+  color: #ffffff;
+  background: var(--coral-text);
+}
+
+body.has-free-offer .offer-banner:focus-visible {
+  outline: 2px solid var(--cream);
+  outline-offset: -4px;
+}
+
+/* Keep the fixed nav and the mobile menu clear of the banner. */
+body.has-free-offer .site-header {
+  top: var(--offer-banner-h);
+}
+
+body.has-free-offer .nav-mobile {
+  top: calc(93px + var(--offer-banner-h));
+}
+
+body.has-free-offer .hero {
+  padding-top: calc(140px + var(--offer-banner-h));
+}
+
+body.has-free-offer .skip-link:focus {
+  top: calc(var(--offer-banner-h) + 8px);
+}
+
+body.has-free-offer #book-form {
+  scroll-margin-top: calc(128px + var(--offer-banner-h));
+}
+
+/* Struck-through usual fee, with FREE beside it. */
+.price-offer {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.45em;
+  flex-wrap: wrap;
+}
+
+.price-was,
+.price-free {
+  white-space: nowrap;
+}
+
+.price-was {
+  color: var(--brass);
+  font-weight: 500;
+  text-decoration-line: line-through;
+  text-decoration-thickness: 0.08em;
+  text-decoration-color: currentColor;
+  text-decoration-skip-ink: none;
+}
+
+.cta-btn-dark .price-was,
+.section-dark .price-was,
+.audit-price .price-was {
+  color: #c4a35a;
+}
+
+.price-free {
+  color: var(--coral);
+  font-family: Georgia, serif;
+  font-weight: 700;
+  font-size: 1.45em;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+/* Small FREE on a cream button uses the accessible coral. */
+.cta-btn-outline .price-free {
+  color: var(--coral-text);
+}
+
+.cta-btn-outline:hover .price-was {
+  color: #c4a35a;
+}
+
+.cta-btn-outline:hover .price-free {
+  color: var(--coral);
+}
+
+.cta-btn-dark:hover .price-was {
+  color: var(--brass);
+}
+
+.cta-btn-dark:hover .price-free {
+  color: var(--coral-text);
+}
+
+.audit-price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.06em 0.22em;
+  margin: 32px 0 14px;
+  font-family: Georgia, serif;
+  font-size: clamp(48px, 8vw, 96px);
+  line-height: 0.95;
+}
+
+.audit-price .price-was {
+  font-size: 0.62em;
+}
+
+.audit-price .price-free {
+  font-size: 1em;
+}
+
+.offer-price-note {
+  margin: 0 0 8px;
+  font-family: 'DM Sans', 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+  line-height: 1.45;
+  text-align: left;
+  color: var(--cream);
+}
+
+.offer-price-note--next {
+  margin-bottom: 24px;
+  font-weight: 500;
+  color: #c4a35a;
+}
+
+body.has-free-offer .seal-core .pct {
+  font-size: clamp(26px, 3.2vw, 34px);
+  letter-spacing: 0.04em;
+}
+
+body.has-free-offer .seal-core .lbl {
+  max-width: 8.2em;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  line-height: 1.35;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.has-free-offer .offer-banner {
+    transition: none;
   }
 }

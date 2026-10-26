@@ -66,7 +66,7 @@ When told "follow Option B" or "apply the brand guidelines", switch to:
 
 ## Domain
 
-- URLs in canonical / OG / Twitter / JSON-LD tags use `https://www.m2mstrategists.com` (57 occurrences)
+- URLs in canonical / OG / Twitter / JSON-LD tags use `https://m2mstrategists.com`
 - Contact email `team@m2mstrategists.com` (30 occurrences)
 - **Note:** the framework brand name "Miner to Millionaire" is deliberately unrelated to the domain and must never be swapped in a domain find-and-replace (10 occurrences in visible copy)
 - The repo directory is `m2mstrategists.com`, matching the public website and GitHub repository

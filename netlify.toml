@@ -1,6 +1,13 @@
+# Publish only the public site. The build copies pages, CSS, JS and images
+# into site/. Notes, changelogs, the article template and this functions
+# folder are left out of that copy, so they are not served as website files.
+# Functions are deployed from the directory below, which is outside site/.
+# Netlify's own guidance is to keep the functions directory out of publish
+# so the source is not deployed as part of the site. Form detection still
+# sees the copied HTML, which keeps data-netlify="true" on the three forms.
 [build]
-  command = "# no build command"
-  publish = "."
+  command = "bash scripts/publish-site.sh"
+  publish = "site"
 
 [functions]
   directory = "netlify/functions"

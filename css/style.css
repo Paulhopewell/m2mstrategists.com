@@ -1002,9 +1002,20 @@ textarea.form-input {
 }
 
 /* ─── DISCLAIMER ─── */
-.disclaimer {
+/* Type shared with the legal page body. The Clients note also adds the
+   italic and the tinted rule below; those stay on the short note only. */
+.disclaimer,
+.article-content.article-content--note p,
+.article-content.article-content--note ul,
+.article-content.article-content--note ol,
+.article-content.article-content--note li {
   font-size: 14px;
+  font-weight: 300;
+  line-height: 1.75;
   color: var(--brass);
+}
+
+.disclaimer {
   font-style: italic;
   padding: 20px 24px;
   background: var(--brass-light);

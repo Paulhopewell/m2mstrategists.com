@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://m2mstrategists.com/sitemap.xml

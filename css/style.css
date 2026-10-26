@@ -1584,12 +1584,9 @@ body.has-free-offer {
   --offer-banner-h: 44px;
 }
 
-@media (max-width: 720px) {
-  body.has-free-offer { --offer-banner-h: 68px; }
-}
-
-@media (max-width: 400px) {
-  body.has-free-offer { --offer-banner-h: 90px; }
+/* Two lines of banner text. One line fits from about 500px up. */
+@media (max-width: 520px) {
+  body.has-free-offer { --offer-banner-h: 60px; }
 }
 
 body.has-free-offer .offer-banner {

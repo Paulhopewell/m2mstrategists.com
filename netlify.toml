@@ -1,0 +1,14 @@
+# Preview only. This file is not on redesign-preview and must not be merged.
+# The redesign branch has no Netlify config. The live site now publishes a
+# built site/ folder, which this branch does not have, so this preview
+# publishes the repository root and the *-redesign.html pages are served.
+# Opening the preview address sends you to the redesign homepage.
+[build]
+  command = "echo preview-only"
+  publish = "."
+
+[[redirects]]
+  from = "/"
+  to = "/index-redesign.html"
+  status = 302
+  force = true

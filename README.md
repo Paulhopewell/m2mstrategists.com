@@ -35,7 +35,7 @@ Nothing new was added for Netlify to copy. `scripts/publish-site.sh` already pub
 
 What comes back when the old wording is restored: the £1495 buttons, the money-back guarantee on the home page and the audit page, the seal that reads MONEY BACK GUARANTEE · 14 DAYS, the old booking sentences, and the legal paragraph about the fee and the guarantee.
 
-Left unchanged on purpose, so they do not need editing when the offer ends: the audit page title, its search description, and the social descriptions. None of those say "free" or give an end date, so an old offer line cannot linger in Google or in a link preview.
+The audit page title stays as it is. It does not say free or give an end date. The search description, og:description and twitter:description say the audit is free until 30 November 2026. On 1 December 2026, restore the original sentence from the HTML comment beside those three tags, so an old offer line cannot linger in Google or in a link preview.
 
 The audit page structured data is an offer at price 0 GBP, with priceValidUntil 2026-11-30, while this offer runs. On 1 December 2026, set that price back to 1495 GBP and remove priceValidUntil. The HTML comment beside the script says the same.
 

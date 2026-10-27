@@ -18,9 +18,10 @@
   <meta name="twitter:image" content="https://m2mstrategists.com/assets/images/hero-montage.jpg">
 
   <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/style.css?v=67">
+  <link rel="stylesheet" href="css/style.css?v=68">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="assets/images/m2m-badge.png" type="image/png">
+  <script src="js/consent.js"></script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-8XTQVTNBNF"></script>
   <script src="js/ga4.js"></script>
@@ -157,7 +158,8 @@
          target="_blank", since without it the opened page can reach back
          through window.opener. -->
     <!-- FREE-OFFER-START -->
-    <a class="cta-btn cta-btn-book" href="https://portal.m2mstrategists.com/growth-ai-exit/checkout" target="_blank" rel="noopener">Reserve your free audit</a>
+    <p class="body-text">Free until 30 November 2026 (normally &pound;1,495).</p>
+    <a class="cta-btn cta-btn-book" href="https://portal.m2mstrategists.com/growth-ai-exit/signup" target="_blank" rel="noopener">Reserve your free audit</a>
     <!-- FREE-OFFER-END -->
     <!-- RESTORE-ON-1-DEC
     <a class="cta-btn cta-btn-book" href="https://portal.m2mstrategists.com/growth-ai-exit/checkout" target="_blank" rel="noopener">Book your Audit via our secure payment link here</a>
@@ -262,7 +264,10 @@
       QFC#05585
     </span>
   </address>
-  <a href="legal.html" class="footer-legal">Legal</a>
+  <nav class="footer-legal-nav" aria-label="Site information">
+    <a href="legal.html" class="footer-legal">Legal</a>
+    <a href="#cookie-settings" class="footer-legal" id="cookie-settings" data-cookie-settings>Cookie settings</a>
+  </nav>
 </footer>
 
 <script>
@@ -291,6 +296,7 @@
 }
 </script>
 
+<!-- restore price 1495 GBP and remove priceValidUntil after 30 Nov 2026 -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -305,8 +311,9 @@
   "description": "A diagnostic session that maps how AI can help your business grow and exit faster, for established UK SME owners.",
   "offers": {
     "@type": "Offer",
-    "price": "1495",
-    "priceCurrency": "GBP"
+    "price": "0",
+    "priceCurrency": "GBP",
+    "priceValidUntil": "2026-11-30"
   }
 }
 </script>

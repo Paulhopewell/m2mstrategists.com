@@ -26,8 +26,8 @@ Do that in each of these files:
 Then:
 
 3. On each of those pages, change `<body class="has-free-offer">` back to `<body>`.
-4. In `css/style.css`, delete the whole block at the bottom that starts with `FREE OFFER — remove this entire block on 1 December 2026`. That removes the banner layout, the struck-through price and the FREE styling. No second stylesheet was added.
-5. The pages load `css/style.css?v=67`. Change `67` to `68` on every page in the list above, including the article template. Use the same number on every page, or returning visitors may keep the old stylesheet.
+4. In `css/style.css`, delete the block that starts with `FREE OFFER — remove this entire block on 1 December 2026` and ends at `end of FREE OFFER block`. That removes the banner layout, the struck-through price and the FREE styling. Leave the cookie-consent rules that follow it. No second stylesheet was added.
+5. The pages load `css/style.css?v=68`. Change `68` to the next number on every page in the list above, including the article template. Use the same number on every page, or returning visitors may keep the old stylesheet. The cookie-banner rules sit below the free-offer block. Leave them in place. They are not part of this offer.
 6. On `legal.html`, move the "Last updated" date on when the terms change back. The free-offer paragraph is draft wording. Rosita and QFC compliance still need to review it before it is treated as final.
 7. In this README, the booking sentence can go back to: "Book a Call with Paul" links out to Calendly. The audit payment link and the Client Portal button go to the portal.
 
@@ -35,9 +35,11 @@ Nothing new was added for Netlify to copy. `scripts/publish-site.sh` already pub
 
 What comes back when the old wording is restored: the £1495 buttons, the money-back guarantee on the home page and the audit page, the seal that reads MONEY BACK GUARANTEE · 14 DAYS, the old booking sentences, and the legal paragraph about the fee and the guarantee.
 
-Left unchanged on purpose, so they do not need editing when the offer ends: the audit page title, its search description, and the social descriptions. The structured-data price stays 1495. None of those say "free" or give an end date, so an old offer line cannot linger in Google or in a link preview.
+The audit page title stays as it is. It does not say free or give an end date. The search description, og:description and twitter:description say the audit is free until 30 November 2026. On 1 December 2026, restore the original sentence from the HTML comment beside those three tags, so an old offer line cannot linger in Google or in a link preview.
 
-The portal sign-up page does not say the audit is free, and it does not mention 30 November. It only says that no payment is taken. The portal's own terms, privacy text and dashboard still describe a paid audit. This website says the audit is free and that signing up takes no payment. It does not say that the portal pages, emails or dashboard call it free. The portal links are unchanged. The portal team owns that sign-up page.
+The audit page structured data is an offer at price 0 GBP, with priceValidUntil 2026-11-30, while this offer runs. On 1 December 2026, set that price back to 1495 GBP and remove priceValidUntil. The HTML comment beside the script says the same.
+
+The free-offer button on the audit page goes to https://portal.m2mstrategists.com/growth-ai-exit/signup. The 1 December restore comment on that page still points at the checkout link. Other portal links are unchanged. The portal team owns the sign-up page.
 
 After the edits, search the repository for `FREE-OFFER` and for `has-free-offer`. Both searches should come back empty.
 
@@ -72,7 +74,7 @@ Netlify Forms stores each submission and triggers `netlify/functions/submission-
 
 ## Analytics and booking
 
-Google Analytics 4, measurement ID `G-8XTQVTNBNF`, loads on every page from `js/ga4.js`.
+Google Analytics 4, measurement ID `G-8XTQVTNBNF`, loads on every page from `js/ga4.js`. `js/consent.js` loads first and sets Google Consent Mode to denied. Analytics cookies are written only after Accept. Decline, or leaving the banner up, stores no analytics cookies, and those visits are not counted in GA4. Cookie settings in the footer clears the stored choice and shows the banner again. Ad storage stays denied.
 
 "Book a Call with Paul" links out to Calendly. The audit sign-up link and the Client Portal button go to the portal. During the free offer the website says signing up takes no payment. The portal's own pages are separate; this repository does not change them. See "Switching off the free audit offer" above.
 

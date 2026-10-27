@@ -18,9 +18,10 @@
   <meta name="twitter:image" content="https://m2mstrategists.com/assets/images/hero-montage.jpg">
 
   <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/style.css?v=67">
+  <link rel="stylesheet" href="css/style.css?v=68">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="assets/images/m2m-badge.png" type="image/png">
+  <script src="js/consent.js"></script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-8XTQVTNBNF"></script>
   <script src="js/ga4.js"></script>
@@ -68,7 +69,7 @@
   <div class="container">
     <p class="hero-tagline">Legal.</p>
     <h1>Privacy<br>and <em>terms.</em></h1>
-    <p class="hero-subtitle">How we handle personal data on this website, and the terms of using it. Last updated 26 October 2026.</p>
+    <p class="hero-subtitle">How we handle personal data on this website, and the terms of using it. Last updated 27 October 2026.</p>
   </div>
   <div class="hero-book-wrap">
   <a href="ai-growth-audit.html#book-form" class="hero-book-badge" aria-label="Book your Growth, AI &amp; Exit Audit now">
@@ -111,8 +112,12 @@
       <p>If the form cannot be delivered to Netlify, the page opens a draft in your own email program containing what you typed, so you can send it yourself. On the contact page that draft is addressed to ph@m2mstrategists.com. On the framework page it is addressed to team@m2mstrategists.com. Your email provider handles that draft; our form does not.</p>
       <p>The website does not pass form details to anyone other than Netlify, Resend, HubSpot, and those team inboxes.</p>
 
-      <h3>Analytics</h3>
-      <p>Every page loads Google Analytics 4, measurement ID <strong>G-8XTQVTNBNF</strong>, through the Google tag (gtag.js). The code does not add a cookie banner or extra analytics settings. Google's tag may use cookies and collect usage data, such as the pages you view and information about your browser and device, under Google's own terms. You can control cookies in your browser.</p>
+      <h3 id="analytics">Analytics</h3>
+      <!-- DRAFT: Rosita and QFC compliance still need to review this
+           analytics wording before it is treated as final. -->
+      <p>Every page loads Google Analytics 4, measurement ID <strong>G-8XTQVTNBNF</strong>, through the Google tag (gtag.js), using Google Consent Mode. Analytics cookies are set only after you click Accept on the cookie banner. If you click Decline, or if you leave the banner without choosing, no analytics cookies are set.</p>
+      <p>The choice is stored in this browser. To change it, use <a href="#cookie-settings" data-cookie-settings>Cookie settings</a> in the footer. That clears the stored choice and shows the banner again.</p>
+      <p>Once you have accepted, Google's tag may collect usage data, such as the pages you view and information about your browser and device, under Google's own terms. You can also control cookies in your browser.</p>
 
       <h3>Fonts</h3>
       <p>The stylesheet loads typefaces from Google Fonts. Your browser requests those font files from Google when it displays a page.</p>
@@ -137,9 +142,13 @@
 
       <h3>Paid services</h3>
       <!-- FREE-OFFER-START
-           Draft for October and November 2026. Rosita and QFC compliance still
-           need to review this paragraph before it is treated as final. -->
-      <p>The M2M Growth, AI &amp; Exit Audit is described on the <a href="ai-growth-audit.html">audit page</a>. Throughout October and November 2026 the audit is free of charge. The usual fee is &pound;1,495. Signing up takes no payment. Where we later agree ongoing help, that is the M2M Business Concierge, also described on the audit page. Paid work is covered by the agreement we make with you at the time, not by these website terms alone.</p>
+           DRAFT for October and November 2026. Rosita and QFC compliance still
+           need to review the free-offer section and the fee sentence before
+           they are treated as final. -->
+      <p>The M2M Growth, AI &amp; Exit Audit is described on the <a href="ai-growth-audit.html">audit page</a>, including the fee of &pound;1,495 for audits booked after 30 November 2026. For those paid audits the money-back guarantee applies: if you do not think the audit was worth it, tell us within 14 days from upload of your M2M Growth, AI &amp; Exit Audit Report to your client portal. Payment for those audits is taken on the client portal, not on this website. Where we later agree ongoing help, that is the M2M Business Concierge, also described on the audit page. Paid work is covered by the agreement we make with you at the time, not by these website terms alone.</p>
+      <h3>Free audit offer (until 30 November 2026)</h3>
+      <p class="section-label">Draft</p>
+      <p>No payment is taken. This free offer ends on 30 November 2026.</p>
       <!-- FREE-OFFER-END -->
       <!-- RESTORE-ON-1-DEC
       <p>The M2M Growth, AI &amp; Exit Audit is described on the <a href="ai-growth-audit.html">audit page</a>, including the fee of &pound;1495. That page also states the money-back guarantee: if you do not think the audit was worth it, tell us within 14 days from upload of your M2M Growth, AI &amp; Exit Audit Report to your client portal. Payment is taken on the client portal, not on this website. Where we later agree ongoing help, that is the M2M Business Concierge, also described on the audit page. Paid work is covered by the agreement we make with you at the time, not by these website terms alone.</p>
@@ -180,7 +189,10 @@
       QFC#05585
     </span>
   </address>
-  <a href="legal.html" class="footer-legal" aria-current="page">Legal</a>
+  <nav class="footer-legal-nav" aria-label="Site information">
+    <a href="legal.html" class="footer-legal" aria-current="page">Legal</a>
+    <a href="#cookie-settings" class="footer-legal" id="cookie-settings" data-cookie-settings>Cookie settings</a>
+  </nav>
 </footer>
 
 <script type="application/ld+json">

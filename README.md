@@ -76,6 +76,8 @@ Netlify Forms stores each submission and triggers `netlify/functions/submission-
 
 Google Analytics 4, measurement ID `G-8XTQVTNBNF`, loads on every page from `js/ga4.js`. `js/consent.js` loads first and sets Google Consent Mode to denied. Analytics cookies are written only after Accept. Decline, or leaving the banner up, stores no analytics cookies, and those visits are not counted in GA4. Cookie settings in the footer clears the stored choice and shows the banner again. Ad storage stays denied.
 
+`js/utm.js` loads on every page, including the article template. When a visit arrives with `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, or `utm_term`, the script keeps that first set for the browser tab in `sessionStorage`. It adds those parameters to every Calendly link and to portal sign-up and checkout links. It does not set a cookie, so the consent banner does not gate it. It does not change a link's path. Parameters already on a link, including GA4's `_gl` linker parameter, stay as they are. A visit with no UTM parameters leaves those hrefs unchanged. The Client Portal login link is not one of the decorated links.
+
 "Book a Call with Paul" links out to Calendly. The audit sign-up link and the Client Portal button go to the portal. During the free offer the website says signing up takes no payment. The portal's own pages are separate; this repository does not change them. See "Switching off the free audit offer" above.
 
 ## Client portal

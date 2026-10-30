@@ -596,11 +596,11 @@ a:hover { color: var(--brass); }
 
 .footer-brand {
   font-family: 'Inter', sans-serif;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 400;
   letter-spacing: 0.08em;
   line-height: 1.75;
-  color: var(--cream);
+  color: rgba(249,247,244,0.5);
   text-transform: uppercase;
 }
 

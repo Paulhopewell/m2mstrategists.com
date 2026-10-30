@@ -27,7 +27,7 @@ Then:
 
 3. On each of those pages, change `<body class="has-free-offer">` back to `<body>`.
 4. In `css/style.css`, delete the block that starts with `FREE OFFER — remove this entire block on 1 December 2026` and ends at `end of FREE OFFER block`. That removes the banner layout, the struck-through price and the FREE styling. Leave the cookie-consent rules that follow it. No second stylesheet was added.
-5. The pages load `css/style.css?v=70`. Change `70` to the next number on every page in the list above, including the article template. Use the same number on every page, or returning visitors may keep the old stylesheet. The cookie-banner rules sit below the free-offer block. Leave them in place. They are not part of this offer.
+5. The pages load `css/style.css?v=71`. Change `71` to the next number on every page in the list above, including the article template. Use the same number on every page, or returning visitors may keep the old stylesheet. The cookie-banner rules sit below the free-offer block. Leave them in place. They are not part of this offer.
 6. On `legal.html`, move the "Last updated" date on when the terms change back. The free-offer paragraph is draft wording. Rosita and QFC compliance still need to review it before it is treated as final.
 7. In this README, the booking sentence can go back to: "Book a Call with Paul" links out to Calendly. The audit payment link and the Client Portal button go to the portal.
 

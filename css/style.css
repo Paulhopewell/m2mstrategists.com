@@ -573,9 +573,9 @@ a:hover { color: var(--brass); }
 }
 
 /* ─── FOOTER ─── */
-/* One centred line when the row fits: legal name · address · phone · email ·
-   QFC · Legal · Cookies. Below that, the same pieces stack: name, address,
-   phone and email, then the fine-print line. The legal name keeps its type. */
+/* Full width: legal name at the left, Italy | UK | Qatar with phone and email
+   centred, QFC · Legal · Cookies at the right. Narrower screens stack those
+   pieces. The legal name keeps its type. */
 .site-footer {
   background: var(--dark);
   color: rgba(249,247,244,0.5);
@@ -729,15 +729,33 @@ a:hover { color: var(--brass); }
   text-transform: none;
 }
 
-/* Single line once the row fits inside the footer. */
-@container site-footer (min-width: 1176px) {
-  .footer-inner,
+/* Spread the single line across the footer once the three groups fit
+   without colliding. Equal side columns keep the middle group centred. */
+@container site-footer (min-width: 1320px) {
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    column-gap: 16px;
+    text-align: left;
+  }
+  .footer-brand {
+    justify-self: start;
+    white-space: nowrap;
+  }
   .footer-contact {
     flex-direction: row;
     flex-wrap: nowrap;
+    justify-self: center;
     gap: 0.45em;
+    max-width: none;
   }
-  .footer-dot-break { display: inline; }
+  .footer-contact > .footer-dot-break { display: inline; }
+  .footer-fine { justify-self: end; }
+}
+
+@media (min-width: 1400px) {
+  .site-footer { padding-left: 40px; padding-right: 40px; }
 }
 
 /* 390px phones keep phone · email on one line. A touch less tracking

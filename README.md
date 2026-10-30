@@ -27,7 +27,7 @@ Then:
 
 3. On each of those pages, change `<body class="has-free-offer">` back to `<body>`.
 4. In `css/style.css`, delete the block that starts with `FREE OFFER — remove this entire block on 1 December 2026` and ends at `end of FREE OFFER block`. That removes the banner layout, the struck-through price and the FREE styling. Leave the cookie-consent rules that follow it. No second stylesheet was added.
-5. The pages load `css/style.css?v=69`. Change `69` to the next number on every page in the list above, including the article template. Use the same number on every page, or returning visitors may keep the old stylesheet. The cookie-banner rules sit below the free-offer block. Leave them in place. They are not part of this offer.
+5. The pages load `css/style.css?v=70`. Change `70` to the next number on every page in the list above, including the article template. Use the same number on every page, or returning visitors may keep the old stylesheet. The cookie-banner rules sit below the free-offer block. Leave them in place. They are not part of this offer.
 6. On `legal.html`, move the "Last updated" date on when the terms change back. The free-offer paragraph is draft wording. Rosita and QFC compliance still need to review it before it is treated as final.
 7. In this README, the booking sentence can go back to: "Book a Call with Paul" links out to Calendly. The audit payment link and the Client Portal button go to the portal.
 
@@ -74,7 +74,7 @@ Netlify Forms stores each submission and triggers `netlify/functions/submission-
 
 ## Analytics and booking
 
-Google Analytics 4, measurement ID `G-8XTQVTNBNF`, loads on every page from `js/ga4.js`. `js/consent.js` loads first and sets Google Consent Mode to denied. Analytics cookies are written only after Accept. Decline, or leaving the banner up, stores no analytics cookies, and those visits are not counted in GA4. Cookie settings in the footer clears the stored choice and shows the banner again. Ad storage stays denied.
+Google Analytics 4, measurement ID `G-8XTQVTNBNF`, loads on every page from `js/ga4.js`. `js/consent.js` loads first and sets Google Consent Mode to denied. Analytics cookies are written only after Accept. Decline, or leaving the banner up, stores no analytics cookies, and those visits are not counted in GA4. Cookies in the footer clears the stored choice and shows the banner again. Ad storage stays denied.
 
 "Book a Call with Paul" links out to Calendly. The audit sign-up link and the Client Portal button go to the portal. During the free offer the website says signing up takes no payment. The portal's own pages are separate; this repository does not change them. See "Switching off the free audit offer" above.
 

@@ -573,21 +573,17 @@ a:hover { color: var(--brass); }
 }
 
 /* ─── FOOTER ─── */
-/* Four centred lines: legal name, address, phone + email, then fine print.
-   The legal name keeps its existing type. Contact lines use a tighter
-   line-height so the block is about half the old stacked height. */
+/* One centred line when the row fits: legal name · address · phone · email ·
+   QFC · Legal · Cookies. Below that, the same pieces stack: name, address,
+   phone and email, then the fine-print line. The legal name keeps its type. */
 .site-footer {
   background: var(--dark);
   color: rgba(249,247,244,0.5);
   padding: 10px 10px 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
   border-top: 6px solid var(--coral);
-  gap: 3px;
   line-height: 1.25;
+  container-type: inline-size;
+  container-name: site-footer;
 }
 
 .site-footer a {
@@ -606,6 +602,16 @@ a:hover { color: var(--brass); }
   line-height: 1.75;
   color: var(--cream);
   text-transform: uppercase;
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  width: 100%;
+  text-align: center;
 }
 
 .footer-contact {
@@ -632,19 +638,21 @@ a:hover { color: var(--brass); }
 
 .footer-reach {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  column-gap: 18px;
-  row-gap: 2px;
+  gap: 0.4em;
   max-width: 100%;
 }
 
-/* 390px-wide phones fit phone and email together only with a tighter gap.
-   Narrower than that, the row wraps and the two links stack. */
-@media (max-width: 394px) {
-  .footer-reach { column-gap: 8px; }
+.footer-dot {
+  color: rgba(249,247,244,0.32);
+  line-height: 1;
+  user-select: none;
 }
+
+/* Dots that only belong on the single-line footer. Hidden while stacked. */
+.footer-dot-break { display: none; }
 
 /* QFC accreditation mark — white-out version on transparent background,
    sized to the fine-print line so it does not add height */
@@ -670,12 +678,12 @@ a:hover { color: var(--brass); }
   flex-wrap: nowrap;
   gap: 0.4em;
   max-width: 100%;
-  margin-top: 1px;
   font-family: 'Inter', sans-serif;
   font-size: 11px;
   font-weight: 400;
-  letter-spacing: 0.06em;
+  letter-spacing: 0;
   line-height: 1.2;
+  text-transform: none;
   color: rgba(249,247,244,0.42);
   white-space: nowrap;
 }
@@ -686,8 +694,9 @@ a:hover { color: var(--brass); }
   gap: 5px;
   font-family: 'DM Mono', monospace;
   font-size: 11px;
-  letter-spacing: 0.04em;
+  letter-spacing: 0;
   line-height: 1.2;
+  text-transform: none;
   color: rgba(249,247,244,0.42);
 }
 
@@ -695,9 +704,9 @@ a:hover { color: var(--brass); }
   font-family: 'Inter', sans-serif;
   font-size: 11px;
   font-weight: 400;
-  letter-spacing: 0.06em;
+  letter-spacing: 0;
   line-height: 1.2;
-  text-transform: uppercase;
+  text-transform: none;
   color: rgba(249,247,244,0.42);
 }
 
@@ -716,6 +725,35 @@ a:hover { color: var(--brass); }
 
 .footer-fine-sep {
   color: rgba(249,247,244,0.32);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* Single line once the row fits inside the footer. */
+@container site-footer (min-width: 1176px) {
+  .footer-inner,
+  .footer-contact {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 0.45em;
+  }
+  .footer-dot-break { display: inline; }
+}
+
+/* 390px phones keep phone · email on one line. A touch less tracking
+   gives that row room next to the 10px footer padding. */
+@media (max-width: 420px) {
+  .footer-contact-item { letter-spacing: 0.01em; }
+  .footer-reach { gap: 0.2em; }
+}
+
+/* Very narrow phones: phone above email. The dot between them drops out. */
+@media (max-width: 380px) {
+  .footer-reach {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .footer-reach .footer-dot { display: none; }
 }
 
 /* ─── ARTICLE / EDITORIAL CONTENT ─── */

@@ -573,16 +573,17 @@ a:hover { color: var(--brass); }
 }
 
 /* ─── FOOTER ─── */
+/* Full width: legal name at the left, Italy | UK | Qatar with phone and email
+   centred, QFC · Legal · Cookies at the right. Narrower screens stack those
+   pieces. The legal name keeps its type. */
 .site-footer {
   background: var(--dark);
   color: rgba(249,247,244,0.5);
-  padding: 32px 48px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding: 10px 10px 8px;
   border-top: 6px solid var(--coral);
-  flex-wrap: wrap;
-  gap: 16px;
+  line-height: 1.25;
+  container-type: inline-size;
+  container-name: site-footer;
 }
 
 .site-footer a {
@@ -593,54 +594,184 @@ a:hover { color: var(--brass); }
 
 .site-footer a:hover { color: var(--coral); }
 
-.footer-contact {
-  display: flex;
-  gap: 32px;
-  flex-wrap: wrap;
-  align-items: center;
-  font-style: normal;
-}
-
-.footer-contact-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: 'DM Mono', monospace;
-  font-size: 14px;
-  letter-spacing: 0.06em;
-  color: rgba(249,247,244,0.5);
-}
-
-/* QFC accreditation mark — white-out version on transparent background,
-   opacity matched to the surrounding footer text so it sits quietly */
-.footer-qfc-logo {
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
-  opacity: 0.55;
-}
-
-.footer-contact-item svg {
-  flex-shrink: 0;
-  color: var(--coral);
-  opacity: 1;
-}
-
 .footer-brand {
   font-family: 'Inter', sans-serif;
   font-size: 12px;
   font-weight: 400;
   letter-spacing: 0.08em;
+  line-height: 1.75;
   color: var(--cream);
   text-transform: uppercase;
 }
 
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  width: 100%;
+  text-align: center;
+}
+
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  font-style: normal;
+  max-width: 100%;
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  line-height: 1.25;
+  color: rgba(249,247,244,0.5);
+  white-space: nowrap;
+}
+
+.footer-reach {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  max-width: 100%;
+}
+
+.footer-dot {
+  color: rgba(249,247,244,0.32);
+  line-height: 1;
+  user-select: none;
+}
+
+/* Dots that only belong on the single-line footer. Hidden while stacked. */
+.footer-dot-break { display: none; }
+
+/* QFC accreditation mark — white-out version on transparent background,
+   sized to the fine-print line so it does not add height */
+.footer-qfc-logo {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+  opacity: 0.45;
+}
+
+.footer-contact-item svg {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  color: var(--coral);
+  opacity: 1;
+}
+
+.footer-fine {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 0.4em;
+  max-width: 100%;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.2;
+  text-transform: none;
+  color: rgba(249,247,244,0.42);
+  white-space: nowrap;
+}
+
+.footer-qfc {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0;
+  line-height: 1.2;
+  text-transform: none;
+  color: rgba(249,247,244,0.42);
+}
+
 .footer-legal {
   font-family: 'Inter', sans-serif;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 400;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  line-height: 1.2;
+  text-transform: none;
+  color: rgba(249,247,244,0.42);
+}
+
+.site-footer .footer-fine a {
+  color: rgba(249,247,244,0.42);
+}
+
+.site-footer .footer-fine a:hover { color: var(--coral); }
+
+.footer-legal-nav {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.4em;
+}
+
+.footer-fine-sep {
+  color: rgba(249,247,244,0.32);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* Spread the single line across the footer once the three groups fit
+   without colliding. Equal side columns keep the middle group centred. */
+@container site-footer (min-width: 1320px) {
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    column-gap: 16px;
+    text-align: left;
+  }
+  .footer-brand {
+    justify-self: start;
+    white-space: nowrap;
+  }
+  .footer-contact {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-self: center;
+    gap: 0.45em;
+    max-width: none;
+  }
+  .footer-contact > .footer-dot-break { display: inline; }
+  .footer-fine { justify-self: end; }
+}
+
+@media (min-width: 1400px) {
+  .site-footer { padding-left: 40px; padding-right: 40px; }
+}
+
+/* 390px phones keep phone · email on one line. A touch less tracking
+   gives that row room next to the 10px footer padding. */
+@media (max-width: 420px) {
+  .footer-contact-item { letter-spacing: 0.01em; }
+  .footer-reach { gap: 0.2em; }
+}
+
+/* Very narrow phones: phone above email. The dot between them drops out. */
+@media (max-width: 380px) {
+  .footer-reach {
+    flex-direction: column;
+    gap: 2px;
+  }
+  .footer-reach .footer-dot { display: none; }
 }
 
 /* ─── ARTICLE / EDITORIAL CONTENT ─── */
@@ -1227,22 +1358,6 @@ textarea.form-input {
   }
 }
 
-/* The footer sits on one line only above roughly 1590px. Below that it wraps,
-   and space-between leaves each wrapped line flush left, which reads as broken.
-   Centre the lines as soon as wrapping is possible; the full stack at 1060px
-   below then takes over. */
-@media (max-width: 1600px) {
-  .site-footer {
-    justify-content: center;
-    text-align: center;
-  }
-  /* The contact block wraps independently of the footer, so it needs centring
-     of its own — otherwise QFC drops to a second line flush left. */
-  .footer-contact {
-    justify-content: center;
-  }
-}
-
 @media (max-width: 1060px) {
   .site-header { padding: 23px 24px 23px 48px; }
   .nav-desktop { display: none; }
@@ -1262,42 +1377,6 @@ textarea.form-input {
 
   .level-body { grid-template-columns: 1fr; gap: 32px; }
   .level-header { grid-template-columns: auto 1fr; gap: 20px; }
-
-  .site-footer {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px 16px;
-    text-align: center;
-    padding: 24px;
-  }
-
-  /* Stacked footer resolves to five centred lines:
-     1) brand  2) address  3) tel  4) email  5) QFC · Legal
-     footer-contact is flattened (display: contents) so its items become
-     flex items of the footer itself, letting QFC wrap onto the same
-     trailing row as Legal instead of being trapped inside the address. */
-  .footer-contact {
-    display: contents;
-  }
-  .footer-brand,
-  .footer-contact-item:nth-child(1),
-  .footer-contact-item:nth-child(2),
-  .footer-contact-item:nth-child(3) {
-    flex-basis: 100%;
-    justify-content: center;
-  }
-  .footer-contact-item {
-    justify-content: center;
-  }
-
-}
-
-/* Keep the three-line footer intact a little further down before the
-   contact items are forced to stack */
-@media (max-width: 700px) {
-  .footer-contact { gap: 10px 12px; }
-  .footer-contact-item { font-size: 13px; letter-spacing: 0.04em; }
 }
 
 /* Content tier: collapse multi-column grids only when the columns genuinely get
@@ -1866,13 +1945,6 @@ body.cookie-banner-open {
 
 body.cookie-banner-open .hero-scroll-cue {
   bottom: calc(18px + var(--cookie-banner-height, 72px));
-}
-
-.footer-legal-nav {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px 20px;
 }
 
 @media (max-width: 640px) {

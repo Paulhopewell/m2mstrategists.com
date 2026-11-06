@@ -31,7 +31,7 @@ for page in "${pages[@]}"; do
 done
 
 cp "$root/css/reset.css" "$root/css/style.css" "$dest/css/"
-cp "$root/js/consent.js" "$root/js/ga4.js" "$root/js/hero-embers.js" "$root/js/scroll-reveal.js" "$dest/js/"
+cp "$root/js/consent.js" "$root/js/ga4.js" "$root/js/utm.js" "$root/js/hero-embers.js" "$root/js/scroll-reveal.js" "$dest/js/"
 cp -a "$root/assets/." "$dest/assets/"
 
 # robots.txt, sitemap.xml and favicon.ico are copied when present.

@@ -19,10 +19,12 @@
   to = "/"
   status = 302
 
-# FREE-AUDIT-SHORT-LINKS
-# Temporary social links for the free audit, through 30 November 2026.
-# On 1 December 2026, delete this whole block. 302, not 301, so browsers
-# do not cache the redirect after the campaign ends.
+# SOCIAL-SHORT-LINKS
+# Permanent short links for every LinkedIn and X post. Never delete these
+# rules. On 1 December 2026, repoint the four `to` lines off the free-audit
+# campaign. Leave the status at 302, so a later change is not stuck in a
+# browser cache. A proposed standing target is in the README. That proposal
+# is not live; these four rules are the destinations until the repoint.
 #
 # Netlify reads these rules from this file at the repository root. They are
 # not copied into site/. scripts/publish-site.sh only publishes website files.
@@ -54,4 +56,4 @@
   to = "/ai-growth-audit.html?utm_source=x&utm_medium=social&utm_campaign=free-audit-nov&utm_content=x"
   status = 302
   force = true
-# end FREE-AUDIT-SHORT-LINKS
+# end SOCIAL-SHORT-LINKS

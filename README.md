@@ -30,6 +30,12 @@ Then:
 5. The pages load `css/style.css?v=72`. Change `72` to the next number on every page in the list above, including the article template. Use the same number on every page, or returning visitors may keep the old stylesheet. The cookie-banner rules sit below the free-offer block. Leave them in place. They are not part of this offer.
 6. On `legal.html`, move the "Last updated" date on when the terms change back. The free-offer paragraph is draft wording. Rosita and QFC compliance still need to review it before it is treated as final.
 7. In this README, the booking sentence can go back to: "Book a Call with Paul" links out to Calendly. The audit payment link and the Client Portal button go to the portal.
+8. In `netlify.toml`, repoint the four rules in the block marked `SOCIAL-SHORT-LINKS`. Keep the block. `/li` and `/x` are permanent short links for every LinkedIn and X post, and they are never removed. Change only the `to` address on each rule, so they leave the free-audit campaign. Leave the status at 302, so a browser does not keep the November destination.
+
+Proposal for Paul to confirm nearer 1 December 2026. This is not live, and the rules in `netlify.toml` do not use it yet. One standing target is the homepage, with tags that stay the same after the offer ends:
+
+- `/li` and `/li/` to `/?utm_source=linkedin&utm_medium=social&utm_campaign=social-always-on&utm_content=li`
+- `/x` and `/x/` to `/?utm_source=x&utm_medium=social&utm_campaign=social-always-on&utm_content=x`
 
 Nothing new was added for Netlify to copy. `scripts/publish-site.sh` already publishes these pages and `css/style.css`. The article template stays unpublished. No image was replaced. The round badge still has the words BOOK YOUR AUDIT NOW baked into the picture. The alt text describes that picture. A new picture is only needed if the badge itself should say free.
 
@@ -41,11 +47,13 @@ The audit page structured data is an offer at price 0 GBP, with priceValidUntil 
 
 The free-offer button on the audit page goes to https://portal.m2mstrategists.com/growth-ai-exit/signup. The 1 December restore comment on that page still points at the checkout link. Other portal links are unchanged. The portal team owns the sign-up page.
 
-After the edits, search the repository for `FREE-OFFER` and for `has-free-offer`. Both searches should come back empty.
+After the edits, search the repository for `FREE-OFFER` and for `has-free-offer`. Both searches should come back empty. `SOCIAL-SHORT-LINKS` stays. Those rules are repointed, not deleted.
 
 ## Hosting
 
 Netlify deploys the `main` branch. `netlify.toml` does not publish the repository root. The build runs `scripts/publish-site.sh`, which copies the public pages and assets into `site/`, and Netlify publishes that folder.
+
+Redirect rules live in `netlify.toml`, which Netlify reads from the repository root. They are not copied into `site/`. The parked articles page is redirected that way. So are the permanent short links `/li` and `/x` (also with a trailing slash), used in every LinkedIn and X post. On 1 December 2026 those links are repointed, not removed. See "Switching off the free audit offer".
 
 Internal notes, CSS changelogs and `articles/article-template.html` stay in the repository and are not uploaded as website files. The form function stays in `netlify/functions`, outside `site/`, and Netlify still deploys it as a function.
 

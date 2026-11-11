@@ -40,3 +40,8 @@ for extra in robots.txt sitemap.xml favicon.ico; do
     cp "$root/$extra" "$dest/$extra"
   fi
 done
+
+# Redirect rules stay in netlify.toml at the repository root. Netlify reads
+# that file from the base directory, outside site/, which is how /articles.html
+# is already redirected. Do not copy netlify.toml into site/. A _redirects file
+# would be different: Netlify only sees that file if it is inside this folder.

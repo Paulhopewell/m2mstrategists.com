@@ -30,6 +30,7 @@ Then:
 5. The pages load `css/style.css?v=72`. Change `72` to the next number on every page in the list above, including the article template. Use the same number on every page, or returning visitors may keep the old stylesheet. The cookie-banner rules sit below the free-offer block. Leave them in place. They are not part of this offer.
 6. On `legal.html`, move the "Last updated" date on when the terms change back. The free-offer paragraph is draft wording. Rosita and QFC compliance still need to review it before it is treated as final.
 7. In this README, the booking sentence can go back to: "Book a Call with Paul" links out to Calendly. The audit payment link and the Client Portal button go to the portal.
+8. In `netlify.toml`, delete the block marked `FREE-AUDIT-SHORT-LINKS`, including the four redirect rules. Those are the temporary `/li` and `/x` links for this offer. They are 302 redirects, so a browser does not keep them. Leaving them after 30 November 2026 would keep sending those short links to the audit page with the November campaign tags.
 
 Nothing new was added for Netlify to copy. `scripts/publish-site.sh` already publishes these pages and `css/style.css`. The article template stays unpublished. No image was replaced. The round badge still has the words BOOK YOUR AUDIT NOW baked into the picture. The alt text describes that picture. A new picture is only needed if the badge itself should say free.
 
@@ -41,11 +42,13 @@ The audit page structured data is an offer at price 0 GBP, with priceValidUntil 
 
 The free-offer button on the audit page goes to https://portal.m2mstrategists.com/growth-ai-exit/signup. The 1 December restore comment on that page still points at the checkout link. Other portal links are unchanged. The portal team owns the sign-up page.
 
-After the edits, search the repository for `FREE-OFFER` and for `has-free-offer`. Both searches should come back empty.
+After the edits, search the repository for `FREE-OFFER`, for `has-free-offer`, and for `FREE-AUDIT-SHORT-LINKS`. All three searches should come back empty.
 
 ## Hosting
 
 Netlify deploys the `main` branch. `netlify.toml` does not publish the repository root. The build runs `scripts/publish-site.sh`, which copies the public pages and assets into `site/`, and Netlify publishes that folder.
+
+Redirect rules live in `netlify.toml`, which Netlify reads from the repository root. They are not copied into `site/`. The parked articles page is redirected that way. So are the temporary November 2026 short links `/li` and `/x` (also with a trailing slash). See "Switching off the free audit offer" for removing those short links on 1 December 2026.
 
 Internal notes, CSS changelogs and `articles/article-template.html` stay in the repository and are not uploaded as website files. The form function stays in `netlify/functions`, outside `site/`, and Netlify still deploys it as a function.
 

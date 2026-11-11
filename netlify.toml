@@ -18,3 +18,40 @@
   from = "/articles.html"
   to = "/"
   status = 302
+
+# FREE-AUDIT-SHORT-LINKS
+# Temporary social links for the free audit, through 30 November 2026.
+# On 1 December 2026, delete this whole block. 302, not 301, so browsers
+# do not cache the redirect after the campaign ends.
+#
+# Netlify reads these rules from this file at the repository root. They are
+# not copied into site/. scripts/publish-site.sh only publishes website files.
+#
+# /li and /x are not pages. The trailing-slash rules are separate paths.
+# No hostname is set, so the apex and www both use them once a request
+# reaches this site. www already 301s to the apex before that; that hop is
+# the Netlify primary-domain setting, and it keeps the path.
+[[redirects]]
+  from = "/li"
+  to = "/ai-growth-audit.html?utm_source=linkedin&utm_medium=social&utm_campaign=free-audit-nov&utm_content=li"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/li/"
+  to = "/ai-growth-audit.html?utm_source=linkedin&utm_medium=social&utm_campaign=free-audit-nov&utm_content=li"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/x"
+  to = "/ai-growth-audit.html?utm_source=x&utm_medium=social&utm_campaign=free-audit-nov&utm_content=x"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/x/"
+  to = "/ai-growth-audit.html?utm_source=x&utm_medium=social&utm_campaign=free-audit-nov&utm_content=x"
+  status = 302
+  force = true
+# end FREE-AUDIT-SHORT-LINKS

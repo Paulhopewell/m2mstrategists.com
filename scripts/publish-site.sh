@@ -7,8 +7,10 @@
 #
 # The form handler is deployed separately. netlify.toml points [functions]
 # at netlify/functions, which sits outside site/, so submission-created.js
-# still becomes a function. The HTML forms are copied unchanged, including
-# data-netlify="true", so Netlify Forms can still detect them.
+# still becomes a function. Edge functions in netlify/edge-functions are
+# deployed from that folder too, also outside site/. The HTML forms are
+# copied unchanged, including data-netlify="true", so Netlify Forms can
+# still detect them.
 set -euo pipefail
 
 root="$(cd "$(dirname "$0")/.." && pwd)"

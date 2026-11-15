@@ -26,6 +26,12 @@
 # browser cache. A proposed standing target is in the README. That proposal
 # is not live; these four rules are the destinations until the repoint.
 #
+# These four `to` lines are the only copy of the destination URLs. The edge
+# function netlify/edge-functions/social-short-links.js counts the visit in
+# Netlify Blobs, then returns without a response so these rules send the 302.
+# Do not copy the destinations into that function. If the counter throws, its
+# onError setting is bypass and these rules still run. They are the fallback.
+#
 # Netlify reads these rules from this file at the repository root. They are
 # not copied into site/. scripts/publish-site.sh only publishes website files.
 #

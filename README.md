@@ -30,7 +30,7 @@ Then:
 5. The pages load `css/style.css?v=72`. Change `72` to the next number on every page in the list above, including the article template. Use the same number on every page, or returning visitors may keep the old stylesheet. The cookie-banner rules sit below the free-offer block. Leave them in place. They are not part of this offer.
 6. On `legal.html`, move the "Last updated" date on when the terms change back. The free-offer paragraph is draft wording. Rosita and QFC compliance still need to review it before it is treated as final.
 7. In this README, the booking sentence can go back to: "Book a Call with Paul" links out to Calendly. The audit payment link and the Client Portal button go to the portal.
-8. In `netlify.toml`, repoint the four rules in the block marked `SOCIAL-SHORT-LINKS`. Keep the block. `/li` and `/x` are permanent short links for every LinkedIn and X post, and they are never removed. Change only the `to` address on each rule, so they leave the free-audit campaign. Leave the status at 302, so a browser does not keep the November destination.
+8. In `netlify.toml`, repoint the four rules in the block marked `SOCIAL-SHORT-LINKS`. Keep the block. `/li` and `/x` are permanent short links for every LinkedIn and X post, and they are never removed. Change only the `to` address on each rule, so they leave the free-audit campaign. Leave the status at 302, so a browser does not keep the November destination. The click counter does not hold these addresses. Leave `netlify/edge-functions/social-short-links.js` as it is.
 
 Proposal for Paul to confirm nearer 1 December 2026. This is not live, and the rules in `netlify.toml` do not use it yet. One standing target is the homepage, with tags that stay the same after the offer ends:
 
@@ -53,9 +53,9 @@ After the edits, search the repository for `FREE-OFFER` and for `has-free-offer`
 
 Netlify deploys the `main` branch. `netlify.toml` does not publish the repository root. The build runs `scripts/publish-site.sh`, which copies the public pages and assets into `site/`, and Netlify publishes that folder.
 
-Redirect rules live in `netlify.toml`, which Netlify reads from the repository root. They are not copied into `site/`. The parked articles page is redirected that way. So are the permanent short links `/li` and `/x` (also with a trailing slash), used in every LinkedIn and X post. On 1 December 2026 those links are repointed, not removed. See "Switching off the free audit offer".
+Redirect rules live in `netlify.toml`, which Netlify reads from the repository root. They are not copied into `site/`. The parked articles page is redirected that way. So are the permanent short links `/li` and `/x` (also with a trailing slash), used in every LinkedIn and X post. On 1 December 2026 those links are repointed, not removed. See "Switching off the free audit offer". The four `to` lines in the `SOCIAL-SHORT-LINKS` block are the only copy of those destination URLs. An edge function counts the visit and then lets those rules send the 302. See "Counting visits to /li and /x".
 
-Internal notes, CSS changelogs and `articles/article-template.html` stay in the repository and are not uploaded as website files. The form function stays in `netlify/functions`, outside `site/`, and Netlify still deploys it as a function.
+Internal notes, CSS changelogs and `articles/article-template.html` stay in the repository and are not uploaded as website files. The form function stays in `netlify/functions`, outside `site/`, and Netlify still deploys it as a function. The short-link counter and the counts read-out are edge functions in `netlify/edge-functions`, also outside `site/`.
 
 `main` is the live site. Do not put unfinished work there.
 
@@ -87,6 +87,44 @@ Google Analytics 4, measurement ID `G-8XTQVTNBNF`, loads on every page from `js/
 `js/utm.js` loads on every page, including the article template. When a visit arrives with `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, or `utm_term`, the script keeps that first set for the browser tab in `sessionStorage`. It adds those parameters to every Calendly link and to portal sign-up and checkout links. It does not set a cookie, so the consent banner does not gate it. It does not change a link's path. Parameters already on a link, including GA4's `_gl` linker parameter, stay as they are. A visit with no UTM parameters leaves those hrefs unchanged. The Client Portal login link is not one of the decorated links.
 
 "Book a Call with Paul" links out to Calendly. The audit sign-up link and the Client Portal button go to the portal. During the free offer the website says signing up takes no payment. The portal's own pages are separate; this repository does not change them. See "Switching off the free audit offer" above.
+
+## Counting visits to /li and /x
+
+GA4 does not see a visitor who leaves the cookie banner up, or who clicks Decline. The short links are counted on the server, before the page loads, so those visits are still in the weekly total. The count is a daily number. It does not use a cookie. It does not store an IP address, a browser name, or the page someone came from.
+
+What a visitor gets is unchanged. `/li`, `/li/`, `/x` and `/x/` still answer with a 302 to the addresses in the `SOCIAL-SHORT-LINKS` block of `netlify.toml`. Those four lines are the only place to repoint the links.
+
+Each visit is filed as `human` or `bot`. Link previews from LinkedIn, X, Facebook, Slack and other crawlers that fetch a URL when a post is published are filed as `bot`. The check uses the browser string and then throws that string away. A normal browser is `human`.
+
+The totals live in Netlify Blobs, in a store named `social-short-links`. One entry is a deploy context, a UTC date, and `li` or `x`, holding the two numbers. A deploy preview writes under `deploy-preview`, so a test click on a preview does not change the live weekly totals. If the counter cannot save a visit, the 302 still happens.
+
+### Reading the weekly totals
+
+The read-out is `GET /social-click-counts`. It is not linked from the website. It asks for a secret that lives only in Netlify.
+
+Set this environment variable on the Netlify project `m2mstrategists`. Do not commit the value, and do not put it in the URL.
+
+1. In Netlify, open the project, then Project configuration, then Environment variables, then Add a variable.
+2. Key: `SOCIAL_CLICKS_TOKEN`
+3. Value: a long random string. On your own computer, `openssl rand -hex 32` prints one. Paste it into Netlify only.
+4. Scopes: include Functions. Edge Functions read variables from that scope. Include Production, so the live site can be read. Include Deploy Previews as well if you want to read counts on a preview URL.
+5. Save, then redeploy. Netlify picks up a new variable on the next deploy. An open preview does not see the variable until that preview is deployed again.
+
+For a UTC date range, up to 93 days:
+
+```bash
+curl -sS \
+  -H "Authorization: Bearer $SOCIAL_CLICKS_TOKEN" \
+  "https://m2mstrategists.com/social-click-counts?from=2026-11-08&to=2026-11-14"
+```
+
+Set `SOCIAL_CLICKS_TOKEN` in the shell first. A missing or wrong token gets `unauthorized`, and the response does not say which of the two it was. Netlify's function log gets a line when the variable is unset.
+
+The JSON has `links.li` and `links.x`. Each has `human` and `bot` totals, plus a `days` list. A day with no visits is zeroes. The default context is `production`.
+
+To read a deploy preview, call the preview host and add `&context=deploy-preview`. The other allowed values are `branch-deploy`, `dev` and `other`. This path does not redirect to the audit page.
+
+The static preview (`python3 -m http.server`) does not run the counter. `npm test` runs the checks for the count, the bot split, the 302 staying with the redirect rules, and the token. `netlify dev` does run it. For that, put `SOCIAL_CLICKS_TOKEN` in a `.env` file in the project root. That file is gitignored. Local clicks are stored under the `dev` context, so add `&context=dev` when reading them.
 
 ## Client portal
 

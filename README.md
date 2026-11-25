@@ -4,56 +4,24 @@ Public website for M2M Business Growth, AI & Exit Strategists LLC, a Qatar Finan
 
 The live site is [https://m2mstrategists.com](https://m2mstrategists.com). The www address redirects there. Canonical and social links use the non-www host.
 
-## Switching off the free audit offer
+## The paid audit
 
-From 1 October to 30 November 2026 the M2M Growth, AI & Exit Audit is free of charge. The usual fee is £1,495. Signing up takes no payment. The website does not turn this off by itself. On 1 December 2026, switch it off by hand.
+From 1 October to 30 November 2026 the M2M Growth, AI & Exit Audit was free of charge. From 1 December 2026 the fee is £1,495 again, with the money-back guarantee. The saved restore block had a portal checkout address. That address is not used. Payment will be by invoice and bank transfer, and the new wording is still to come. The audit booking button goes to the contact page, which was already linked from the audit page. The Client Portal button still goes to the portal login. Other portal links are unchanged.
 
-The offer is grouped so it can be removed together. Two markers are used.
-
-1. `FREE-OFFER-START` and `FREE-OFFER-END`. Everything between these comments is the offer: the coral banner, the struck-through £1,495, the word FREE, the seal that reads FREE UNTIL 30 NOV, and the free booking sentences. Delete those blocks, including the comment lines.
-2. `RESTORE-ON-1-DEC`. These comments hold the previous wording, including the £1495 price and the money-back guarantee. Remove the comment marks so that wording shows again. Leave the wording itself as it was.
-
-Do that in each of these files:
-
-- `index.html`
-- `ai-growth-audit.html`
-- `m2m-framework.html`
-- `clients.html`
-- `contact.html`
-- `legal.html`
-- `articles/article-template.html` (this template is not published; it carries the same banner so a new article does not bring the offer back by accident)
-
-Then:
-
-3. On each of those pages, change `<body class="has-free-offer">` back to `<body>`.
-4. In `css/style.css`, delete the block that starts with `FREE OFFER — remove this entire block on 1 December 2026` and ends at `end of FREE OFFER block`. That removes the banner layout, the struck-through price and the FREE styling. Leave the cookie-consent rules that follow it. No second stylesheet was added.
-5. The pages load `css/style.css?v=72`. Change `72` to the next number on every page in the list above, including the article template. Use the same number on every page, or returning visitors may keep the old stylesheet. The cookie-banner rules sit below the free-offer block. Leave them in place. They are not part of this offer.
-6. On `legal.html`, move the "Last updated" date on when the terms change back. The free-offer paragraph is draft wording. Rosita and QFC compliance still need to review it before it is treated as final.
-7. In this README, the booking sentence can go back to: "Book a Call with Paul" links out to Calendly. The audit payment link and the Client Portal button go to the portal.
-8. In `netlify.toml`, repoint the four rules in the block marked `SOCIAL-SHORT-LINKS`. Keep the block. `/li` and `/x` are permanent short links for every LinkedIn and X post, and they are never removed. Change only the `to` address on each rule, so they leave the free-audit campaign. Leave the status at 302, so a browser does not keep the November destination. The click counter does not hold these addresses. Leave `netlify/edge-functions/social-short-links.js` as it is.
-
-Proposal for Paul to confirm nearer 1 December 2026. This is not live, and the rules in `netlify.toml` do not use it yet. One standing target is the homepage, with tags that stay the same after the offer ends:
+The short links in the `SOCIAL-SHORT-LINKS` block of `netlify.toml` stay. `/li` and `/x` are permanent short links for every LinkedIn and X post, and they are never removed. They 302 to the homepage:
 
 - `/li` and `/li/` to `/?utm_source=linkedin&utm_medium=social&utm_campaign=social-always-on&utm_content=li`
 - `/x` and `/x/` to `/?utm_source=x&utm_medium=social&utm_campaign=social-always-on&utm_content=x`
 
-Nothing new was added for Netlify to copy. `scripts/publish-site.sh` already publishes these pages and `css/style.css`. The article template stays unpublished. No image was replaced. The round badge still has the words BOOK YOUR AUDIT NOW baked into the picture. The alt text describes that picture. A new picture is only needed if the badge itself should say free.
+Leave the status at 302. The click counter does not hold these addresses. Leave `netlify/edge-functions/social-short-links.js` as it is.
 
-What comes back when the old wording is restored: the £1495 buttons, the money-back guarantee on the home page and the audit page, the seal that reads MONEY BACK GUARANTEE · 14 DAYS, the old booking sentences, and the legal paragraph about the fee and the guarantee.
-
-The audit page title stays as it is. It does not say free or give an end date. The search description, og:description and twitter:description say the audit is free until 30 November 2026. On 1 December 2026, restore the original sentence from the HTML comment beside those three tags, so an old offer line cannot linger in Google or in a link preview.
-
-The audit page structured data is an offer at price 0 GBP, with priceValidUntil 2026-11-30, while this offer runs. On 1 December 2026, set that price back to 1495 GBP and remove priceValidUntil. The HTML comment beside the script says the same.
-
-The free-offer button on the audit page goes to https://portal.m2mstrategists.com/growth-ai-exit/signup. The 1 December restore comment on that page still points at the checkout link. Other portal links are unchanged. The portal team owns the sign-up page.
-
-After the edits, search the repository for `FREE-OFFER` and for `has-free-offer`. Both searches should come back empty. `SOCIAL-SHORT-LINKS` stays. Those rules are repointed, not deleted.
+Nothing new was added for Netlify to copy. `scripts/publish-site.sh` already publishes these pages and `css/style.css`. The article template stays unpublished. No image was replaced. The round badge still has the words BOOK YOUR AUDIT NOW baked into the picture. The alt text describes that picture.
 
 ## Hosting
 
 Netlify deploys the `main` branch. `netlify.toml` does not publish the repository root. The build runs `scripts/publish-site.sh`, which copies the public pages and assets into `site/`, and Netlify publishes that folder.
 
-Redirect rules live in `netlify.toml`, which Netlify reads from the repository root. They are not copied into `site/`. The parked articles page is redirected that way. So are the permanent short links `/li` and `/x` (also with a trailing slash), used in every LinkedIn and X post. On 1 December 2026 those links are repointed, not removed. See "Switching off the free audit offer". The four `to` lines in the `SOCIAL-SHORT-LINKS` block are the only copy of those destination URLs. An edge function counts the visit and then lets those rules send the 302. See "Counting visits to /li and /x".
+Redirect rules live in `netlify.toml`, which Netlify reads from the repository root. They are not copied into `site/`. The parked articles page is redirected that way. So are the permanent short links `/li` and `/x` (also with a trailing slash), used in every LinkedIn and X post. They stay. They 302 to the homepage with the always-on campaign tags. The four `to` lines in the `SOCIAL-SHORT-LINKS` block are the only copy of those destination URLs. An edge function counts the visit and then lets those rules send the 302. See "Counting visits to /li and /x".
 
 Internal notes, CSS changelogs and `articles/article-template.html` stay in the repository and are not uploaded as website files. The form function stays in `netlify/functions`, outside `site/`, and Netlify still deploys it as a function. The short-link counter and the counts read-out are edge functions in `netlify/edge-functions`, also outside `site/`.
 
@@ -86,7 +54,7 @@ Google Analytics 4, measurement ID `G-8XTQVTNBNF`, loads on every page from `js/
 
 `js/utm.js` loads on every page, including the article template. When a visit arrives with `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, or `utm_term`, the script keeps that first set for the browser tab in `sessionStorage`. It adds those parameters to every Calendly link and to portal sign-up and checkout links. It does not set a cookie, so the consent banner does not gate it. It does not change a link's path. Parameters already on a link, including GA4's `_gl` linker parameter, stay as they are. A visit with no UTM parameters leaves those hrefs unchanged. The Client Portal login link is not one of the decorated links.
 
-"Book a Call with Paul" links out to Calendly. The audit sign-up link and the Client Portal button go to the portal. During the free offer the website says signing up takes no payment. The portal's own pages are separate; this repository does not change them. See "Switching off the free audit offer" above.
+"Book a Call with Paul" links out to Calendly. The audit booking button goes to the contact page. The Client Portal button goes to the portal login. The portal's own pages are separate; this repository does not change them.
 
 ## Counting visits to /li and /x
 

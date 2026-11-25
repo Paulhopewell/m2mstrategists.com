@@ -21,10 +21,10 @@
 
 # SOCIAL-SHORT-LINKS
 # Permanent short links for every LinkedIn and X post. Never delete these
-# rules. On 1 December 2026, repoint the four `to` lines off the free-audit
-# campaign. Leave the status at 302, so a later change is not stuck in a
-# browser cache. A proposed standing target is in the README. That proposal
-# is not live; these four rules are the destinations until the repoint.
+# rules. They are always on. Each rule answers with a 302 to the homepage,
+# tagged utm_campaign=social-always-on. Leave the status at 302, so a later
+# change is not stuck in a browser cache. Leave force = true, so these rules
+# win over a file at the same path.
 #
 # These four `to` lines are the only copy of the destination URLs. The edge
 # function netlify/edge-functions/social-short-links.js counts the visit in
@@ -41,25 +41,25 @@
 # the Netlify primary-domain setting, and it keeps the path.
 [[redirects]]
   from = "/li"
-  to = "/ai-growth-audit.html?utm_source=linkedin&utm_medium=social&utm_campaign=free-audit-nov&utm_content=li"
+  to = "/?utm_source=linkedin&utm_medium=social&utm_campaign=social-always-on&utm_content=li"
   status = 302
   force = true
 
 [[redirects]]
   from = "/li/"
-  to = "/ai-growth-audit.html?utm_source=linkedin&utm_medium=social&utm_campaign=free-audit-nov&utm_content=li"
+  to = "/?utm_source=linkedin&utm_medium=social&utm_campaign=social-always-on&utm_content=li"
   status = 302
   force = true
 
 [[redirects]]
   from = "/x"
-  to = "/ai-growth-audit.html?utm_source=x&utm_medium=social&utm_campaign=free-audit-nov&utm_content=x"
+  to = "/?utm_source=x&utm_medium=social&utm_campaign=social-always-on&utm_content=x"
   status = 302
   force = true
 
 [[redirects]]
   from = "/x/"
-  to = "/ai-growth-audit.html?utm_source=x&utm_medium=social&utm_campaign=free-audit-nov&utm_content=x"
+  to = "/?utm_source=x&utm_medium=social&utm_campaign=social-always-on&utm_content=x"
   status = 302
   force = true
 # end SOCIAL-SHORT-LINKS

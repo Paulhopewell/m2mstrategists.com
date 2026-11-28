@@ -6,7 +6,7 @@ The live site is [https://m2mstrategists.com](https://m2mstrategists.com). The w
 
 ## The paid audit
 
-From 1 October to 30 November 2026 the M2M Growth, AI & Exit Audit was free of charge. From 1 December 2026 the fee is £1,495 again, with the money-back guarantee. The saved restore block had a portal checkout address. That address is not used. Payment will be by invoice and bank transfer, and the new wording is still to come. The audit booking button goes to the contact page, which was already linked from the audit page. The Client Portal button still goes to the portal login. Other portal links are unchanged.
+From 1 October to 30 November 2026 the M2M Growth, AI & Exit Audit was free of charge. From 1 December 2026 the fee is £1,495 again, with the money-back guarantee. We'll email you an invoice for £1,495 payable by bank transfer. The audit booking button says "Request your Audit here" and goes to the contact page, which was already linked from the audit page. That destination is temporary, pending the portal paid path. The Client Portal button still goes to the portal login. Other portal links are unchanged.
 
 The short links in the `SOCIAL-SHORT-LINKS` block of `netlify.toml` stay. `/li` and `/x` are permanent short links for every LinkedIn and X post, and they are never removed. They 302 to the homepage:
 

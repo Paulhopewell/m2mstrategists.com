@@ -17,8 +17,8 @@ import {
 } from "../netlify/lib/social-clicks.mjs";
 
 const NOW = new Date("2026-11-14T15:04:00Z");
-const LI_TARGET = "/ai-growth-audit.html?utm_source=linkedin&utm_medium=social&utm_campaign=free-audit-nov&utm_content=li";
-const X_TARGET = "/ai-growth-audit.html?utm_source=x&utm_medium=social&utm_campaign=free-audit-nov&utm_content=x";
+const LI_TARGET = "/?utm_source=linkedin&utm_medium=social&utm_campaign=social-always-on&utm_content=li";
+const X_TARGET = "/?utm_source=x&utm_medium=social&utm_campaign=social-always-on&utm_content=x";
 
 function memoryStore() {
   const map = new Map();
@@ -431,8 +431,11 @@ test("destinations stay only in the redirect rules", () => {
     const needle = `from = "${from}"`;
     assert.equal(toml.includes(needle), true, needle);
   }
-  assert.equal(toml.includes(`to = "${LI_TARGET}"`), true);
-  assert.equal(toml.includes(`to = "${X_TARGET}"`), true);
+  assert.equal(toml.split(`to = "${LI_TARGET}"`).length - 1, 2);
+  assert.equal(toml.split(`to = "${X_TARGET}"`).length - 1, 2);
+  assert.equal(toml.includes("free-audit-nov"), false);
+  assert.equal(toml.includes("1 December"), false);
+  assert.equal(toml.includes("30 Nov"), false);
   assert.equal(toml.split("status = 302").length - 1 >= 5, true);
 
   for (const source of [edge, counts, lib]) {
